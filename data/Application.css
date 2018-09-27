@@ -1,0 +1,51 @@
+.lyrics,
+.titlebar {
+    transition: 500ms ease;
+}
+
+.lyrics,
+.lyrics .titlebar {
+    background-image: linear-gradient(to left, #abacae, #d4d4d4);
+}
+
+.lyrics.dark,
+.lyrics.dark .titlebar {
+    background-image: linear-gradient(to right, #7239b3, #452981);
+}
+
+.lyrics {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2c2c2c;
+}
+
+.lyrics.dark {
+    color: white;
+}
+
+.lyrics * {
+    border: 0px solid transparent;
+    box-shadow: 0 0 transparent;
+}
+
+.lyrics:backdrop {
+    color: #fff;
+    background: transparent;
+}
+
+.lyrics.dark:backdrop {
+    color: #452981;
+}
+
+.lyrics:backdrop .titlebar {
+    opacity: 0;
+}
+
+.lyric-title {
+    font-size: 1.55em;
+    font-weight: 700;
+}
+
+.lyric-artist {
+    font-size: 0.75em;
+}

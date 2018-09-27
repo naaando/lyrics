@@ -1,0 +1,3 @@
+[submodule "lyricsource-standalone"]
+	path = subprojects/lyricsource-standalone
+	url = https://github.com/naaando/lyricsource-standalone.git

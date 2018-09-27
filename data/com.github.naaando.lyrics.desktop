@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Lyrics
+GenericName=Lyrics displayer
+Comment=The beautiful way to sing your songs
+Categories=Utility;Graphics;
+Exec=com.github.naaando.lyrics
+Icon=com.github.naaando.lyrics
+Terminal=false
+Type=Application
+X-GNOME-Gettext-Domain=com.github.naaando.lyrics
+Keywords=dieter;rams;design;aesthetic;guidelines;
