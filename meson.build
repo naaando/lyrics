@@ -39,6 +39,5 @@ executable(
 )
 
 subdir ('data')
-subproject ('lyricsource-standalone')
 
 meson.add_install_script('meson/post_install.py')
