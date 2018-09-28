@@ -1,6 +1,6 @@
 
 public class Lyrics.MainWindow : Gtk.Window {
-    public MainWindow (Gtk.Application application, Lyrics.Stack stack) {
+    public MainWindow (Gtk.Application application, Gtk.Stack stack) {
         Object (
             application: application,
             icon_name: "com.github.naaando.lyrics",
