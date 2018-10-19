@@ -36,6 +36,20 @@ public class Mpris.Player : Mpris.Client, Lyrics.Player {
                     break;
             }
         }
+
+        set {
+            switch (value) {
+                case Player.State.PLAYING:
+                    player.play ();
+                    break;
+                case Player.State.PAUSED:
+                    player.pause ();
+                    break;
+                case Player.State.STOPPED:
+                    player.stop ();
+                    break;
+            }
+        }
     }
 
     public string busname { get;private set; }
