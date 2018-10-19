@@ -14,7 +14,7 @@ public class Lyrics.Service.PlayerStateService : Object {
     }
 
     ~PlayerStateService () {
-        print ("Player service destroyed\n");
+        info ("Player service destroyed\n");
     }
 
     public Player.State get_player_state () {
