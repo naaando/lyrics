@@ -25,7 +25,11 @@ public class Lyrics.LocalFile : Lyrics.ILyricFile, Object {
 
     public string get_content () {
         if (content == null) {
-            load ();
+            try {
+                load ();
+            } catch (Error e) {
+                warning (e.message);
+            }
         }
 
         return content;
