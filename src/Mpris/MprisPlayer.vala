@@ -20,33 +20,38 @@ public class Mpris.Player : Mpris.Client, Lyrics.Player {
 
     public Lyrics.Player.State state {
         get {
-            playing = get_state (player.playback_status == "Playing");
             switch (player.playback_status) {
                 case "Playing":
-                    return Player.State.PLAYING;
+                    return Lyrics.Player.State.PLAYING;
                     break;
                 case "Paused":
-                    return Player.State.PAUSED;
+                    return Lyrics.Player.State.PAUSED;
                     break;
                 case "Stopped":
-                    return Player.State.STOPPED;
+                    return Lyrics.Player.State.STOPPED;
                     break;
                 default:
-                    return Player.State.UNKNOWN;
+                    return Lyrics.Player.State.UNKNOWN;
                     break;
             }
         }
 
         set {
             switch (value) {
-                case Player.State.PLAYING:
-                    player.play ();
+                case Lyrics.Player.State.PLAYING:
+                    try {
+                        player.play ();
+                    } catch (Error e) { warning (e.message); }
                     break;
-                case Player.State.PAUSED:
-                    player.pause ();
+                case Lyrics.Player.State.PAUSED:
+                    try {
+                        player.pause ();
+                    } catch (Error e) { warning (e.message); }
                     break;
-                case Player.State.STOPPED:
-                    player.stop ();
+                case Lyrics.Player.State.STOPPED:
+                    try {
+                        player.stop ();
+                    } catch (Error e) { warning (e.message); }
                     break;
             }
         }
@@ -67,11 +72,6 @@ public class Mpris.Player : Mpris.Client, Lyrics.Player {
         Timeout.add (250, () => {
             if (metadata == null) {
                 return false;
-            }
-
-            var _playing = (player.playback_status != "Stopped");
-            if (playing != _playing) {
-                playing = _playing;
             }
 
             if (current_song != null) {
