@@ -22,7 +22,7 @@ public class Lyrics.Service.PlayerStateService : Object {
             return Player.State.NO_PLAYER;
         }
 
-        return player.playing ? Player.State.PLAYING : Player.State.NOT_PLAYING;
+        return player.state;
     }
 
     public Player[]? list_players () {
@@ -34,7 +34,7 @@ public class Lyrics.Service.PlayerStateService : Object {
 
         state_changed (player, get_player_state ());
 
-        player.notify["playing"].connect (() => {
+        player.notify["state"].connect (() => {
             state_changed (player, get_player_state ());
         });
 
@@ -46,7 +46,7 @@ public class Lyrics.Service.PlayerStateService : Object {
     void add_player (Player p) {
         players.add (p);
         player_added (p);
-        
+
         if (player == null) {
             set_player(p);
         }
