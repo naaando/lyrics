@@ -14,7 +14,7 @@ public class LyricSources.Repository : Lyrics.IRepository, Object {
         downloader = Bus.get_proxy_sync (BusType.SESSION, dbus_name, dbus_path);
     }
 
-    public ILyricFile? find_first (Metasong song) {
+    public Lyrics.ILyricFile? find_first (Lyrics.Metasong song) {
         var collection = find (song) as Gee.List;
         return (collection != null) ? collection.first () : null;
     }
