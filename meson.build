@@ -21,7 +21,7 @@ executable(
     'src/Repository/Interfaces/IRepository.vala',
     'src/Repository/Local/LocalRepository.vala',
     'src/Repository/LyricSources/LyricSourcesDownloader.vala',
-    'src/Repository/LyricSources/LyricSourcesFile.vala',
+    'src/Repository/LyricSources/LyricSourcesRemoteFile.vala',
     'src/Repository/LyricSources/LyricSourcesRepository.vala',
     'src/Repository/ILyricFile.vala',
     'src/Repository/Repository.vala',

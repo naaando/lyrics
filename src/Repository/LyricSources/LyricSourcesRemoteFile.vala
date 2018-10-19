@@ -1,16 +1,12 @@
 
-public class LyricsSources.File : Lyrics.ILyricFile, Object {
+public class LyricsSources.RemoteFile : Lyrics.ILyricFile, Object {
     HashTable<string, Variant> metadata;
     LyricSources.Downloader downloader;
-    string content;
+    public string content { get; set; }
 
     public File (LyricSources.Downloader downloader, HashTable<string, Variant> metadata) {
         this.metadata = metadata;
         this.downloader = downloader;
-    }
-
-    void set_content (string content) {
-        this.content = content;
     }
 
     public void load () {
@@ -20,7 +16,7 @@ public class LyricsSources.File : Lyrics.ILyricFile, Object {
         downloader.download_complete.connect ((id, b, file) => {
             print (@"ID $id Another int $b \n");
             if (id == ticket) {
-                set_content ((string) file);
+                content = (string) file;
                 loop.quit ();
             }
         });
