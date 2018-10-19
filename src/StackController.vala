@@ -1,9 +1,11 @@
 
 public class Lyrics.StackController : Object {
     Service.PlayerStateService pss;
+    Lyrics.IRepository lyric_repository;
 
     public StackController (Service.PlayerStateService player_state_service) {
         pss = player_state_service;
+        lyric_repository = new Lyrics.Repository ();
     }
 
     public Gtk.Stack get_stack () {
