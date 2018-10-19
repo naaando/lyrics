@@ -14,8 +14,7 @@ public class Lyrics.StackController : Object {
 
         pss.state_changed.connect ((player, state) => {
             if (state.to_string () == "PLAYING") {
-                var lrc = new Parser.LRC ().parse (GLib.File.new_for_path ("build/lyric.lrc"));
-                display.start (lrc, cancellable);
+                display.start (get_lyric (player.current_song) , player.position, cancellable);
                 stack.visible_child_name = state.to_string ();
             } else {
                 cancellable.cancel ();
@@ -24,6 +23,13 @@ public class Lyrics.StackController : Object {
         });
 
         return stack;
+    }
+
+    private Lyric get_lyric (Metasong song) {
+        var repository = lyric_repository.find (song) as Gee.List<Lyrics.ILyricFile>;
+        var first_lyric = repository.first ();
+        first_lyric.load ();
+        return first_lyric.to_lyric ();
     }
 
     private Gtk.Stack factory_gtk_stack (Display display, Download download) {
