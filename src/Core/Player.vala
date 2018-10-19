@@ -9,6 +9,7 @@ public interface Lyrics.Player : Object {
 
     public enum State {
         NO_PLAYER,
+        UNKNOWN,
         NOT_PLAYING,
         PLAYING,
         PAUSED;
@@ -17,15 +18,22 @@ public interface Lyrics.Player : Object {
             switch (this) {
                 case NO_PLAYER:
                     return "NO_PLAYER";
-
+                    break;
+                case NO_PLAYER:
+                    return "NO_PLAYER";
+                    break;
                 case NOT_PLAYING:
-                    return "NOT_PLAYING";
-
+                    return "STOPPED";
+                    break;
+                case PAUSED:
+                    return "PAUSED";
+                    break;
                 case PLAYING:
                     return "PLAYING";
-
+                    break;
                 default:
                     assert_not_reached();
+                    break;
             }
         }
     }
