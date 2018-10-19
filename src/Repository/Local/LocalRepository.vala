@@ -2,6 +2,15 @@
 public class Lyrics.LocalRepository : IRepository, Object {
     string local_storage = Environment.get_home_dir ()+"/.lyrics/";
 
+    public bool save (Metasong song, ILyricFile lyric_file) {
+        var file = File.new_for_path (get_filename_for_song(song));
+        var os = file.create (FileCreateFlags.REPLACE_DESTINATION);
+        os.write (lyric_file.content.data);
+        return true;
+    }
+
+    //  public Gee.Collection<ILyricFile> all () {}
+
     public ILyricFile? find_first (Metasong song) {
         print (@"$(get_filename_for_song(song))\n");
 
