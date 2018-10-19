@@ -19,7 +19,6 @@ public class Lyrics.Display : Gtk.Box {
         current_line.get_style_context ().add_class ("yellow-lyrics");
 
         add (current_line);
-        //  start (new Parser.LRC ().parse (GLib.File.new_for_path ("build/lyric.lrc")), new Cancellable ());
     }
 
     public void start (Lyric lrc, uint64 position, Cancellable cancellable) {
