@@ -71,7 +71,6 @@ public class Mpris.Player : Mpris.Client, Lyrics.Player {
             return true;
         });
 
-       playing = (player.playback_status == "Playing");
     }
 
     ~Player () {
