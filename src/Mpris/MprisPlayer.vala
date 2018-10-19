@@ -93,9 +93,9 @@ public class Mpris.Player : Mpris.Client, Lyrics.Player {
 
     void toggle () {
         try {
-            if(playing) {
+            if(state != Lyrics.Player.State.PLAYING) {
                 player.play ();
-            } else {
+            } else if (state != Lyrics.Player.State.STOPPED) {
                 player.pause ();
             }
         } catch (Error e) {
