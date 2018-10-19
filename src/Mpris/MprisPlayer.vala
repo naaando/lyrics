@@ -18,7 +18,26 @@ public class Mpris.Player : Mpris.Client, Lyrics.Player {
         }
     }
 
-    public bool playing { get; private set; }
+    public Player.State state {
+        get {
+            playing = get_state (player.playback_status == "Playing");
+            switch (player.playback_status) {
+                case "Playing":
+                    return Player.State.PLAYING;
+                    break;
+                case "Paused":
+                    return Player.State.PAUSED;
+                    break;
+                case "Stopped":
+                    return Player.State.STOPPED;
+                    break;
+                default:
+                    return Player.State.UNKNOWN;
+                    break;
+            }
+        }
+    }
+
     public string busname { get;private set; }
 
     public Player (string busname) {
