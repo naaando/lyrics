@@ -29,4 +29,16 @@ public class Lyrics.Metasong : Object {
     public bool compare_uri (string uri2) {
         return uri == uri2;
     }
+
+    public string to_string () {
+        var builder = new StringBuilder ();
+        builder.append (@"Artist: $artist");
+        builder.append (@"Title: $title");
+        builder.append (@"Album: $album");
+        builder.append (@"Duration: $duration");
+        builder.append (@"URI: $uri");
+        builder.append (@"Path: $path");
+        builder.append (@"Filename: $filename");
+        return builder.str;
+    }
 }
