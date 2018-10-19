@@ -18,7 +18,7 @@ public class Mpris.Player : Mpris.Client, Lyrics.Player {
         }
     }
 
-    public Player.State state {
+    public Lyrics.Player.State state {
         get {
             playing = get_state (player.playback_status == "Playing");
             switch (player.playback_status) {
