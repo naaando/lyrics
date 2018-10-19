@@ -17,9 +17,12 @@ public class Lyrics.Repository : IRepository, Object {
         }
 
         var remote_file = lyricsources["viewlyrics"].find_first (song);
-        local_repository.save (song, remote_file);
+        if (remote_file != null) {
+            local_repository.save (song, remote_file);
+            return remote_file;
+        }
 
-        return remote_file;
+        return null;
     }
 
     public Gee.Collection<ILyricFile>? find (Metasong song) {
