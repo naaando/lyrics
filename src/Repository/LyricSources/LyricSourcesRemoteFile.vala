@@ -12,21 +12,30 @@ public class LyricsSources.RemoteFile : Lyrics.ILyricFile, Object {
     public void load () {
         var loop = new MainLoop ();
 
-        var ticket = downloader.download (metadata["downloadinfo"]);
-        downloader.download_complete.connect ((id, b, file) => {
-            print (@"ID $id Another int $b \n");
-            if (id == ticket) {
-                content = (string) file;
-                loop.quit ();
-            }
-        });
+        try {
+            var ticket = downloader.download (metadata["downloadinfo"]);
+            downloader.download_complete.connect ((id, b, file) => {
+                print (@"ID $id Another int $b \n");
+                if (id == ticket) {
+                    content = (string) file;
+                    loop.quit ();
+                }
+            });
+        } catch (Error e) {
+            loop.quit ();
+            warning (e.message);
+        }
 
         loop.run ();
     }
 
     public string get_content () {
         if (content == null) {
-            load ();
+            try {
+                load ();
+            } catch (Error e) {
+                warning (e.message);
+            }
         }
 
         return content;

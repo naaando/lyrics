@@ -11,7 +11,11 @@ public class LyricSources.Repository : Lyrics.IRepository, Object {
     }
 
     void load_connection () {
-        downloader = Bus.get_proxy_sync (BusType.SESSION, dbus_name, dbus_path);
+        try {
+            downloader = Bus.get_proxy_sync (BusType.SESSION, dbus_name, dbus_path);
+        } catch (Error e) {
+            warning (e.message);
+        }
     }
 
     public Lyrics.ILyricFile? find_first (Lyrics.Metasong song) {
@@ -29,20 +33,25 @@ public class LyricSources.Repository : Lyrics.IRepository, Object {
         metadata["title"] = song.title;
         metadata["album"] = song.album;
 
-        var loop = new MainLoop ();
-        var ticket = downloader.search (metadata);
         var collection = new Gee.ArrayList <Lyrics.ILyricFile> ();
+        var loop = new MainLoop ();
+        try {
+            var ticket = downloader.search (metadata);
 
-        downloader.search_complete.connect ((id, b, results) => {
-            if (ticket == id) {
-                print (@"ID $id B $b\n");
+            downloader.search_complete.connect ((id, b, results) => {
+                if (ticket == id) {
+                    print (@"ID $id B $b\n");
 
-                foreach (var result in results) {
-                    collection.add (new LyricsSources.RemoteFile (downloader, result));
+                    foreach (var result in results) {
+                        collection.add (new LyricsSources.RemoteFile (downloader, result));
+                    }
+                    loop.quit ();
                 }
-                loop.quit ();
-            }
-        });
+            });
+        } catch (Error e) {
+            loop.quit ();
+            warning (e.message);
+        }
 
         loop.run ();
         return !collection.is_empty ? collection : null;

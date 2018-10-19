@@ -5,9 +5,14 @@ public class Lyrics.LocalRepository : IRepository, Object {
     public bool save (Metasong song, ILyricFile lyric_file) {
         var file = File.new_for_path (get_filename_for_song(song));
         message (@"Saving file to $(file.get_path ())");
-        var os = file.create (FileCreateFlags.REPLACE_DESTINATION);
-        os.write (lyric_file.get_content ().data);
-        return true;
+        try {
+            var os = file.create (FileCreateFlags.REPLACE_DESTINATION);
+            os.write (lyric_file.get_content ().data);
+            return true;
+        } catch (Error e) {
+            warning (e.message);
+            return false;
+        }
     }
 
     //  public Gee.Collection<ILyricFile> all () {}
