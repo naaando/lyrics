@@ -9,11 +9,15 @@ public class Lyrics.LocalFile : Lyrics.ILyricFile, Object {
 
     public void load () {
         var builder = new StringBuilder ();
-        var is = new DataInputStream(file.read ());
-        string str;
-        while ((str = is.read_line_utf8 ()) != null) {
-            print (@"$str\n");
-            builder.append (str);
+        try {
+            var is = new DataInputStream(file.read ());
+            string str;
+            while ((str = is.read_line_utf8 ()) != null) {
+                print (@"$str\n");
+                builder.append (str);
+            }
+        } catch (Error e) {
+            warning (e.message);
         }
 
         content = builder.str;
