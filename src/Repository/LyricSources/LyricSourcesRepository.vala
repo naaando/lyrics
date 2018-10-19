@@ -14,11 +14,12 @@ public class LyricSources.Repository : Lyrics.IRepository, Object {
         downloader = Bus.get_proxy_sync (BusType.SESSION, dbus_name, dbus_path);
     }
 
-    public abstract ILyricFile find_first (Metasong song) {
-        return (find (song) as Gee.List).first ();
+    public ILyricFile? find_first (Metasong song) {
+        var collection = find (song) as Gee.List;
+        return (collection != null) ? collection.first () : null;
     }
 
-    public Gee.Collection<Lyrics.ILyricFile> find (Lyrics.Metasong song) {
+    public Gee.Collection<Lyrics.ILyricFile>? find (Lyrics.Metasong song) {
         if (downloader == null) {
             load_connection ();
         }
@@ -44,6 +45,6 @@ public class LyricSources.Repository : Lyrics.IRepository, Object {
         });
 
         loop.run ();
-        return collection;
+        return !collection.is_empty ? collection : null;
     }
 }
