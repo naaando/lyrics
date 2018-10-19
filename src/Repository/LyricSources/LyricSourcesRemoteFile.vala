@@ -4,7 +4,7 @@ public class LyricsSources.RemoteFile : Lyrics.ILyricFile, Object {
     LyricSources.Downloader downloader;
     public string content { get; set; }
 
-    public File (LyricSources.Downloader downloader, HashTable<string, Variant> metadata) {
+    public RemoteFile (LyricSources.Downloader downloader, HashTable<string, Variant> metadata) {
         this.metadata = metadata;
         this.downloader = downloader;
     }
