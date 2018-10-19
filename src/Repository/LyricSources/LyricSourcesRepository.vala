@@ -15,7 +15,7 @@ public class LyricSources.Repository : Lyrics.IRepository, Object {
     }
 
     public Lyrics.ILyricFile? find_first (Lyrics.Metasong song) {
-        var collection = find (song) as Gee.List;
+        var collection = find (song) as Gee.List<Lyrics.ILyricFile>;
         return (collection != null) ? collection.first () : null;
     }
 
