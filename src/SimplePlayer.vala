@@ -7,7 +7,7 @@ public class SimplePlayer : Object, Lyrics.Player {
     }
     public Lyrics.Metasong current_song { get;set; }
     public HashTable<string,Variant> metadata  { owned get; }
-    public bool playing { get; set; }
+    public Lyrics.Player.State state { get; set; }
     public string busname { get; private set; }
 
     //  private timer;
@@ -18,6 +18,8 @@ public class SimplePlayer : Object, Lyrics.Player {
     }
 
     public void toggle () {
-        playing = !playing;
+        if (state != Lyrics.Player.State.STOPPED) {
+            state = (state == Lyrics.Player.State.PLAYING) ? Lyrics.Player.State.PAUSED : Lyrics.Player.State.PLAYING;
+        }
     }
 }
