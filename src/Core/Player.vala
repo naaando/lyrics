@@ -18,22 +18,16 @@ public interface Lyrics.Player : Object {
             switch (this) {
                 case NO_PLAYER:
                     return "NO_PLAYER";
-                    break;
                 case UNKNOWN:
                     return "UNKNOWN";
-                    break;
                 case STOPPED:
                     return "STOPPED";
-                    break;
                 case PAUSED:
                     return "PAUSED";
-                    break;
                 case PLAYING:
                     return "PLAYING";
-                    break;
                 default:
                     assert_not_reached();
-                    break;
             }
         }
     }

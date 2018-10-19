@@ -23,16 +23,12 @@ public class Mpris.Player : Mpris.Client, Lyrics.Player {
             switch (player.playback_status) {
                 case "Playing":
                     return Lyrics.Player.State.PLAYING;
-                    break;
                 case "Paused":
                     return Lyrics.Player.State.PAUSED;
-                    break;
                 case "Stopped":
                     return Lyrics.Player.State.STOPPED;
-                    break;
                 default:
                     return Lyrics.Player.State.UNKNOWN;
-                    break;
             }
         }
 
