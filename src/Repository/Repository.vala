@@ -4,14 +4,22 @@ public class Lyrics.Repository : IRepository, Object {
                                  "/org/lyricsources/LyricSourcePlugin/viewlyrics"};
 
     Gee.HashMap<string, LyricSources.Repository> lyricsources = new Gee.HashMap<string, LyricSources.Repository> ();
-    IRepository local_repository = new LocalRepository ();
+    LocalRepository local_repository = new LocalRepository ();
 
     public Repository () {
         lyricsources["viewlyrics"] = new LyricSources.Repository (viewlyrics_dbus[0], viewlyrics_dbus[1]);
     }
 
     public ILyricFile? find_first (Metasong song) {
-        return local_repository.find_first (song) ?? lyricsources["viewlyrics"].find_first (song);
+        var local_file = local_repository.find_first (song);
+        if (local_file != null) {
+            return local_file;
+        }
+
+        var remote_file = lyricsources["viewlyrics"].find_first (song);
+        local_repository.save (song, remote_file);
+
+        return remote_file;
     }
 
     public Gee.Collection<ILyricFile>? find (Metasong song) {
