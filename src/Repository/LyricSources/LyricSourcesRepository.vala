@@ -14,6 +14,10 @@ public class LyricSources.Repository : Lyrics.IRepository, Object {
         downloader = Bus.get_proxy_sync (BusType.SESSION, dbus_name, dbus_path);
     }
 
+    public abstract ILyricFile find_first (Metasong song) {
+        return (find (song) as Gee.List).first ();
+    }
+
     public Gee.Collection<Lyrics.ILyricFile> find (Lyrics.Metasong song) {
         if (downloader == null) {
             load_connection ();
