@@ -11,11 +11,6 @@ public class LyricsSources.File : Lyrics.ILyricFile, Object {
 
     void set_content (string content) {
         this.content = content;
-
-        //  FIXME: Save only if a option is set to
-        if (true) {
-            save ();
-        }
     }
 
     public void load () {
@@ -31,10 +26,6 @@ public class LyricsSources.File : Lyrics.ILyricFile, Object {
         });
 
         loop.run ();
-    }
-
-    public bool save () {
-        return true;
     }
 
     public Lyrics.Lyric to_lyric () {
