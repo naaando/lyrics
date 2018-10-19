@@ -2,7 +2,7 @@
 public class LyricsSources.RemoteFile : Lyrics.ILyricFile, Object {
     HashTable<string, Variant> metadata;
     LyricSources.Downloader downloader;
-    public string content { get; set; }
+    string content;
 
     public RemoteFile (LyricSources.Downloader downloader, HashTable<string, Variant> metadata) {
         this.metadata = metadata;
@@ -24,13 +24,17 @@ public class LyricsSources.RemoteFile : Lyrics.ILyricFile, Object {
         loop.run ();
     }
 
-    public Lyrics.Lyric to_lyric () {
+    public string get_content () {
         if (content == null) {
             load ();
         }
 
+        return content;
+    }
+
+    public Lyrics.Lyric to_lyric () {
         print (@"Content:\n");
-        print (@"$content\n");
+        print (@"$(get_content ())\n");
         var lrc = new Parser.LRC ().parse_string (content);
         return lrc;
     }
@@ -42,7 +46,7 @@ public class LyricsSources.RemoteFile : Lyrics.ILyricFile, Object {
             string_builder.append (@"$k => $(v.print (true))\n");
         });
         string_builder.append (@"Content:\n");
-        string_builder.append (@"$content\n");
+        string_builder.append (@"$(get_content ())\n");
 
         return string_builder.str;
     }
