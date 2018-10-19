@@ -19,8 +19,8 @@ public interface Lyrics.Player : Object {
                 case NO_PLAYER:
                     return "NO_PLAYER";
                     break;
-                case NO_PLAYER:
-                    return "NO_PLAYER";
+                case UNKNOWN:
+                    return "UNKNOWN";
                     break;
                 case NOT_PLAYING:
                     return "STOPPED";
