@@ -12,6 +12,8 @@ public class Lyrics.Display : Gtk.Box {
         set_size_request (450, 250);
 
         current_line = new Gtk.Label (null);
+        current_line.wrap = true;
+        current_line.justify = Gtk.Justification.CENTER;
         current_line.valign = Gtk.Align.CENTER;
         current_line.expand = true;
         current_line.get_style_context ().add_class ("yellow-lyrics");
