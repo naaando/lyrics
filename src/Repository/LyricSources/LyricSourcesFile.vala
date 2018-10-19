@@ -38,6 +38,10 @@ public class LyricsSources.File : Lyrics.ILyricFile, Object {
     }
 
     public Lyrics.Lyric to_lyric () {
+        if (content == null) {
+            load ();
+        }
+
         print (@"Content:\n");
         print (@"$content\n");
         var lrc = new Parser.LRC ().parse_string (content);
