@@ -8,7 +8,7 @@ public class Parser.LRC : Object {
             DataInputStream dis = new DataInputStream (file.read ());
             string ln;
             while ((ln = dis.read_line ()) != null) {
-                parse_string (ln.strip ());
+                parse_line (ln.strip ());
             }
         } catch (Error e) {
             warning (e.message);
@@ -16,7 +16,17 @@ public class Parser.LRC : Object {
         return lyric;
     }
 
-    private void parse_string (string ln) {
+    public Lyrics.Lyric parse_string (string lrc) {
+        lyric = new Lyrics.Lyric ();
+
+        foreach (var ln in lrc.split ("\n")) {
+            parse_line (ln.strip ());
+        }
+
+        return lyric;
+    }
+
+    private void parse_line (string ln) {
         var is_lyric = Regex.match_simple ("\\[\\d\\d:\\d\\d\\.\\d\\d\\]", ln);
         if (is_lyric) {
             parse_lyric (ln);
