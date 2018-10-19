@@ -10,7 +10,7 @@ public interface Lyrics.Player : Object {
     public enum State {
         NO_PLAYER,
         UNKNOWN,
-        NOT_PLAYING,
+        STOPPED,
         PLAYING,
         PAUSED;
 
@@ -22,7 +22,7 @@ public interface Lyrics.Player : Object {
                 case UNKNOWN:
                     return "UNKNOWN";
                     break;
-                case NOT_PLAYING:
+                case STOPPED:
                     return "STOPPED";
                     break;
                 case PAUSED:
