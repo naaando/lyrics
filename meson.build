@@ -19,6 +19,7 @@ executable(
     'src/Core/Metasong.vala',
     'src/Core/Player.vala',
     'src/Repository/Interfaces/IRepository.vala',
+    'src/Repository/Local/LocalRepository.vala',
     'src/Repository/LyricSources/LyricSourcesDownloader.vala',
     'src/Repository/LyricSources/LyricSourcesFile.vala',
     'src/Repository/LyricSources/LyricSourcesRepository.vala',
