@@ -38,7 +38,7 @@ public class LyricSources.Repository : Lyrics.IRepository, Object {
                 print (@"ID $id B $b\n");
 
                 foreach (var result in results) {
-                    collection.add (new LyricsSources.File (downloader, result));
+                    collection.add (new LyricsSources.RemoteFile (downloader, result));
                 }
                 loop.quit ();
             }
