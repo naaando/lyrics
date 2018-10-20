@@ -1,7 +1,5 @@
 
 public class Mpris.Service : Object {
-    Gee.HashMap<string, Mpris.Player>? players = new Gee.HashMap<string, Mpris.Player> ();
-
     public signal void found (Mpris.Player player);
     public signal void lost (string name);
 
@@ -13,20 +11,15 @@ public class Mpris.Service : Object {
         });
     }
 
-    void add (string name) requires (name != null) {
+    void add (string name) {
         Timeout.add (200, () => {
-            var player = players.get (name);
-            if (player == null) {
-                player = new Mpris.Player (name);
-                players.set (name, player);
-                found (player);
-            }
+            var player = new Mpris.Player (name);
+            found (player);
             return false;
         });
     }
 
     void remove (string name) {
-        players.unset (name);
         lost (name);
     }
 
