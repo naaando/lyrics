@@ -1,5 +1,5 @@
 
-public class Lyrics.Players : Gee.ArrayList<Player>, Object {
+public class Lyrics.Players : Gee.ArrayList<Player> {
     public Players () {
         setup_mpris ();
     }
@@ -13,10 +13,10 @@ public class Lyrics.Players : Gee.ArrayList<Player>, Object {
 
         scanner.found.connect ((player) => {
             if (add (player)) {
-                debug (@"Player added $(p.busname)\n");
+                debug (@"MPris player added $(player.busname)\n");
             }
         });
 
-        scanner.lost.connect (remove_player_by_busname);
+        scanner.lost.connect (remove_by_busname);
     }
 }
