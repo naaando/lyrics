@@ -17,8 +17,7 @@ public class Lyrics.Application : Gtk.Application {
             return;
         }
 
-        var pss = new Service.PlayerStateService ();
-        var main_window = new MainWindow (this, new StackController (pss).get_stack ());
+        var main_window = new MainWindow (this, new StackController ().get_stack ());
 
         var window_x = settings.get_int ("window-x");
         var window_y = settings.get_int ("window-y");
