@@ -45,6 +45,7 @@ public class Mpris.Service : Object {
                 }
             }
 
+            var loop = new MainLoop ();
             /* Also check for new mpris clients coming up while we're up */
             impl.name_owner_changed.connect ((n,o,ne) => {
                 /* Separate.. */
@@ -57,6 +58,8 @@ public class Mpris.Service : Object {
                     }
                 }
             });
+
+            loop.run ();
         } catch (Error e) {
             warning("Failed to initialise dbus: %s", e.message);
         }
