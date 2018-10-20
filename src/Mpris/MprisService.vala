@@ -4,6 +4,7 @@ public class Mpris.Service : Object {
     public signal void lost (string name);
 
     void add (string name) {
+        // delay the sync because otherwise the dbus properties are not yet intialized!
         Timeout.add (200, () => {
             var player = new Mpris.Player (name);
             found (player);
@@ -36,7 +37,6 @@ public class Mpris.Service : Object {
                 /* Separate.. */
                 if (n.has_prefix("org.mpris.MediaPlayer2.")) {
                     if (o == "") {
-                        // delay the sync because otherwise the dbus properties are not yet intialized!
                         add (n);
                     } else {
                         remove (n);
