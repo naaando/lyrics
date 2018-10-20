@@ -1,5 +1,5 @@
 
-public class Lyrics.MainWindow : Gtk.Window {
+public class Lyrics.MainWindow : Gtk.ApplicationWindow {
     public MainWindow (Gtk.Application application, Gtk.Stack stack) {
         Object (
             application: application,
