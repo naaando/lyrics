@@ -32,8 +32,7 @@ public class Mpris.Service : Object {
 
     public void setup_dbus () {
         DBusImpl impl = null;
-        
-        var loop = new MainLoop();
+
         try {
             impl = Bus.get_proxy_sync (BusType.SESSION, "org.freedesktop.DBus", "/org/freedesktop/DBus");
 
@@ -61,7 +60,5 @@ public class Mpris.Service : Object {
         } catch (Error e) {
             warning("Failed to initialise dbus: %s", e.message);
         }
-
-        loop.run ();
     }
 }
