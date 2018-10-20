@@ -3,14 +3,6 @@ public class Mpris.Service : Object {
     public signal void found (Mpris.Player player);
     public signal void lost (string name);
 
-    //  TODO: Investigate signals not working without injecting controller
-    public Service () {
-        Idle.add (() => {
-            setup_dbus ();
-            return false;
-        });
-    }
-
     void add (string name) {
         Timeout.add (200, () => {
             var player = new Mpris.Player (name);
