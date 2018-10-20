@@ -42,8 +42,6 @@ public class Lyrics.Application : Gtk.Application {
     }
 
     private static int main (string[] args) {
-        Gtk.init (ref args);
-
         var app = new Application ();
         return app.run (args);
     }
