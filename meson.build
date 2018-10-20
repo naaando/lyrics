@@ -14,7 +14,6 @@ executable(
     meson.project_name (),
     asresources,
     'src/Core/Factory/MetasongFactory.vala',
-    'src/Core/Service/PlayerStateService.vala',
     'src/Core/Lyric.vala',
     'src/Core/Metasong.vala',
     'src/Core/Player.vala',
