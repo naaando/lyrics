@@ -2,9 +2,7 @@
 public class Lyrics.Display : Gtk.Box {
     const uint64 one_second_to_nanoseconds = 1000000;
     const int one_second_to_milliseconds = 1000;
-    uint64 elapsed_time = 0;
 
-    private Lyric lrc;
     private Gtk.Label current_line;
 
     public Display () {
