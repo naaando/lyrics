@@ -52,9 +52,10 @@ public class Lyrics.Lyric : Object {
         }
 
         builder.append (@"Lyric:\n");
-        foreach (var line in lines) {
-            builder.append (@"$line\n");
-        }
+        lines.foreach ((item) => {
+            builder.append (@"$(item.key) : $(item.value)");
+            return true;
+        });
 
         return builder.str;
     }
