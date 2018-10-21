@@ -18,12 +18,13 @@ public class Lyrics.Display : Gtk.Box {
         add (current_line);
     }
 
-    public void start (Lyric lrc, uint64 position, Cancellable cancellable) {
-        elapsed_time = position;
+    public Cancellable start (Lyric lrc, uint64 position) {
+        uint64 elapsed_time = position;
+        var cancellable = new Cancellable ();
 
         Timeout.add (one_second_to_milliseconds, () => {
-            if (cancellable.is_cancelled ()) {
-                cancellable.reset ();
+            if (cancellable == null || cancellable.is_cancelled ()) {
+                message ("finalizing timeout");
                 return false;
             }
 
@@ -31,5 +32,7 @@ public class Lyrics.Display : Gtk.Box {
             current_line.label = lrc.get_current_line (elapsed_time);
             return true;
         });
+
+        return cancellable;
     }
 }
