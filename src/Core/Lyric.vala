@@ -27,11 +27,14 @@ public class Lyrics.Lyric : Object {
     }
 
     public string get_current_line (uint64? elapsed_time) {
-        if (get_iterator ().get_key () > elapsed_time) {
-            lrc_iterator.first ();
-        }
-
         while (get_iterator ().get_key () < elapsed_time) {
+            print (@"IT $(get_iterator ().get_key ())\n");
+            if (!get_iterator ().has_next ()) {
+                get_iterator ().first ();
+                warning ("File has ended");
+                return "";
+            }
+
             get_iterator ().next ();
         }
 
