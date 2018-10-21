@@ -26,8 +26,8 @@ public class Lyrics.Lyric : Object {
         return lrc_iterator;
     }
 
-    public string get_current_line (uint64? elapsed_time) {
-        while (get_iterator ().get_key () < elapsed_time) {
+    public string get_current_line (uint64 time_in_us) {
+        while (get_iterator ().get_key () < time_in_us) {
             print (@"IT $(get_iterator ().get_key ())\n");
             if (!get_iterator ().has_next ()) {
                 get_iterator ().first ();
