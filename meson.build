@@ -13,6 +13,8 @@ asresources = gnome.compile_resources(
 executable(
     meson.project_name (),
     asresources,
+    'src/Controller/DisplayController.vala',
+    'src/Controller/StackController.vala',
     'src/Core/Factory/MetasongFactory.vala',
     'src/Core/Lyric.vala',
     'src/Core/Metasong.vala',
@@ -36,7 +38,6 @@ executable(
     'src/Application.vala',
     'src/MainWindow.vala',
     'src/SimplePlayer.vala',
-    'src/StackController.vala',
     dependencies: [
         dependency ('glib-2.0'),
         dependency ('gtk+-3.0'),
