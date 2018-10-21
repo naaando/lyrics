@@ -1,45 +1,28 @@
 
 public class Lyrics.LocalFile : Lyrics.ILyricFile, Object {
-    string content;
     File file;
 
     public LocalFile (File file) {
         this.file = file;
     }
 
-    public void load () {
+    public string get_content () {
         var builder = new StringBuilder ();
         try {
             var is = new DataInputStream(file.read ());
             string str;
-            while ((str = is.read_line_utf8 ()) != null) {
-                print (@"$str\n");
+            while ((str = is.read_line ()) != null) {
                 builder.append (str);
             }
         } catch (Error e) {
             warning (e.message);
         }
 
-        content = builder.str;
-    }
-
-    public string get_content () {
-        if (content == null) {
-            try {
-                load ();
-            } catch (Error e) {
-                warning (e.message);
-            }
-        }
-
-        return content;
+        return builder.str;
     }
 
     public Lyrics.Lyric to_lyric () {
-        print (@"Content:\n");
-        print (@"$(get_content ())\n");
-        var lrc = new Parser.LRC ().parse_string (content);
-        return lrc;
+        return new Parser.LRC ().parse (file);
     }
 
     public string to_string () {
