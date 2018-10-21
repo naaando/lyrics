@@ -1,38 +1,26 @@
 
 public class Lyrics.Display : Gtk.Box {
-    const uint64 one_second_to_nanoseconds = 1000000;
-    const int one_second_to_milliseconds = 1000;
+    public string current_line {
+        get {
+            return current_label.label;
+        }
+        set {
+            current_label.label = value;
+        }
+    }
 
-    private Gtk.Label current_line;
+    Gtk.Label current_label;
 
     public Display () {
         set_size_request (450, 250);
 
-        current_line = new Gtk.Label (null);
-        current_line.wrap = true;
-        current_line.justify = Gtk.Justification.CENTER;
-        current_line.valign = Gtk.Align.CENTER;
-        current_line.expand = true;
-        current_line.get_style_context ().add_class ("yellow-lyrics");
+        current_label = new Gtk.Label (null);
+        current_label.wrap = true;
+        current_label.justify = Gtk.Justification.CENTER;
+        current_label.valign = Gtk.Align.CENTER;
+        current_label.expand = true;
+        current_label.get_style_context ().add_class ("yellow-lyrics");
 
-        add (current_line);
-    }
-
-    public Cancellable start (Lyric lrc, uint64 position) {
-        uint64 elapsed_time = position;
-        var cancellable = new Cancellable ();
-
-        Timeout.add (one_second_to_milliseconds, () => {
-            if (cancellable == null || cancellable.is_cancelled ()) {
-                message ("finalizing timeout");
-                return false;
-            }
-
-            elapsed_time += one_second_to_nanoseconds;
-            current_line.label = lrc.get_current_line (elapsed_time);
-            return true;
-        });
-
-        return cancellable;
+        add (current_label);
     }
 }
