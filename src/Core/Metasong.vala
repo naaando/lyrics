@@ -22,8 +22,9 @@ public class Lyrics.Metasong : Object {
         path = file.get_path ();
         filename = file.get_basename ();
 
-        thumb = File.parse_name (metadata["mpris:artUrl"].get_string ()).get_path ();
-        //  message (@"arturl $thumb");
+        if (metadata.contains("mpris:artUrl")) {
+            thumb = File.parse_name (metadata["mpris:artUrl"].get_string ()).get_path ();
+        }
     }
 
     public bool compare_uri (string uri2) {
