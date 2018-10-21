@@ -8,7 +8,6 @@ public interface Lyrics.Player : Object {
     public abstract void toggle ();
 
     public enum State {
-        NO_PLAYER,
         UNKNOWN,
         STOPPED,
         PLAYING,
@@ -16,8 +15,6 @@ public interface Lyrics.Player : Object {
 
         public string to_string () {
             switch (this) {
-                case NO_PLAYER:
-                    return "NO_PLAYER";
                 case UNKNOWN:
                     return "UNKNOWN";
                 case STOPPED:
