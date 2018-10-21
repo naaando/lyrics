@@ -6,7 +6,6 @@ public class Lyrics.Display : Gtk.Box {
 
     private Lyric lrc;
     private Gtk.Label current_line;
-    Gee.BidirMapIterator<uint64?, string> lrc_iterator;
 
     public Display () {
         set_size_request (450, 250);
@@ -22,8 +21,6 @@ public class Lyrics.Display : Gtk.Box {
     }
 
     public void start (Lyric lrc, uint64 position, Cancellable cancellable) {
-        lrc_iterator = lrc.lines.bidir_map_iterator ();
-        lrc_iterator.first ();
         elapsed_time = position;
 
         Timeout.add (one_second_to_milliseconds, () => {
@@ -33,20 +30,8 @@ public class Lyrics.Display : Gtk.Box {
             }
 
             elapsed_time += one_second_to_nanoseconds;
-            current_line.label = get_current_line (elapsed_time);
+            current_line.label = lrc.get_current_line (elapsed_time);
             return true;
         });
-    }
-
-    string get_current_line (uint64? elapsed_time) {
-        while (lrc_iterator.get_key () < elapsed_time) {
-            if (!lrc_iterator.has_next ()) {
-                return "";
-            }
-
-            lrc_iterator.next ();
-        }
-
-        return lrc_iterator.get_value ().to_string ();
     }
 }
