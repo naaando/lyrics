@@ -31,7 +31,7 @@ public class Mpris.Service : Object {
                 }
             }
 
-            var thread = new Thread<int>.try ("mpris", () => {
+            new Thread<int>.try ("mpris", () => {
                 var loop = new MainLoop ();
                 /* Also check for new mpris clients coming up while we're up */
                 impl.name_owner_changed.connect ((n,o,ne) => {
