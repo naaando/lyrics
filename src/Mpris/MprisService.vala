@@ -31,20 +31,23 @@ public class Mpris.Service : Object {
                 }
             }
 
-            var loop = new MainLoop ();
-            /* Also check for new mpris clients coming up while we're up */
-            impl.name_owner_changed.connect ((n,o,ne) => {
-                /* Separate.. */
-                if (n.has_prefix("org.mpris.MediaPlayer2.")) {
-                    if (o == "") {
-                        add (n);
-                    } else {
-                        remove (n);
+            var thread = new Thread<int>.try ("mpris", () => {
+                var loop = new MainLoop ();
+                /* Also check for new mpris clients coming up while we're up */
+                impl.name_owner_changed.connect ((n,o,ne) => {
+                    /* Separate.. */
+                    if (n.has_prefix("org.mpris.MediaPlayer2.")) {
+                        if (o == "") {
+                            add (n);
+                        } else {
+                            remove (n);
+                        }
                     }
-                }
-            });
+                });
+                loop.run ();
 
-            loop.run ();
+                return 0;
+            });
         } catch (Error e) {
             warning("Failed to initialise dbus: %s", e.message);
         }
