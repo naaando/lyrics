@@ -31,11 +31,7 @@ public class LyricsSources.RemoteFile : Lyrics.ILyricFile, Object {
 
     public string get_content () {
         if (content == null) {
-            try {
-                load ();
-            } catch (Error e) {
-                warning (e.message);
-            }
+            load ();
         }
 
         return content;
