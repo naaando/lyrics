@@ -53,7 +53,7 @@ public class Lyrics.Lyric : Object {
 
         builder.append (@"Lyric:\n");
         lines.foreach ((item) => {
-            builder.append (@"$(item.key) : $(item.value)");
+            builder.append (@"$(item.key) : $(item.value)\n");
             return true;
         });
 
