@@ -19,18 +19,6 @@
 namespace Mpris {
 
 /**
- * Simple wrapper to ensure vala doesn't unref our shit.
- */
-public class Client : Object {
-    public PlayerIface player { construct set; get; }
-    public DbusPropIface prop { construct set; get; }
-
-    public Client (PlayerIface player, DbusPropIface prop) {
-        Object (player: player, prop: prop);
-    }
-}
-
-/**
  * We need to probe the dbus daemon directly, hence this interface
  */
 [DBus (name="org.freedesktop.DBus")]
