@@ -47,13 +47,13 @@ public class Lyrics.Lyric : Object {
 
         builder.append (@"Metadata:\n");
         foreach (var data in metadata) {
-            builder.append (@"$(data.tag)");
-            builder.append (@"$(data.info)");
+            builder.append (@"$(data.tag) = ");
+            builder.append (@"$(data.info)\n");
         }
 
         builder.append (@"Lyric:\n");
         foreach (var line in lines) {
-            builder.append (@"$line");
+            builder.append (@"$line\n");
         }
 
         return builder.str;
