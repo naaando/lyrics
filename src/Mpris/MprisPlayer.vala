@@ -1,5 +1,8 @@
 
-public class Mpris.Player : Mpris.Client, Lyrics.Player {
+public class Mpris.Player : Lyrics.Player, Object {
+    PlayerIface player;
+    DbusPropIface prop;
+
     public int64 position {
         get {
             try {
@@ -18,58 +21,33 @@ public class Mpris.Player : Mpris.Client, Lyrics.Player {
         }
     }
 
-    public Lyrics.Player.State state {
-        get {
-            switch (player.playback_status) {
-                case "Playing":
-                    return Lyrics.Player.State.PLAYING;
-                case "Paused":
-                    return Lyrics.Player.State.PAUSED;
-                case "Stopped":
-                    return Lyrics.Player.State.STOPPED;
-                default:
-                    return Lyrics.Player.State.UNKNOWN;
-            }
-        }
-
-        set {
-            switch (value) {
-                case Lyrics.Player.State.PLAYING:
-                    try {
-                        player.play ();
-                    } catch (Error e) { warning (e.message); }
-                    break;
-                case Lyrics.Player.State.PAUSED:
-                    try {
-                        player.pause ();
-                    } catch (Error e) { warning (e.message); }
-                    break;
-                case Lyrics.Player.State.STOPPED:
-                    try {
-                        player.stop ();
-                    } catch (Error e) { warning (e.message); }
-                    break;
-            }
-        }
-    }
-
+    public Lyrics.Player.State state { get; private set; default = Lyrics.Player.State.STOPPED; }
     public string busname { get;private set; }
 
     public Player (string busname) {
         try {
-            // Call base class constructor
-            base (Bus.get_proxy_sync(BusType.SESSION, busname, "/org/mpris/MediaPlayer2"), Bus.get_proxy_sync(BusType.SESSION, busname, "/org/mpris/MediaPlayer2"));
+            player = Bus.get_proxy_sync (BusType.SESSION, busname, "/org/mpris/MediaPlayer2");
+            prop = Bus.get_proxy_sync (BusType.SESSION, busname, "/org/mpris/MediaPlayer2");
         } catch (Error e) {
             message (e.message);
         }
 
         this.busname = busname;
+        update_state ();
+        update_metadata ();
 
-        Timeout.add (250, () => {
-            if (metadata == null) {
-                return false;
-            }
+        prop.properties_changed.connect (() => {
+            update_metadata ();
+            update_state ();
+        });
+    }
 
+    ~Player () {
+        message (@"removing player $busname");
+    }
+
+    void update_metadata () {
+        if (metadata != null) {
             if (current_song != null) {
                 if (metadata["xesam:url"] != null && !current_song.compare_uri (metadata["xesam:url"].get_string ())) {
                     current_song = new Lyrics.Metasong.from_metadata (metadata);
@@ -77,14 +55,24 @@ public class Mpris.Player : Mpris.Client, Lyrics.Player {
             } else if (metadata["xesam:url"] != null) {
                 current_song = new Lyrics.Metasong.from_metadata (metadata);
             }
-
-            return true;
-        });
-
+        }
     }
 
-    ~Player () {
-        message (@"removing player $busname");
+    void update_state () {
+        switch (player.playback_status) {
+            case "Playing":
+                state = Lyrics.Player.State.PLAYING;
+                break;
+            case "Paused":
+                state = Lyrics.Player.State.PAUSED;
+                break;
+            case "Stopped":
+                state = Lyrics.Player.State.STOPPED;
+                break;
+            default:
+                state = Lyrics.Player.State.UNKNOWN;
+                break;
+        }
     }
 
     void toggle () {
