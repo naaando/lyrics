@@ -6,7 +6,7 @@ public class Lyrics.Lyric : Object {
     }
 
     private Metadata[] metadata = {};
-    public Gee.TreeMap<uint64?, string> lines { get; private set; default = new Gee.TreeMap<uint64?, string> ();}
+    Gee.TreeMap<uint64?, string> lines = new Gee.TreeMap<uint64?, string> ();
     Gee.BidirMapIterator<uint64?, string> lrc_iterator;
 
     public void add_metadata (string _tag, string _info) {
