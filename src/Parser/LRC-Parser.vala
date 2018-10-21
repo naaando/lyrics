@@ -28,24 +28,23 @@ public class Parser.LRC : Object {
 
     private void parse_line (string ln) {
         var is_lyric = Regex.match_simple ("\\[\\d\\d:\\d\\d\\.\\d\\d\\]", ln);
+        var is_metadata = Regex.match_simple ("\\[.+\\]", ln) && !is_lyric;
+
         if (is_lyric) {
             parse_lyric (ln);
-        } else {
+        } else if (is_metadata) {
             parse_metadata (ln);
         }
     }
 
     private void parse_metadata (string ln) {
-        string md = ln;
-
-        if (ln.has_prefix ("[") && ln.has_suffix ("]") && ln.length > 1) {
-            md = ln[1:-1];
+        if (ln.has_prefix ("[") && ln.has_suffix ("]")) {
+            var md = ln[1:-1];
+            var tag = md.split (":", 2);
+            lyric.add_metadata (tag[0], tag[1]);
         } else {
             warning ("bad formatted lrc");
         }
-
-        var tag = md.split (":", 2);
-        lyric.add_metadata (tag[0], tag[1]);
     }
 
     private void parse_lyric (string ln) {
@@ -56,12 +55,14 @@ public class Parser.LRC : Object {
 
         if (ln.length > 10) {
             var text = ln[10:ln.length];
-            lyric.add_line (parse_time (minutes, seconds, milli), text);
+            if (text.length > 0) {
+                lyric.add_line (time_to_us (minutes, seconds, milli), text);
+            }
         }
     }
 
     // return time in microseconds(µs)
-    private uint64 parse_time (uint minutes, uint seconds, uint milliseconds) {
+    uint64 time_to_us (uint minutes, uint seconds, uint milliseconds) {
         return (minutes*60*1000 + seconds*1000 + milliseconds)*1000;
     }
 }
