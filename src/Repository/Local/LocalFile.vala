@@ -9,7 +9,7 @@ public class Lyrics.LocalFile : Lyrics.ILyricFile, Object {
     public string get_content () {
         var builder = new StringBuilder ();
         try {
-            var is = new DataInputStream(file.read ());
+            var is = new DataInputStream (file.read ());
             string str;
             while ((str = is.read_line ()) != null) {
                 builder.append (str);
