@@ -1,6 +1,17 @@
 
 public class Lyrics.MainWindow : Gtk.ApplicationWindow {
-    public Players players { get; set; }
+    public Players players {
+        get {
+            return _players;
+        }
+        set {
+            _players = value;
+            connect_to_playpause (players);
+        }
+    }
+
+    Players _players;
+    Gtk.Button playpause;
 
     public MainWindow (Gtk.Application application, Gtk.Stack stack) {
         Object (
@@ -56,14 +67,49 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
 
         Application.settings.bind ("dark", mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
-        header.pack_start (build_button_from_icon ("media-skip-backward-symbolic"));
-        header.pack_start (build_button_from_icon ("media-playback-start-symbolic"));
-        header.pack_start (build_button_from_icon ("media-skip-forward-symbolic"));
+        /**
+         * Left side of headerbar
+         * Player controls
+         */
 
+        //  Previous music button
+        header.pack_start (build_button_from_icon ("media-skip-backward-symbolic", null, (btn) => {
+            if (players != null && players.active_player != null) {
+                players.active_player.previous ();
+            }
+        }));
+
+        //  Play/Pause button
+        playpause = build_button_from_icon ("media-playback-start-symbolic", null, (btn) => {
+            if (players != null && players.active_player != null) {
+                players.active_player.toggle_play_pause ();
+            }
+        });
+        header.pack_start (playpause);
+
+        //  Next music button
+        header.pack_start (build_button_from_icon ("media-skip-forward-symbolic", null, (btn) => {
+            if (players != null && players.active_player != null) {
+                players.active_player.next ();
+            }
+        }));
+
+
+        /**
+         * Right side of headerbar
+         */
         header.pack_end (build_preferences_button ());
+
+        //  Switch color button
         header.pack_end (mode_switch);
+
+        //  Toggle transparency button
         header.pack_end (build_button_from_icon ("image-red-eye-symbolic", _("Toggle transparency when window go inactive")));
+
+        //  Edit lyric file button
         header.pack_end (build_button_from_icon ("document-new-symbolic", _("Edit lyric file")));
+
+        //  Search lyric button
         header.pack_end (build_button_from_icon ("edit-find-symbolic", _("Search lyric")));
 
         return header;
@@ -90,12 +136,39 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
     //  Gtk.Popover build_preferences_popover () {
     //  }
 
-    Gtk.Button build_button_from_icon (string icon_name, string? tooltip = null) {
+    Gtk.Button build_button_from_icon (string icon_name, string? tooltip = null, Func? clicked_cb = null) {
         var button = new Gtk.Button.from_icon_name (icon_name);
+
         if (tooltip != null) {
             button.tooltip_text = tooltip;
         }
+
+        if (clicked_cb != null) {
+            button.clicked.connect (() => clicked_cb (button));
+        }
+
         return button;
+    }
+
+    void connect_to_playpause (Players plrs) {
+        update_playpause_icon (plrs);
+
+        //  Update play/pause button
+        plrs.notify["active-player"].connect (() => {
+            if (plrs.active_player == null) {
+                return;
+            }
+
+            update_playpause_icon (plrs);
+            plrs.active_player.notify.connect (() => {
+                update_playpause_icon (plrs);
+            });
+       });
+    }
+
+    void update_playpause_icon (Players plrs) {
+        var path = (plrs.active_player != null && plrs.active_player.state != PAUSED) ? "media-playback-pause-symbolic" : "media-playback-start-symbolic";
+        playpause.image = new Gtk.Image.from_icon_name (path, Gtk.IconSize.SMALL_TOOLBAR);
     }
 
     public override bool configure_event (Gdk.EventConfigure event) {
