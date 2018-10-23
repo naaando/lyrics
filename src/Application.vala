@@ -18,16 +18,13 @@ public class Lyrics.Application : Gtk.Application {
         }
 
         var players = new Players ();
-        var stack_controller = new Controller.StackController ();
+
+        var stack_controller = new Controller.StackController (players);
 
         var scanner = new Mpris.Service ();
         scanner.found.connect ((player) => players.add (player));
         scanner.lost.connect (players.remove_by_busname);
         scanner.setup_dbus ();
-
-        players.added.connect ((player) => {
-            stack_controller.player = player;
-        });
 
         var main_window = new MainWindow (this, stack_controller.get_stack ());
         main_window.players = players;

@@ -1,31 +1,38 @@
 
 public class Lyrics.Controller.StackController : Object {
+    Players players;
     Gtk.Stack stack;
     Display display;
-    public Player? player { get; set; }
     DisplayController display_controller = new DisplayController ();
 
-    public StackController () {
+    public StackController (Players _players) {
         display = new Display ();
         var download = new Download ();
         stack = factory_gtk_stack (display, download);
 
-        notify["player"].connect (() => {
+        players = _players;
+
+        //  FIXME: Signal not working
+        players.notify["active-player"].connect (() => {
+            print (@"active player prop notif\n");
+            if (players.active_player != null) {
+                players.active_player.notify.connect (() => {
+                    print (@"3\n");
+                    update_stack ();
+                });
+            }
             update_stack ();
-            player.notify.connect (() => {
-                update_stack ();
-            });
         });
     }
 
     public void update_stack () {
-        if (player == null) {
+        if (players.active_player == null) {
             stack.visible_child_name = "NO_PLAYER";
             return;
         }
 
-        if (player.state.to_string () == "PLAYING") {
-            display_controller.start (display, player) ? stack.visible_child_name = player.state.to_string () : stack.visible_child_name = "NO_LYRICS";
+        if (players.active_player.state.to_string () == "PLAYING") {
+            display_controller.start (display, players.active_player) ? stack.visible_child_name = players.active_player.state.to_string () : stack.visible_child_name = "NO_LYRICS";
         } else {
             display_controller.stop ();
             stack.visible_child_name = "STOPPED";
