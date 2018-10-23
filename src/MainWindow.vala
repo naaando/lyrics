@@ -26,6 +26,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
 
     Gtk.HeaderBar generate_header () {
         var header = new Gtk.HeaderBar ();
+        header.decoration_layout = "close:menu";
         header.show_close_button = true;
         var header_context = header.get_style_context ();
         header_context.add_class ("titlebar");
