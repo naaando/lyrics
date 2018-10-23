@@ -43,6 +43,9 @@ public class Lyrics.Controller.StackController : Object {
         stack.margin = 6;
         stack.expand = true;
 
+        var context = stack.get_style_context ();
+        context.add_class ("stack");
+
         stack.add_named (build_no_player (), "NO_PLAYER");
         stack.add_named (build_not_playing (), "STOPPED");
         stack.add_named (display, "PLAYING");

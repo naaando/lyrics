@@ -13,16 +13,6 @@
     background-image: linear-gradient(to right, #7239b3, #452981);
 }
 
-.lyrics {
-    font-size: 2em;
-    font-weight: bold;
-    color: #2c2c2c;
-}
-
-.lyrics.dark {
-    color: white;
-}
-
 .lyrics * {
     border: 0px solid transparent;
     box-shadow: 0 0 transparent;
@@ -48,4 +38,14 @@
 
 .lyric-artist {
     font-size: 0.75em;
+}
+
+.lyrics .stack {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2c2c2c;
+}
+
+.lyrics.dark .stack {
+    color: white;
 }
