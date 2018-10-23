@@ -2,8 +2,8 @@
 public interface Lyrics.Player : Object {
     public abstract int64 position { get; }
     public abstract Metasong current_song { get;set; }
-    public abstract State state { get; set; }
-    public abstract string busname { get; set; }
+    public abstract State state { get; protected set; }
+    public abstract string busname { get; protected set; }
 
     public abstract void toggle ();
 
