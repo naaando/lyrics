@@ -1,5 +1,5 @@
 
-public class Mpris.Player : Lyrics.Player, Object {
+public class Mpris.Player : Object, Lyrics.Player {
     PlayerIface player;
     DbusPropIface prop;
 
@@ -75,7 +75,7 @@ public class Mpris.Player : Lyrics.Player, Object {
         }
     }
 
-    void toggle () {
+    public void toggle_play_pause () {
         try {
             if(state != Lyrics.Player.State.PLAYING) {
                 player.play ();
@@ -84,6 +84,22 @@ public class Mpris.Player : Lyrics.Player, Object {
             }
         } catch (Error e) {
             message (e.message);
+        }
+    }
+
+    public void previous () {
+        try {
+            player.previous ();
+        } catch (Error e) {
+            warning (e.message);
+        }
+    }
+
+    public void next () {
+        try {
+            player.next ();
+        } catch (Error e) {
+            warning (e.message);
         }
     }
 }
