@@ -5,7 +5,9 @@ public interface Lyrics.Player : Object {
     public abstract State state { get; protected set; }
     public abstract string busname { get; protected set; }
 
-    public abstract void toggle ();
+    public abstract void toggle_play_pause ();
+    public abstract void previous ();
+    public abstract void next ();
 
     public enum State {
         UNKNOWN,

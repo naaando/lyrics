@@ -17,9 +17,17 @@ public class SimplePlayer : Object, Lyrics.Player {
         current_song = music;
     }
 
-    public void toggle () {
+    public void toggle_play_pause () {
         if (state != Lyrics.Player.State.STOPPED) {
             state = (state == Lyrics.Player.State.PLAYING) ? Lyrics.Player.State.PAUSED : Lyrics.Player.State.PLAYING;
         }
+    }
+
+    public void previous () {
+        return;
+    }
+
+    public void next () {
+        return;
     }
 }
