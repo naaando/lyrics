@@ -12,16 +12,21 @@ public class Lyrics.Controller.StackController : Object {
 
         players = _players;
 
-        //  FIXME: Signal not working
-        players.notify["active-player"].connect (() => {
-            print (@"active player prop notif\n");
-            if (players.active_player != null) {
-                players.active_player.notify.connect (() => {
-                    print (@"3\n");
-                    update_stack ();
-                });
-            }
-            update_stack ();
+        //  FIXME: Signal not working outside thread
+        new Thread<int> ("players-signals",() => {
+            var loop = new MainLoop ();
+            players.notify["active-player"].connect (() => {
+                if (players.active_player != null) {
+                    players.active_player.notify.connect (() => {
+                        update_stack ();
+                    });
+                }
+                update_stack ();
+            });
+
+            loop.run ();
+
+            return 0;
         });
     }
 
