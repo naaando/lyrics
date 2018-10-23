@@ -41,7 +41,6 @@ public class Lyrics.Lyric : Object {
             get_iterator ().next ();
         }
 
-        print (@"$(get_iterator ().get_value ())\n");
         return get_iterator ().get_value ().to_string ();
     }
 
