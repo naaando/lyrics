@@ -1,5 +1,7 @@
 
 public class Lyrics.MainWindow : Gtk.ApplicationWindow {
+    public Players players { get; set; }
+
     public MainWindow (Gtk.Application application, Gtk.Stack stack) {
         Object (
             application: application,
@@ -62,6 +64,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
         header.pack_end (mode_switch);
         header.pack_end (build_button_from_icon ("image-red-eye-symbolic", _("Toggle transparency when window go inactive")));
         header.pack_end (build_button_from_icon ("document-new-symbolic", _("Edit lyric file")));
+        header.pack_end (build_button_from_icon ("edit-find-symbolic", _("Search lyric")));
 
         return header;
     }

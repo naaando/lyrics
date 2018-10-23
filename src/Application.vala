@@ -30,6 +30,7 @@ public class Lyrics.Application : Gtk.Application {
         });
 
         var main_window = new MainWindow (this, stack_controller.get_stack ());
+        main_window.players = players;
 
         var window_x = settings.get_int ("window-x");
         var window_y = settings.get_int ("window-y");
