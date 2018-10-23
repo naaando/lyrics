@@ -54,14 +54,45 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
 
         Application.settings.bind ("dark", mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
-        var randomize_button = new Gtk.Button.from_icon_name ("media-playlist-shuffle-symbolic");
-        randomize_button.margin_end = 12;
-        randomize_button.tooltip_text = _("Load a random principle");
+        header.pack_start (build_button_from_icon ("media-skip-backward-symbolic"));
+        header.pack_start (build_button_from_icon ("media-playback-start-symbolic"));
+        header.pack_start (build_button_from_icon ("media-skip-forward-symbolic"));
 
+        header.pack_end (build_preferences_button ());
         header.pack_end (mode_switch);
-        header.pack_end (randomize_button);
+        header.pack_end (build_button_from_icon ("image-red-eye-symbolic", _("Toggle transparency when window go inactive")));
+        header.pack_end (build_button_from_icon ("document-new-symbolic", _("Edit lyric file")));
 
         return header;
+    }
+
+    Gtk.ComboBoxText build_players_combobox () {
+        var players = new Gtk.ComboBoxText ();
+        players.append_text ("player1");
+        players.append_text ("player2");
+        players.active = 0;
+
+        return players;
+    }
+
+    Gtk.MenuButton build_preferences_button () {
+        var preferences_button = new Gtk.MenuButton ();
+        preferences_button.image = new Gtk.Image.from_icon_name ("open-menu-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
+        //  preferences_button.popover = build_preferences_popover ();
+        preferences_button.tooltip_text = _("Preferences");
+        preferences_button.valign = Gtk.Align.CENTER;
+        return preferences_button;
+    }
+
+    //  Gtk.Popover build_preferences_popover () {
+    //  }
+
+    Gtk.Button build_button_from_icon (string icon_name, string? tooltip = null) {
+        var button = new Gtk.Button.from_icon_name (icon_name);
+        if (tooltip != null) {
+            button.tooltip_text = tooltip;
+        }
+        return button;
     }
 
     public override bool configure_event (Gdk.EventConfigure event) {
