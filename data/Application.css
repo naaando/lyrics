@@ -34,11 +34,6 @@
     font-weight: bold;
 }
 
-.lyrics .display {
-    font-size: 2em;
-    font-family: 'Amatic SC';
-}
-
 .lyrics .display.selected {
     color: #62005A;
 }
