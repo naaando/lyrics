@@ -10,6 +10,12 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
         }
     }
 
+    Player active_player {
+        get {
+            return (players == null) ? null : players.active_player;
+        }
+    }
+
     Players _players;
     Gtk.Button playpause;
 
@@ -74,23 +80,23 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
 
         //  Previous music button
         header.pack_start (build_button_from_icon ("media-skip-backward-symbolic", null, (btn) => {
-            if (players != null && players.active_player != null) {
-                players.active_player.previous ();
+            if (active_player != null) {
+                active_player.previous ();
             }
         }));
 
         //  Play/Pause button
         playpause = build_button_from_icon ("media-playback-start-symbolic", null, (btn) => {
-            if (players != null && players.active_player != null) {
-                players.active_player.toggle_play_pause ();
+            if (active_player != null) {
+                active_player.toggle_play_pause ();
             }
         });
         header.pack_start (playpause);
 
         //  Next music button
         header.pack_start (build_button_from_icon ("media-skip-forward-symbolic", null, (btn) => {
-            if (players != null && players.active_player != null) {
-                players.active_player.next ();
+            if (active_player != null) {
+                active_player.next ();
             }
         }));
 
@@ -110,7 +116,10 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
         header.pack_end (build_button_from_icon ("document-new-symbolic", _("Edit lyric file")));
 
         //  Search lyric button
-        header.pack_end (build_button_from_icon ("edit-find-symbolic", _("Search lyric")));
+        header.pack_end (build_button_from_icon ("edit-find-symbolic", _("Search lyric"), () => {
+            var search_window = new SearchLyric (this, active_player.current_song);
+            search_window.show_all ();
+        }));
 
         return header;
     }
