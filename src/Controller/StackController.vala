@@ -46,7 +46,7 @@ public class Lyrics.Controller.StackController : Object {
         return stack;
     }
 
-    private Gtk.Stack factory_gtk_stack (Display display, Download download) {
+    private Gtk.Stack factory_gtk_stack (IDisplay display, Download download) {
         var stack = new Gtk.Stack ();
         stack.transition_type = Gtk.StackTransitionType.CROSSFADE;
         stack.border_width = 24;

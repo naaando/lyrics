@@ -26,7 +26,7 @@ public class Lyrics.Controller.DisplayController : Object {
         }
     }
 
-    Cancellable play (Lyric lrc, uint64 position, Display display) {
+    Cancellable play (Lyric lrc, uint64 position, IDisplay display) {
         uint64 elapsed_time = position;
         var cancellable = new Cancellable ();
 
