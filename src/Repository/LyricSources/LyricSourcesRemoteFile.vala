@@ -1,6 +1,6 @@
 
 public class LyricsSources.RemoteFile : Lyrics.ILyricFile, Object {
-    HashTable<string, Variant> metadata;
+    public HashTable<string, Variant> metadata { get; set; }
     LyricSources.Downloader downloader;
     string content;
 
