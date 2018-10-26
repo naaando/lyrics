@@ -2,10 +2,12 @@ public class Lyrics.Controller.DisplayController : Object {
     const uint64 one_second_to_nanoseconds = 1000000;
     const int one_second_to_milliseconds = 1000;
 
+    public IDisplay display { get; set; default = new ScrolledDisplay (); }
+
     Cancellable cancellable;
     IRepository lyric_repository = new Repository ();
 
-    public bool start (Display display, Player player) {
+    public bool start (Player player) {
         stop ();
 
         var lrc = get_lyric (player.current_song);
@@ -18,6 +20,7 @@ public class Lyrics.Controller.DisplayController : Object {
     }
 
     public void stop () {
+        display.clear ();
         if (cancellable != null) {
             cancellable.cancel ();
         }

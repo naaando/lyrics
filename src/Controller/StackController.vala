@@ -2,13 +2,11 @@
 public class Lyrics.Controller.StackController : Object {
     Players players;
     Gtk.Stack stack;
-    Display display;
     DisplayController display_controller = new DisplayController ();
 
     public StackController (Players _players) {
-        display = new Display ();
         var download = new Download ();
-        stack = factory_gtk_stack (display, download);
+        stack = factory_gtk_stack (display_controller.display, download);
 
         players = _players;
 
@@ -37,7 +35,7 @@ public class Lyrics.Controller.StackController : Object {
         }
 
         if (players.active_player.state.to_string () == "PLAYING") {
-            display_controller.start (display, players.active_player) ? stack.visible_child_name = players.active_player.state.to_string () : stack.visible_child_name = "NO_LYRICS";
+            display_controller.start (players.active_player) ? stack.visible_child_name = players.active_player.state.to_string () : stack.visible_child_name = "NO_LYRICS";
         } else {
             display_controller.stop ();
             stack.visible_child_name = "STOPPED";
@@ -60,7 +58,7 @@ public class Lyrics.Controller.StackController : Object {
 
         stack.add_named (build_no_player (), "NO_PLAYER");
         stack.add_named (build_not_playing (), "STOPPED");
-        stack.add_named (display, "PLAYING");
+        stack.add_named (display_controller.display, "PLAYING");
         stack.add_named (download, "DOWNLOADING");
         stack.add_named (build_no_lyrics (), "NO_LYRICS");
         return stack;
