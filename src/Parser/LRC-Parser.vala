@@ -29,7 +29,7 @@ public class Parser.LRC : Object {
     private void parse_line (string ln) {
         var compressed_lyric = Regex.split_simple ("(\\[\\d\\d:\\d\\d\\.\\d\\d\\])", ln);
         var is_lyric = Regex.match_simple ("\\[\\d\\d:\\d\\d\\.\\d\\d\\]", ln);
-        var is_metadata = Regex.match_simple ("\\[.+\\]", ln) && !is_lyric;
+        var is_metadata = Regex.match_simple ("\\[.+:.+\\]", ln) && !is_lyric;
 
         if (is_lyric && compressed_lyric.length > 2) {
             parse_compressed_lyric (compressed_lyric);
