@@ -37,6 +37,8 @@ public class Parser.LRC : Object {
             parse_lyric (ln);
         } else if (is_metadata) {
             parse_metadata (ln);
+        } else {
+            warning (@"Couldn't parse $ln");
         }
     }
 
@@ -46,7 +48,7 @@ public class Parser.LRC : Object {
             var tag = md.split (":", 2);
             lyric.add_metadata (tag[0], tag[1]);
         } else {
-            warning ("bad formatted lrc");
+            warning (@"Couldn't parse $ln");
         }
     }
 
