@@ -104,22 +104,22 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
         /**
          * Right side of headerbar
          */
-        header.pack_end (build_preferences_button ());
+        //  header.pack_end (build_preferences_button ());
 
         //  Switch color button
         header.pack_end (mode_switch);
 
         //  Toggle transparency button
-        header.pack_end (build_button_from_icon ("image-red-eye-symbolic", _("Toggle transparency when window go inactive")));
+        //  header.pack_end (build_button_from_icon ("image-red-eye-symbolic", _("Toggle transparency when window go inactive")));
 
         //  Edit lyric file button
-        header.pack_end (build_button_from_icon ("document-new-symbolic", _("Edit lyric file")));
+        //  header.pack_end (build_button_from_icon ("document-new-symbolic", _("Edit lyric file")));
 
         //  Search lyric button
-        header.pack_end (build_button_from_icon ("edit-find-symbolic", _("Search lyric"), () => {
-            var search_window = new SearchLyric (this, active_player.current_song);
-            search_window.show_all ();
-        }));
+        //  header.pack_end (build_button_from_icon ("edit-find-symbolic", _("Search lyric"), () => {
+        //      var search_window = new SearchLyric (this, active_player.current_song);
+        //      search_window.show_all ();
+        //  }));
 
         return header;
     }
