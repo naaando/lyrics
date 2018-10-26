@@ -1,5 +1,5 @@
 
-public class Lyrics.Display : Gtk.Box {
+public class Lyrics.SimpleDisplay : Gtk.Box, IDisplay {
     public string current_line {
         get {
             return current_label.label;
@@ -11,7 +11,7 @@ public class Lyrics.Display : Gtk.Box {
 
     Gtk.Label current_label;
 
-    public Display () {
+    public SimpleDisplay () {
         set_size_request (450, 250);
 
         current_label = new Gtk.Label (null);
@@ -22,5 +22,9 @@ public class Lyrics.Display : Gtk.Box {
         current_label.get_style_context ().add_class ("yellow-lyrics");
 
         add (current_label);
+    }
+
+    public void clear () {
+        current_label.label = "";
     }
 }
