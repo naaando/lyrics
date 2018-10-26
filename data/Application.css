@@ -34,6 +34,10 @@
     font-weight: bold;
 }
 
+.lyrics .display:backdrop {
+    color: #c9c9c9;
+}
+
 .lyrics .display.selected {
     color: #62005A;
 }
