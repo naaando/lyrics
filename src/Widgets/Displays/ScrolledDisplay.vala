@@ -21,7 +21,10 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
                 return;
             }
 
-            last_label.get_style_context ().remove_class ("selected");
+            if (last_label != null) {
+                last_label.get_style_context ().remove_class ("selected");
+            }
+
             last_label = build_lyric_label (current_line);
             last_label.get_style_context ().add_class ("selected");
             box.add (last_label);
