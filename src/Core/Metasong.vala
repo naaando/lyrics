@@ -12,12 +12,21 @@ public class Lyrics.Metasong : Object {
 
     public Metasong.from_metadata (HashTable<string,Variant> metadata) {
         artist = string.joinv (", ", metadata["xesam:artist"].get_strv ());
-        title = metadata["xesam:title"].get_string ();
-        genre = string.joinv (", ", metadata["xesam:genre"].get_strv ());
-        album = metadata["xesam:album"].get_string ();
-        duration = metadata["mpris:length"].get_int64 ();
-
-        uri = metadata["xesam:url"].get_string ();
+        if (metadata["xesam:title"] != null) {
+            title = metadata["xesam:title"].get_string ();
+        }
+        if (metadata["xesam:genre"] != null) {
+            genre = string.joinv (", ", metadata["xesam:genre"].get_strv ());
+        }
+        if (metadata["xesam:album"] != null) {
+            album = metadata["xesam:album"].get_string ();
+        }
+        if (metadata["mpris:length"] != null) {
+            duration = metadata["mpris:length"].get_int64 ();
+        }
+        if (metadata["xesam:url"] != null) {
+            uri = metadata["xesam:url"].get_string ();
+        }
         var file = File.parse_name (uri);
         path = file.get_path ();
         filename = file.get_basename ();
