@@ -10,7 +10,7 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         vscrollbar_policy = Gtk.PolicyType.EXTERNAL;
         set_size_request (450, 250);
         box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        box.margin_bottom = 40;
+        box.margin_bottom = 20;
         box.expand = true;
         box.valign = Gtk.Align.END;
         add (box);
@@ -42,7 +42,7 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         lyric_label.wrap = true;
         lyric_label.justify = Gtk.Justification.CENTER;
         lyric_label.valign = Gtk.Align.CENTER;
-        lyric_label.get_style_context ().add_class ("yellow-lyrics");
+        lyric_label.get_style_context ().add_class ("display");
         lyric_label.show_all ();
 
         return lyric_label;
