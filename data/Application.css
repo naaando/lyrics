@@ -15,24 +15,23 @@
 /* Window and titlebar inactive */
 .lyrics:backdrop,
 .lyrics:backdrop .titlebar {
-    color: #000;
-    background: rgba (255, 255, 255, 0.25);
+    color: #0c0c0c;
+    background: rgba(255, 255, 255, 0.25);
 }
 
 .lyrics.dark:backdrop,
 .lyrics.dark:backdrop .titlebar {
     color: #fff;
-    background: rgba (0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
 }
 
-/* Fonts */
-.lyrics .stack {
-    font-size: 2em;
-    font-weight: bold;
-}
-
+/* Display colors */
 .lyrics .display:backdrop {
     color: #303030;
+}
+
+.lyrics.dark .display:backdrop {
+    color: #fff;
 }
 
 .lyrics .display.selected {
@@ -43,6 +42,12 @@
     color: rgba(255, 200, 0, 1);
 }
 
+/* Fonts */
+.lyrics .stack {
+    font-size: 2em;
+    font-weight: bold;
+}
+
 .lyrics .lyric-title {
     font-size: 1.55em;
     font-weight: 700;
@@ -50,3 +55,5 @@
 .lyrics .lyric-artist {
     font-size: 0.75em;
 }
+
+/* I'm not proud of this stylesheet... */
