@@ -7,8 +7,11 @@ Display lyrics of your media player if it has support to MPRIS-2
 |    ![Screenshot](data/screenshot-inactive.png)        |      ![Screenshot](data/screenshot-dark-inactive.png)      |
 | -------------------------------------------- | ------------------------------------------------- |
 
-## Building and Installation
+## Downloading lyrics
 
+To enable the app to download lyrics you should install also [lyricsources](https://github.com/naaando/lyricsources), a python library adapted from [OSDLyrics](https://github.com/osdlyrics/osdlyrics)
+
+## Building and Installation
 You'll need the following dependencies:
 
     libglib2.0-dev
