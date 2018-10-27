@@ -25,8 +25,7 @@ Run `meson` to configure the build environment and then `ninja` to build
 
 To install, use `ninja install`
 
-    cd build
-    sudo ninja install
+    sudo ninja -C build install
 
 And execute
 
