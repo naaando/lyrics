@@ -27,7 +27,7 @@
 
 /* Display colors */
 .lyrics .display:backdrop {
-    color: #303030;
+    color: #0c0c0c;
 }
 
 .lyrics.dark .display:backdrop {
