@@ -4,6 +4,9 @@ Display lyrics of your media player if it has support to MPRIS-2
 ![Screenshot](data/screenshot.png)
 ![Screenshot](data/screenshot-dark.png)
 
+|    ![Screenshot](data/screenshot-inactive.png)        |      ![Screenshot](data/screenshot-dark-inactive.png)      |
+| -------------------------------------------- | ------------------------------------------------- |
+
 ## Building and Installation
 
 You'll need the following dependencies:
