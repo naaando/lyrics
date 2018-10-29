@@ -19,7 +19,15 @@ public class Lyrics.LocalRepository : IRepository, Object {
     //  public Gee.Collection<ILyricFile> all () {}
 
     public ILyricFile? find_first (Metasong song) {
-        var file = File.new_for_path (get_filename_for_song(song));
+        return find_by_filename (get_filename_for_song(song));
+    }
+
+    public Gee.Collection<ILyricFile>? find (Metasong song) {
+        return null;
+    }
+
+    public ILyricFile? find_by_filename (string filename) {
+        var file = File.new_for_path (local_storage+filename);
         message (@"looking for lyric file: $(file.get_basename ())");
 
         if (file.query_exists ()) {
