@@ -69,11 +69,16 @@ public class Parser.LRC : Object {
         milli = int.parse(ln[7:9]);
 
         if (ln.length > 10) {
-            var text = ln[10:ln.length];
+            var text = strip_word_timing (ln[10:ln.length]);
             if (text.length > 0) {
                 lyric.add_line (time_to_us (minutes, seconds, milli), text);
             }
         }
+    }
+
+    string strip_word_timing (string text) {
+        var regex = new GLib.Regex ("\\<\\d\\d:\\d\\d.\\d\\d\\>");
+        return regex.replace (text, -1, 0, "");
     }
 
     // return time in microseconds(µs)
