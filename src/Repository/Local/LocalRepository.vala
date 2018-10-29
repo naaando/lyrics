@@ -36,12 +36,8 @@ public class Lyrics.LocalRepository : IRepository, Object {
         return null;
     }
 
-    public Gee.Collection<ILyricFile>? find (Metasong song) {
-        return null;
-    }
-
     string get_filename_for_song (Metasong song) {
         // string[0:-4] will slice the last 3 characters
-        return local_storage+song.filename[0:-4]+".lrc";
+        return song.filename[0:-4]+".lrc";
     }
 }
