@@ -8,7 +8,7 @@ public class Lyrics.LocalRepository : IRepository, Object {
         try {
             var os = new DataOutputStream (file.create (FileCreateFlags.REPLACE_DESTINATION));
             os.put_string (lyric_file.get_content ());
-            message ("Finished saving file to $(file.get_path ())");
+            message (@"Finished saving file to $(file.get_path ())");
             return true;
         } catch (Error e) {
             warning (e.message);
