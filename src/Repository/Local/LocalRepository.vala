@@ -3,7 +3,7 @@ public class Lyrics.LocalRepository : IRepository, Object {
     string local_storage = Environment.get_home_dir ()+"/.lyrics/";
 
     public bool save (Metasong song, ILyricFile lyric_file) {
-        var file = File.new_for_path (get_filename_for_song (song));
+        var file = File.new_for_path (local_storage+get_filename_for_song (song));
         message (@"Saving file to $(file.get_path ())");
         try {
             var os = new DataOutputStream (file.create (FileCreateFlags.REPLACE_DESTINATION));
