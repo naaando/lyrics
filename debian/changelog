@@ -1,5 +1,6 @@
 lyrics (0.1) UNRELEASED; urgency=medium
 
   * Initial release.
+  * Fix issue where lyrics are saved on current folder of running application
 
  -- Fernando da Silva Sousa <wild.nando@gmail.com>  Fri, 26 Oct 2018 18:52:47 -0300
