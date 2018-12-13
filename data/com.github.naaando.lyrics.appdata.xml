@@ -8,6 +8,20 @@
   <description>
     <p>Listen to your songs reading their lyrics.</p>
   </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/naaando/lyrics/master/data/screenshot.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/naaando/lyrics/master/data/screenshot-dark.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/naaando/lyrics/master/data/screenshot-inactive.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/naaando/lyrics/master/data/screenshot-dark-inactive.png</image>
+    </screenshot>
+  </screenshots>
   <provides>
     <binary>com.github.naaando.lyrics</binary>
   </provides>
