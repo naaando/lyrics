@@ -42,6 +42,7 @@ executable(
     'src/Widgets/Displays/SimpleDisplay.vala',
     'src/Widgets/Displays/ScrolledDisplay.vala',
     'src/Widgets/Download.vala',
+    'src/Widgets/FileChooserButton.vala',
     'src/Widgets/ModeSwitch.vala',
     'src/Widgets/SearchLyric.vala',
     'src/Application.vala',

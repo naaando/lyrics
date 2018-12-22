@@ -1,21 +1,25 @@
 public class Lyrics.SettingsPopover : Gtk.Popover {
+    FileChooserButton folder_chooser_button;
+
     public SettingsPopover () {
         var grid = new Gtk.Grid ();
         grid.margin = 12;
         grid.row_spacing = grid.column_spacing = 12;
 
         var lyrics_folder_label = new Gtk.Label ("Lyrics download folder:");
-        var folder_chooser = new Gtk.FileChooserButton (_("Select folder to download lyrics"), Gtk.FileChooserAction.SELECT_FOLDER);
+        folder_chooser_button = new FileChooserButton (_("Select folder to download lyrics"), Gtk.FileChooserAction.SELECT_FOLDER);
         var window_behavior_label = new Gtk.Label ("Keep window above:");
 
         grid.attach (lyrics_folder_label, 0, 0);
-        grid.attach (folder_chooser, 1, 0);
+        grid.attach (folder_chooser_button, 1, 0);
         grid.attach (window_behavior_label, 0, 1);
         grid.attach (create_radio_button_container (), 1, 1);
         grid.attach (create_translucid_switch (), 0, 2, 2);
 
         grid.show_all ();
         add (grid);
+
+        Application.settings.bind ("download-location", folder_chooser_button, "filename", GLib.SettingsBindFlags.DEFAULT);
     }
 
     Gtk.Container create_radio_button_container () {
