@@ -30,7 +30,7 @@
       <summary>Set window's opacity low when it goes out of focus</summary>
     </key>
     <key name="download-location" type="s">
-      <default>'$HOME/.lyrics'</default>
+      <default>''</default>
       <summary>Location to download and search for lyrics</summary>
     </key>
   </schema>
