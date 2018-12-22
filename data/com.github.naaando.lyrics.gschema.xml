@@ -23,11 +23,11 @@
         <choice value='Never keep above'/>
       </choices>
       <default>'When playing'</default>
-      <summary>When to keep the window on the top</summary>
+      <summary>Keep the window on the top</summary>
     </key>
     <key name="window-out-of-focus-translucid" type="b">
       <default>true</default>
-      <summary>Set low opacity on the window when it goes out of focus</summary>
+      <summary>Set window's opacity low when it goes out of focus</summary>
     </key>
     <key name="download-location" type="s">
       <default>'$HOME/.lyrics'</default>
