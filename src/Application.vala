@@ -1,14 +1,10 @@
 
 public class Lyrics.Application : Gtk.Application {
-    public static GLib.Settings settings;
+    public static GLib.Settings settings = new Settings ("com.github.naaando.lyrics");
 
     public Application () {
         Object (application_id: "com.github.naaando.lyrics",
         flags: ApplicationFlags.FLAGS_NONE);
-    }
-
-    static construct {
-        settings = new Settings ("com.github.naaando.lyrics");
     }
 
     protected override void activate () {

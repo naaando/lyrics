@@ -69,14 +69,6 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
         mode_switch.secondary_icon_tooltip_text = _("Dark background");
         mode_switch.valign = Gtk.Align.CENTER;
         mode_switch.bind_property ("active", settings, "gtk_application_prefer_dark_theme");
-        mode_switch.notify["active"].connect (() => {
-            if (settings.gtk_application_prefer_dark_theme) {
-                get_style_context ().add_class ("dark");
-            } else {
-                get_style_context ().remove_class ("dark");
-            }
-        });
-
         Application.settings.bind ("dark", mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
         return mode_switch;

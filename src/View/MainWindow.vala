@@ -11,6 +11,8 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
             window_position: Gtk.WindowPosition.CENTER
         );
 
+        configure_dark_theme ();
+
         players = _players;
         configure_css_provider ();
 
@@ -38,5 +40,18 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
         var provider = new Gtk.CssProvider ();
         provider.load_from_resource ("/com/github/naaando/lyrics/Application.css");
         Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    }
+
+    void configure_dark_theme () {
+        update_dark_mode ();
+        Application.settings.changed["dark"].connect (update_dark_mode);
+    }
+
+    void update_dark_mode () {
+        if (Application.settings.get_boolean ("dark")) {
+            get_style_context ().add_class ("dark");
+        } else {
+            get_style_context ().remove_class ("dark");
+        }
     }
 }
