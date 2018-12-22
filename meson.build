@@ -35,6 +35,8 @@ executable(
     'src/Mpris/MprisPlayer.vala',
     'src/Mpris/MprisService.vala',
     'src/Parser/LRC-Parser.vala',
+    'src/View/HeaderBar.vala',
+    'src/View/MainWindow.vala',
     'src/Widgets/Displays/IDisplay.vala',
     'src/Widgets/Displays/SimpleDisplay.vala',
     'src/Widgets/Displays/ScrolledDisplay.vala',
@@ -42,7 +44,6 @@ executable(
     'src/Widgets/ModeSwitch.vala',
     'src/Widgets/SearchLyric.vala',
     'src/Application.vala',
-    'src/MainWindow.vala',
     'src/SimplePlayer.vala',
     dependencies: [
         dependency ('glib-2.0'),
