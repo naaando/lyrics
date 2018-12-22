@@ -1,8 +1,8 @@
 
 public class Lyrics.MainWindow : Gtk.ApplicationWindow {
-    public Players players { get; set; }
+    Players players;
 
-    public MainWindow (Gtk.Application application, Gtk.Stack stack) {
+    public MainWindow (Gtk.Application application, Players _players, Gtk.Stack stack) {
         Object (
             application: application,
             icon_name: "com.github.naaando.lyrics",
@@ -11,13 +11,14 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
             window_position: Gtk.WindowPosition.CENTER
         );
 
+        players = _players;
         configure_css_provider ();
 
         //  Add css classes to main window
         get_style_context ().add_class ("rounded");
         get_style_context ().add_class ("lyrics");
 
-        set_titlebar (new Lyrics.HeaderBar ());
+        set_titlebar (new Lyrics.HeaderBar (players));
         set_keep_above (true);
         stick ();
 

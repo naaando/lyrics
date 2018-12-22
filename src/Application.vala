@@ -26,8 +26,7 @@ public class Lyrics.Application : Gtk.Application {
         scanner.lost.connect (players.remove_by_busname);
         scanner.setup_dbus ();
 
-        var main_window = new MainWindow (this, stack_controller.get_stack ());
-        main_window.players = players;
+        var main_window = new MainWindow (this, players, stack_controller.get_stack ());
 
         var window_x = settings.get_int ("window-x");
         var window_y = settings.get_int ("window-y");

@@ -1,9 +1,9 @@
 public class Lyrics.HeaderBar : Gtk.HeaderBar {
     Gtk.Settings settings = Gtk.Settings.get_default ();
     Gtk.Button play_n_pause_btn;
-    Players players { get; set; }
+    Players players;
 
-    public HeaderBar () {
+    public HeaderBar (Players players) {
         decoration_layout = "close:menu";
         show_close_button = true;
         get_style_context ().add_class ("titlebar");
