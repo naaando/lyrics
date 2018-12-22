@@ -37,6 +37,7 @@ executable(
     'src/Parser/LRC-Parser.vala',
     'src/View/HeaderBar.vala',
     'src/View/MainWindow.vala',
+    'src/View/SettingsPopover.vala',
     'src/Widgets/Displays/IDisplay.vala',
     'src/Widgets/Displays/SimpleDisplay.vala',
     'src/Widgets/Displays/ScrolledDisplay.vala',

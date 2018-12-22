@@ -19,9 +19,15 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
         var next_btn = new Gtk.Button.from_icon_name ("media-skip-forward-symbolic");
         next_btn.clicked.connect (on_next_btn_clicked);
 
+        var settings = new Gtk.MenuButton ();
+        settings.image = new Gtk.Image.from_icon_name ("open-menu-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
+        settings.popover = new SettingsPopover ();
+
         pack_start (previous_btn);
         pack_start (play_n_pause_btn);
         pack_start (next_btn);
+
+        pack_end (settings);
         pack_end (create_mode_switch ());
     }
 
