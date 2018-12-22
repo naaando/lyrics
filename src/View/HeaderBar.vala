@@ -8,6 +8,7 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
         show_close_button = true;
         get_style_context ().add_class ("titlebar");
         get_style_context ().add_class ("default-decoration");
+        players.notify["active-player"].connect (on_active_player_changes);
 
         var previous_btn = new Gtk.Button.from_icon_name ("media-skip-backward-symbolic");
         previous_btn.clicked.connect (on_previous_btn_clicked);
@@ -17,8 +18,6 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
 
         var next_btn = new Gtk.Button.from_icon_name ("media-skip-forward-symbolic");
         next_btn.clicked.connect (on_next_btn_clicked);
-
-        players.notify["active-player"].connect (on_active_player_changes);
 
         pack_start (previous_btn);
         pack_start (play_n_pause_btn);
@@ -72,20 +71,5 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
         Application.settings.bind ("dark", mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
         return mode_switch;
-    }
-
-
-    Gtk.Button build_button_from_icon (string icon_name, string? tooltip = null, Func? clicked_cb = null) {
-        var button = new Gtk.Button.from_icon_name (icon_name);
-
-        if (tooltip != null) {
-            button.tooltip_text = tooltip;
-        }
-
-        if (clicked_cb != null) {
-            button.clicked.connect (() => clicked_cb (button));
-        }
-
-        return button;
     }
 }
