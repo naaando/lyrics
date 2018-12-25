@@ -1,6 +1,8 @@
 
 public class Lyrics.MainWindow : Gtk.ApplicationWindow {
+    Gtk.Stack main_stack;
     Players players;
+    bool keep_above_when_playing;
 
     public MainWindow (Gtk.Application application, Players _players, Gtk.Stack stack) {
         Object (
@@ -11,20 +13,20 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
             window_position: Gtk.WindowPosition.CENTER
         );
 
-        configure_dark_theme ();
-
-        players = _players;
-        configure_css_provider ();
-
         //  Add css classes to main window
         get_style_context ().add_class ("rounded");
         get_style_context ().add_class ("lyrics");
 
-        set_titlebar (new Lyrics.HeaderBar (players));
-        set_keep_above (true);
-        stick ();
+        main_stack = stack;
+        players = _players;
 
-        add (stack);
+        set_titlebar (new Lyrics.HeaderBar (players));
+
+        Application.settings.changed["window-keep-above"].connect (configure_window_keep_above_settings);
+        main_stack.notify["visible-child-name"].connect (on_stack_visible_child_changed);
+
+        add (main_stack);
+        setup ();
     }
 
     public override bool configure_event (Gdk.EventConfigure event) {
@@ -34,6 +36,13 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
         Application.settings.set_int ("window-y", root_y);
 
         return base.configure_event (event);
+    }
+
+    void setup () {
+        configure_dark_theme ();
+        configure_css_provider ();
+        configure_window_keep_above_settings ();
+        stick ();
     }
 
     void configure_css_provider () {
@@ -52,6 +61,29 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
             get_style_context ().add_class ("dark");
         } else {
             get_style_context ().remove_class ("dark");
+        }
+    }
+
+    void configure_window_keep_above_settings () {
+        switch (Application.settings.get_string ("window-keep-above")) {
+            case "Always":
+                set_keep_above (true);
+                keep_above_when_playing = false;
+                break;
+            case "When playing":
+                keep_above_when_playing = true;
+                set_keep_above (main_stack.visible_child_name == "PLAYING" ? true : false);
+                break;
+            case "Never keep above":
+                set_keep_above (false);
+                keep_above_when_playing = false;
+                break;
+        }
+    }
+
+    void on_stack_visible_child_changed () {
+        if (keep_above_when_playing) {
+            set_keep_above (main_stack.visible_child_name == "PLAYING" ? true : false);
         }
     }
 }

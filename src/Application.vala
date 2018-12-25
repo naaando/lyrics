@@ -1,7 +1,6 @@
 
 public class Lyrics.Application : Gtk.Application {
     public static GLib.Settings settings = new Settings ("com.github.naaando.lyrics");
-
     public Application () {
         Object (application_id: "com.github.naaando.lyrics",
         flags: ApplicationFlags.FLAGS_NONE);
@@ -15,14 +14,12 @@ public class Lyrics.Application : Gtk.Application {
 
         var players = new Players ();
 
-        var stack_controller = new Controller.StackController (players);
-
         var scanner = new Mpris.Service ();
         scanner.found.connect ((player) => players.add (player));
         scanner.lost.connect (players.remove_by_busname);
         scanner.setup_dbus ();
 
-        var main_window = new MainWindow (this, players, stack_controller.get_stack ());
+        var main_window = new MainWindow (this, players, new MainStack (players));
 
         var window_x = settings.get_int ("window-x");
         var window_y = settings.get_int ("window-y");
