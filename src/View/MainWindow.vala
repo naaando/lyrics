@@ -23,6 +23,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
         set_titlebar (new Lyrics.HeaderBar (players));
 
         Application.settings.changed["window-keep-above"].connect (configure_window_keep_above_settings);
+        Application.settings.changed["window-out-of-focus-translucid"].connect (configure_window_opacity_on_focus_loss);
         main_stack.notify["visible-child-name"].connect (on_stack_visible_child_changed);
 
         add (main_stack);
@@ -42,6 +43,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
         configure_dark_theme ();
         configure_css_provider ();
         configure_window_keep_above_settings ();
+        configure_window_opacity_on_focus_loss ();
         stick ();
     }
 
@@ -78,6 +80,14 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
                 set_keep_above (false);
                 keep_above_when_playing = false;
                 break;
+        }
+    }
+
+    void configure_window_opacity_on_focus_loss () {
+        if (Application.settings.get_boolean ("window-out-of-focus-translucid")) {
+            get_style_context ().add_class ("translucid-backdrop");
+        } else {
+            get_style_context ().remove_class ("translucid-backdrop");
         }
     }
 
