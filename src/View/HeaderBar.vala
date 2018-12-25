@@ -39,7 +39,9 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
     }
 
     void on_active_player_changes () {
-        return_if_fail (players.active_player != null);
+        if (players == null | players.active_player == null) {
+            return;
+        }
 
         update_play_n_pause_icon ();
         players.active_player.notify.connect (update_play_n_pause_icon);
