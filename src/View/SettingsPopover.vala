@@ -17,6 +17,8 @@ public class Lyrics.SettingsPopover : Gtk.Popover {
         }
 
         var window_behavior_label = new Gtk.Label ("Keep window above:");
+        window_behavior_label.halign = Gtk.Align.START;
+
         combobox = create_combobox ();
         var reset_default_button = create_reset_button ();
 
@@ -48,7 +50,7 @@ public class Lyrics.SettingsPopover : Gtk.Popover {
         var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
         box.add (opacity_switch = new Gtk.Switch ());
         box.add (new Gtk.Label ("Make translucid on focus loss"));
-        box.halign = Gtk.Align.CENTER;
+        box.halign = Gtk.Align.START;
 
         return box;
     }
