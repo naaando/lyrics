@@ -13,7 +13,7 @@
 }
 
 /* Window and titlebar inactive */
-.lyrics:backdrop.translucid-backdrop
+.lyrics:backdrop.translucid-backdrop,
 .lyrics:backdrop.translucid-backdrop .titlebar {
     color: #0c0c0c;
     background: rgba(255, 255, 255, 0.25);
