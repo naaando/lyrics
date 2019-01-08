@@ -1,6 +1,8 @@
 
 public class Lyrics.Application : Gtk.Application {
+    public static string DEFAULT_LYRICS_DIR = Environment.get_home_dir ()+"/.lyrics/";
     public static GLib.Settings settings = new Settings ("com.github.naaando.lyrics");
+
     public Application () {
         Object (application_id: "com.github.naaando.lyrics",
         flags: ApplicationFlags.FLAGS_NONE);
