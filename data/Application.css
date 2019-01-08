@@ -13,14 +13,14 @@
 }
 
 /* Window and titlebar inactive */
-.lyrics:backdrop,
-.lyrics:backdrop .titlebar {
+.lyrics:backdrop.translucid-backdrop,
+.lyrics:backdrop.translucid-backdrop .titlebar {
     color: #0c0c0c;
     background: rgba(255, 255, 255, 0.25);
 }
 
-.lyrics.dark:backdrop,
-.lyrics.dark:backdrop .titlebar {
+.lyrics.dark:backdrop.translucid-backdrop,
+.lyrics.dark:backdrop.translucid-backdrop .titlebar {
     color: #fff;
     background: rgba(0, 0, 0, 0.5);
 }

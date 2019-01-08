@@ -1,6 +1,6 @@
 
 public class Lyrics.LocalRepository : IRepository, Object {
-    string local_storage = Environment.get_home_dir ()+"/.lyrics/";
+    public string local_storage { get; set; default = Environment.get_home_dir ()+"/.lyrics/"; }
 
     public bool save (Metasong song, ILyricFile lyric_file) {
         var file = File.new_for_path (local_storage+get_filename_for_song (song));

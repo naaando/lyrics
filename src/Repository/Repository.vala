@@ -8,6 +8,9 @@ public class Lyrics.Repository : IRepository, Object {
 
     public Repository () {
         lyricsources["viewlyrics"] = new LyricSources.Repository (viewlyrics_dbus[0], viewlyrics_dbus[1]);
+
+        Application.settings.changed["download-location"].connect (configure_download_local);
+        configure_download_local ();
     }
 
     public ILyricFile? find_first (Metasong song) {
@@ -30,5 +33,11 @@ public class Lyrics.Repository : IRepository, Object {
         collection.add (local_repository.find_first (song));
         collection.add_all (lyricsources["viewlyrics"].find (song));
         return collection;
+    }
+
+    void configure_download_local () {
+        var settings_location = Application.settings.get_string ("download-location");
+        local_repository.local_storage = settings_location == "" ? Environment.get_home_dir ()+"/.lyrics/" : settings_location+"/";
+        debug ("Setting local storage to " + local_repository.local_storage);
     }
 }

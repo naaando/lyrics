@@ -16,5 +16,22 @@
       <summary>Most recent y position</summary>
       <description>Most recent y position</description>
     </key>
+    <key name="window-keep-above" type="s">
+      <choices>
+        <choice value='Always'/>
+        <choice value='When playing'/>
+        <choice value='Never keep above'/>
+      </choices>
+      <default>'When playing'</default>
+      <summary>Keep the window on the top</summary>
+    </key>
+    <key name="window-out-of-focus-translucid" type="b">
+      <default>true</default>
+      <summary>Set window's opacity low when it goes out of focus</summary>
+    </key>
+    <key name="download-location" type="s">
+      <default>''</default>
+      <summary>Location to download and search for lyrics</summary>
+    </key>
   </schema>
 </schemalist>
