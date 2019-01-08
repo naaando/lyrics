@@ -6,6 +6,9 @@ public class Lyrics.Application : Gtk.Application {
     public Application () {
         Object (application_id: "com.github.naaando.lyrics",
         flags: ApplicationFlags.FLAGS_NONE);
+        if (settings.get_string ("download-location") == "") {
+            settings.set_string ("download-location", DEFAULT_LYRICS_DIR);
+        }
     }
 
     protected override void activate () {
