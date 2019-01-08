@@ -38,5 +38,6 @@ public class Lyrics.Repository : IRepository, Object {
     void configure_download_local () {
         var settings_location = Application.settings.get_string ("download-location");
         local_repository.local_storage = settings_location == "" ? Environment.get_home_dir ()+"/.lyrics/" : settings_location+"/";
+        debug ("Setting local storage to " + local_repository.local_storage);
     }
 }
