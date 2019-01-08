@@ -8,23 +8,27 @@ public class Lyrics.SettingsPopover : Gtk.Popover {
         grid.margin = 12;
         grid.row_spacing = grid.column_spacing = 12;
 
+        //  Settings: Path to save lyrics
         var lyrics_folder_label = new Gtk.Label ("Lyrics download folder:");
         folder_chooser_button = new FileChooserButton (_("Select folder to download lyrics"), Gtk.FileChooserAction.SELECT_FOLDER);
+        Application.settings.bind ("download-location", folder_chooser_button, "filename", GLib.SettingsBindFlags.DEFAULT);
+
+        //  Settings: Keep window above
         var window_behavior_label = new Gtk.Label ("Keep window above:");
+        Application.settings.bind ("window-keep-above", combobox, "active-id", GLib.SettingsBindFlags.DEFAULT);
+
+        //  Settings make window translucid when inactive (without focus)
         combobox = create_combobox ();
+        Application.settings.bind ("window-out-of-focus-translucid", opacity_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
         grid.attach (lyrics_folder_label, 0, 0);
         grid.attach (folder_chooser_button, 1, 0);
         grid.attach (window_behavior_label, 0, 1);
         grid.attach (combobox, 1, 1);
         grid.attach (create_translucid_switch (), 0, 2, 2);
-
         grid.show_all ();
-        add (grid);
 
-        Application.settings.bind ("download-location", folder_chooser_button, "filename", GLib.SettingsBindFlags.DEFAULT);
-        Application.settings.bind ("window-keep-above", combobox, "active-id", GLib.SettingsBindFlags.DEFAULT);
-        Application.settings.bind ("window-out-of-focus-translucid", opacity_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+        add (grid);
     }
 
     Gtk.ComboBox create_combobox () {
