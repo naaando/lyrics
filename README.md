@@ -8,8 +8,7 @@ Display lyrics of your media player if it has support to MPRIS-2
 | -------------------------------------------- | ------------------------------------------------- |
 
 **Using it with youtube**
-
-You can use lyrics on Youtube if you're using Chromium based browsers by using [browser-playerctl extension](https://chrome.google.com/webstore/detail/browser-playerctl/ojjjidifjmbbckdjfiagdfdepbcmnicg).
+If you're using Chromium based browsers you can use lyrics on Youtube with this [browser-playerctl extension](https://chrome.google.com/webstore/detail/browser-playerctl/ojjjidifjmbbckdjfiagdfdepbcmnicg).
 
 **Known issue**
 Lyrics isn't able to syncronize with Spotify App (at least for free accounts) due to null MPRIS position, so the Lyrics will always start from beginnig wherever the track position is.
