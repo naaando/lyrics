@@ -35,6 +35,7 @@
 }
 
 .lyrics .display.selected {
+    transition: 300ms linear;
     color: #62005A;
 }
 
