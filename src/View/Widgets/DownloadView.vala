@@ -1,10 +1,10 @@
 
-public class Lyrics.Download : Gtk.Grid {
+public class Lyrics.DownloadView : Gtk.Grid {
     private Gtk.Label artist;
     private Gtk.Label title;
     private Gtk.Image? cover;
 
-    public Download () {
+    public DownloadView () {
         cover = new Gtk.Image ();
         cover.valign = Gtk.Align.CENTER;
         cover.halign = Gtk.Align.START;

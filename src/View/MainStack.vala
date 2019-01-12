@@ -1,14 +1,11 @@
 public class Lyrics.MainStack : Gtk.Stack {
-    public Gtk.Widget no_player_view { get;set; default = MainStack.build_no_player (); }
-    public Gtk.Widget not_playing_view { get; set; default = MainStack.build_not_playing (); }
-    public Gtk.Widget lyrics_not_found_view { get; set; default = MainStack.build_no_lyrics (); }
+    Gtk.Widget no_player_view;
+    Gtk.Widget not_playing_view;
+    Gtk.Widget no_lyrics_view;
+    IDisplay display_view;
+    Gtk.Widget downloading_view;
 
-    public Gtk.Widget? lyrics_display { get; set; }
-    public Gtk.Widget? downloading_view { get; set; }
-    Controller.DisplayController display_controller = new Controller.DisplayController ();
-    Players players;
-
-    public MainStack (Players _players) {
+    public MainStack (IDisplay display) {
         transition_type = Gtk.StackTransitionType.CROSSFADE;
         border_width = 24;
         margin = 6;
@@ -16,77 +13,40 @@ public class Lyrics.MainStack : Gtk.Stack {
 
         get_style_context ().add_class ("stack");
 
-        lyrics_display = display_controller.display;
-        downloading_view = new Download ();
+        no_player_view = ViewFactory.create_no_player_view ();
+        not_playing_view = ViewFactory.create_not_playing_view ();
+        no_lyrics_view = ViewFactory.create_no_lyrics_view ();
+        display_view = display;
+        downloading_view = ViewFactory.create_downloading_view ();
 
         add_named (no_player_view, "NO_PLAYER");
         add_named (not_playing_view, "STOPPED");
-        add_named (lyrics_display, "PLAYING");
+
+        //  Playing states
+        add_named (display_view, "DISPLAYING");
         add_named (downloading_view, "DOWNLOADING");
-        add_named (lyrics_not_found_view, "NO_LYRICS");
+        add_named (no_lyrics_view, "NO_LYRICS");
 
-        players = _players;
-
-        players.notify["active-player"].connect (on_active_player_change);
+        display_view.lyrics_service.notify["state"].connect (on_lyric_service_change);
     }
 
-    void on_active_player_change () {
-        if (players.active_player != null) {
-            players.active_player.notify.connect (() => {
-                update_stack ();
-            });
-        }
+    public void on_player_change (Player player) {
+        debug (@"Player has changed, player : $(player.busname), state: $(player.state)");
 
-        update_stack ();
-    }
-
-    public void update_stack () {
-        if (players.active_player == null) {
+        if (player == null) {
             visible_child_name = "NO_PLAYER";
-            return;
-        }
-
-        if (players.active_player.state.to_string () == "PLAYING") {
-            display_controller.start (players.active_player) ? visible_child_name = players.active_player.state.to_string () : visible_child_name = "NO_LYRICS";
-        } else {
-            display_controller.stop ();
+        } else if (player.state.to_string () != "PLAYING") {
             visible_child_name = "STOPPED";
+        } else {
+            visible_child_name = "DISPLAYING";
         }
     }
 
-    static Gtk.Box build_no_player () {
-        var label = new Gtk.Label ("Couldn't find any player, check your player's MPRIS configuration");
-        label.wrap = true;
-        label.get_style_context ().add_class ("description");
+    public void on_lyric_service_change () {
+        var state = display_view.lyrics_service.state.to_string ();
 
-        var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        box.valign = Gtk.Align.CENTER;
-        box.add (label);
-
-        return box;
-    }
-
-    static Gtk.Box build_not_playing () {
-        var label = new Gtk.Label ("Currently not playing");
-        label.wrap = true;
-        label.get_style_context ().add_class ("description");
-
-        var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        box.valign = Gtk.Align.CENTER;
-        box.add (label);
-
-        return box;
-    }
-
-    static Gtk.Box build_no_lyrics () {
-        var label = new Gtk.Label ("Couldn't find lyrics for song");
-        label.wrap = true;
-        label.get_style_context ().add_class ("description");
-
-        var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        box.valign = Gtk.Align.CENTER;
-        box.add (label);
-
-        return box;
+        if (state == "DOWNLOADING") { visible_child_name = "DOWNLOADING"; }
+        if (state == "LYRICS NOT FOUND") { visible_child_name = "NO_LYRICS"; }
+        if (state == "DOWNLOADED") { visible_child_name = "DISPLAYING"; }
     }
 }

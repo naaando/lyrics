@@ -2,8 +2,23 @@
 public class Lyrics.Players : Object {
     public signal void added (Player player);
     public signal void removed (Player player);
+    public signal void on_active_player_changed (Player player);
 
-    public Player? active_player { get; set; }
+    Player _active_player;
+    public Player? active_player {
+        get {
+            return _active_player;
+        }
+        set {
+            _active_player = value;
+            _active_player.notify.connect (() => {
+                debug ("Emitting signal");
+                if (value == _active_player) {
+                    on_active_player_changed (_active_player);
+                }
+            });
+        }
+    }
 
     Gee.ArrayList<Player> players = new Gee.ArrayList<Player> ();
 

@@ -1,5 +1,5 @@
-
 public class Lyrics.SimpleDisplay : Gtk.Box, IDisplay {
+    public LyricsService lyrics_service { get; set; }
     public string current_line {
         get {
             return current_label.label;
@@ -23,6 +23,10 @@ public class Lyrics.SimpleDisplay : Gtk.Box, IDisplay {
 
         add (current_label);
     }
+
+    public void on_player_change (Player player) {}
+    public void start (uint64 position) {}
+    public void stop () {}
 
     public void clear () {
         current_label.label = "";

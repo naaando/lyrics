@@ -1,12 +1,12 @@
 
-public class Lyrics.Lyric : Object {
+public class Lyrics.Lyric : Gee.TreeMap<uint64?, string> {
     private struct Metadata {
         string tag;
         string info;
     }
 
     private Metadata[] metadata = {};
-    Gee.TreeMap<uint64?, string> lines = new Gee.TreeMap<uint64?, string> ();
+    //   lines = new Gee.TreeMap<uint64?, string> ();
     Gee.BidirMapIterator<uint64?, string> lrc_iterator;
     int offset = 0;
 
@@ -19,12 +19,16 @@ public class Lyrics.Lyric : Object {
     }
 
     public void add_line (uint64 time, string text) {
-        lines.set (time, text);
+        set (time, text);
+    }
+
+    public Gee.TreeMap<uint64?, string> get_lyric () {
+        return this;
     }
 
     Gee.BidirMapIterator<uint64?, string> get_iterator () {
         if (lrc_iterator == null) {
-            lrc_iterator = lines.bidir_map_iterator ();
+            lrc_iterator = bidir_map_iterator ();
             lrc_iterator.first ();
         }
 
@@ -32,16 +36,27 @@ public class Lyrics.Lyric : Object {
     }
 
     public string get_current_line (uint64 time_in_us) {
-        while (get_iterator ().get_key () < time_in_us + offset) {
-            if (!get_iterator ().has_next ()) {
-                get_iterator ().first ();
-                return "";
-            }
+        var time_with_offset = time_in_us + offset;
+        return iterator_find_next_timestamp (time_with_offset).get_value ().to_string ();
+    }
 
+    public uint64 get_next_lyric_timestamp (uint64 time_in_us) {
+        var time_with_offset = time_in_us + offset;
+        return iterator_find_next_timestamp (time_with_offset).get_key ();
+    }
+
+    Gee.BidirMapIterator<uint64?, string> iterator_find_next_timestamp (uint64 time_in_us) {
+        if (get_iterator ().get_key () > time_in_us) {
+            get_iterator ().first ();
+        }
+
+        while (get_iterator ().get_key () < time_in_us && get_iterator ().has_next ()) {
             get_iterator ().next ();
         }
 
-        return get_iterator ().get_value ().to_string ();
+        if (get_iterator ().has_previous ()) get_iterator ().previous ();
+
+        return get_iterator ();
     }
 
     public string to_string () {
@@ -54,7 +69,7 @@ public class Lyrics.Lyric : Object {
         }
 
         builder.append (@"Lyric:\n");
-        lines.foreach ((item) => {
+        this.foreach ((item) => {
             builder.append (@"$(item.key) : $(item.value)\n");
             return true;
         });

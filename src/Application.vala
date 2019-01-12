@@ -18,13 +18,21 @@ public class Lyrics.Application : Gtk.Application {
         }
 
         var players = new Players ();
-
         var scanner = new Mpris.Service ();
+        var display_view = ViewFactory.create_display_view ();
+        var main_stack = new MainStack (display_view);
+
         scanner.found.connect ((player) => players.add (player));
         scanner.lost.connect (players.remove_by_busname);
         scanner.setup_dbus ();
 
-        var main_window = new MainWindow (this, players, new MainStack (players));
+        players.notify["active-player"].connect (() => main_stack.on_player_change (players.active_player));
+        players.on_active_player_changed.connect (() => main_stack.on_player_change (players.active_player));
+
+        players.notify["active-player"].connect (() => display_view.on_player_change (players.active_player));
+        players.on_active_player_changed.connect (() => display_view.on_player_change (players.active_player));
+
+        var main_window = new MainWindow (this, players, main_stack);
 
         var window_x = settings.get_int ("window-x");
         var window_y = settings.get_int ("window-y");
