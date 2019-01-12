@@ -86,7 +86,7 @@ public class Parser.LRC : Object {
     }
 
     // return time in microseconds(µs)
-    uint64 time_to_us (uint minutes, uint seconds, uint milliseconds) {
+    int64 time_to_us (uint minutes, uint seconds, uint milliseconds) {
         return (minutes*60*1000 + seconds*1000 + milliseconds)*1000;
     }
 }

@@ -1,14 +1,22 @@
 
-public class Lyrics.Lyric : Gee.TreeMap<uint64?, string> {
+public class Lyrics.Lyric : Gee.TreeMap<int64?, string> {
     private struct Metadata {
         string tag;
         string info;
     }
 
     private Metadata[] metadata = {};
-    //   lines = new Gee.TreeMap<uint64?, string> ();
-    Gee.BidirMapIterator<uint64?, string> lrc_iterator;
+    Gee.BidirMapIterator<int64?, string> lrc_iterator;
     int offset = 0;
+
+    public Lyric () {
+        GLib.CompareDataFunc<int64?> compare_fn = ((a, b) => {
+            if (a - b == 0) return 0;
+            return (a - b > 0) ? 1 : -1;
+        });
+
+        base (compare_fn, Gee.Functions.get_equal_func_for (GLib.Type.STRING));
+    }
 
     public void add_metadata (string _tag, string _info) {
         metadata += Metadata () { tag = _tag, info = _info };
@@ -18,15 +26,15 @@ public class Lyrics.Lyric : Gee.TreeMap<uint64?, string> {
         }
     }
 
-    public void add_line (uint64 time, string text) {
+    public void add_line (int64 time, string text) {
         set (time, text);
     }
 
-    public Gee.TreeMap<uint64?, string> get_lyric () {
+    public Gee.TreeMap<int64?, string> get_lyric () {
         return this;
     }
 
-    Gee.BidirMapIterator<uint64?, string> get_iterator () {
+    Gee.BidirMapIterator<int64?, string> get_iterator () {
         if (lrc_iterator == null) {
             lrc_iterator = bidir_map_iterator ();
             lrc_iterator.first ();
@@ -35,17 +43,17 @@ public class Lyrics.Lyric : Gee.TreeMap<uint64?, string> {
         return lrc_iterator;
     }
 
-    public string get_current_line (uint64 time_in_us) {
+    public string get_current_line (int64 time_in_us) {
         var time_with_offset = time_in_us + offset;
         return iterator_find_next_timestamp (time_with_offset).get_value ().to_string ();
     }
 
-    public uint64 get_next_lyric_timestamp (uint64 time_in_us) {
+    public int64 get_next_lyric_timestamp (int64 time_in_us) {
         var time_with_offset = time_in_us + offset;
         return iterator_find_next_timestamp (time_with_offset).get_key ();
     }
 
-    Gee.BidirMapIterator<uint64?, string> iterator_find_next_timestamp (uint64 time_in_us) {
+    Gee.BidirMapIterator<int64?, string> iterator_find_next_timestamp (int64 time_in_us) {
         if (get_iterator ().get_key () > time_in_us) {
             get_iterator ().first ();
         }
