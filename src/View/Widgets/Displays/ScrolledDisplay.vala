@@ -56,19 +56,23 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         if (cancellable != null) cancellable.cancel ();
         cancellable = new Cancellable ();
 
-        var current = labels[lyric.get_next_lyric_timestamp (start_time).to_string ()];
+        //  Start transition
+        transition_to (labels[lyric.get_next_lyric_timestamp (start_time + (get_monotonic_time () - time)).to_string ()]);
+
         Timeout.add (250, () => {
             var elapsed = get_monotonic_time () - time;
-            var next = labels[lyric.get_next_lyric_timestamp (start_time + elapsed).to_string ()];
-            transition (current, next);
-            current = next;
+            var label = labels[lyric.get_next_lyric_timestamp (start_time + elapsed).to_string ()];
+            transition_to (label);
 
             return !cancellable.is_cancelled ();
         });
     }
 
-    void transition (Gtk.Label current, Gtk.Label next) {
-        current.get_style_context ().remove_class ("selected");
+    void transition_to (Gtk.Label next) {
+        labels.foreach ((entry) => {
+            entry.value.get_style_context ().remove_class ("selected");
+            return true;
+        });
         Gtk.Allocation allocation;
         next.get_allocation (out allocation);
         adjustment.value = allocation.y + allocation.height/2 - get_allocated_height ()/2;
