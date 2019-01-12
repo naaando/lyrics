@@ -3,12 +3,14 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
     Gtk.Button play_n_pause_btn;
     Players players;
 
-    public HeaderBar (Players players) {
+    public HeaderBar (Players _players) {
         decoration_layout = "close:menu";
         show_close_button = true;
         get_style_context ().add_class ("titlebar");
         get_style_context ().add_class ("default-decoration");
-        players.notify["active-player"].connect (on_active_player_changes);
+
+        players = _players;
+        players.on_active_player_changed.connect (() => update_play_n_pause_icon ());
 
         var previous_btn = new Gtk.Button.from_icon_name ("media-skip-backward-symbolic");
         previous_btn.clicked.connect (on_previous_btn_clicked);
@@ -36,15 +38,6 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
         if (play_n_pause_btn != null) {
             play_n_pause_btn.image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.SMALL_TOOLBAR);
         }
-    }
-
-    void on_active_player_changes () {
-        if (players == null | players.active_player == null) {
-            return;
-        }
-
-        update_play_n_pause_icon ();
-        players.active_player.notify.connect (update_play_n_pause_icon);
     }
 
     void on_previous_btn_clicked () {
