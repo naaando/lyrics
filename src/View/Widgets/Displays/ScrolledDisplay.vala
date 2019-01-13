@@ -25,21 +25,22 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
     }
 
     public void on_player_change (Player player) {
+        stop ();
         debug (@"Player changed");
-        return_if_fail (player.state.to_string () == "PLAYING");
+        if (player.state.to_string () == "PLAYING") {
+            lyric = lyrics_service.get_lyric (player.current_song);
+            if (lyric == null) return;
 
-        lyric = lyrics_service.get_lyric (player.current_song);
-        return_if_fail (lyric != null);
-
-        on_lyric_change ();
-        start (player.position);
+            on_lyric_change ();
+            start (player.position);
+        }
     }
 
     public void on_lyric_change () {
+        stop ();
         debug (@"Lyric changed - Displaying $lyric");
 
         labels = new Gee.HashMap<string, Gtk.Label> ();
-        box.forall ((widget) => box.remove (widget));
 
         lyric.foreach ((item) => {
             var label = build_lyric_label (@"$(item.value)");
@@ -57,7 +58,7 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         cancellable = new Cancellable ();
 
         //  Start transition
-        transition_to (labels[lyric.get_next_lyric_timestamp (start_time + (get_monotonic_time () - time)).to_string ()]);
+        transition_to (labels[lyric.get_next_lyric_timestamp (start_time).to_string ()]);
 
         Timeout.add (250, () => {
             var elapsed = get_monotonic_time () - time;
@@ -81,12 +82,12 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
 
     public void stop () {
         debug ("Stopping display");
+        if (cancellable != null) cancellable.cancel ();
+        clear ();
     }
 
     public void clear () {
-        foreach (var widget in box.get_children ()) {
-            box.remove (widget);
-        }
+        box.forall ((widget) => box.remove (widget));
     }
 
     Gtk.Label build_lyric_label (string label) {
