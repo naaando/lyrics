@@ -2,7 +2,8 @@ public class Parser.CompressedLyricContentParser : ChainOfResponsability {
     LyricFormatter lyric_formatter = new LyricFormatter ();
 
     public override bool can_parse (string item) {
-        return lyric_formatter.split_simple_lrc (item).length > 2 || lyric_formatter.split_lrc (item).length > 2;
+
+        return is_compressed (lyric_formatter.split_simple_lrc (item)) || is_compressed (lyric_formatter.split_lrc (item));
     }
 
     public override void process (Lyrics.Lyric lyric, string ln) {
@@ -31,5 +32,16 @@ public class Parser.CompressedLyricContentParser : ChainOfResponsability {
         }
 
         return -1;
+    }
+
+    bool is_compressed (string[] lns) {
+        int timestamps = 0;
+        foreach (var item in lns) {
+            if (lyric_formatter.is_timestamp (item)) {
+                timestamps++;
+            }
+        }
+
+        return timestamps > 1;
     }
 }
