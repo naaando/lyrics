@@ -1,5 +1,5 @@
 project ('com.github.naaando.lyrics', 'vala', 'c',
-    version: '0.4.1',
+    version: '0.4.2',
     license: 'GPL3'
 )
 
