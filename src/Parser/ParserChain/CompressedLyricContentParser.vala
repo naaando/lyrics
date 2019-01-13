@@ -2,7 +2,6 @@ public class Parser.CompressedLyricContentParser : ChainOfResponsability {
     LyricFormatter lyric_formatter = new LyricFormatter ();
 
     public override bool can_parse (string item) {
-
         return is_compressed (lyric_formatter.split_simple_lrc (item)) || is_compressed (lyric_formatter.split_lrc (item));
     }
 
@@ -23,7 +22,7 @@ public class Parser.CompressedLyricContentParser : ChainOfResponsability {
         string text = null;
         int pos = 0;
 
-        while (text == null && pos >= lns.length) {
+        while (text == null && pos <= lns.length) {
             if (!lyric_formatter.is_timestamp (lns[pos])) {
                 return pos;
             }
