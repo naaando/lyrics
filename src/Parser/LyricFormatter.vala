@@ -2,6 +2,10 @@ public class Parser.LyricFormatter : Object {
     const string SIMPLIFIED_LYRIC_PATTERN = "(\\[\\d\\d:\\d\\d\\])";
     const string LYRIC_PATTERN = "(\\[\\d\\d:\\d\\d\\.\\d\\d\\])";
 
+    public bool is_timestamp (string ln) {
+        return is_simplified_lrc (ln) || is_lrc (ln);
+    }
+
     public bool is_simplified_lrc (string ln) {
         return Regex.match_simple (SIMPLIFIED_LYRIC_PATTERN, ln);
     }
