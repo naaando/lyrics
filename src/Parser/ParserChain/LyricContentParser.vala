@@ -12,6 +12,8 @@ public class Parser.LyricContentParser : ChainOfResponsability {
         parse_time (lns[0], out minutes, out seconds, out milli);
         debug (@"Parsed time: $minutes:$seconds.$milli");
 
+        if (lns[1] == null) return;
+
         var text = lyric_formatter.remove_word_timing (lns[1]);
         if (text.length > 0) {
             lyric.add_line (time_to_us (minutes, seconds, milli), text);
