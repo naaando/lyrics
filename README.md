@@ -1,6 +1,8 @@
 # Lyrics - Download and display lyrics for musics
 Display lyrics of your media player if it has support to MPRIS-2
 
+**.deb packages [here](https://github.com/naaando/lyrics/releases)** 
+
 ![Screenshot](data/screenshot.png)
 ![Screenshot](data/screenshot-dark.png)
 
