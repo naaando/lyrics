@@ -12,7 +12,6 @@ public class Lyrics.Players : Object {
         set {
             _active_player = value;
             _active_player.notify.connect (() => {
-                debug ("Emitting signal");
                 if (value == _active_player) {
                     on_active_player_changed (_active_player);
                 }
