@@ -33,11 +33,6 @@ public class Lyrics.Lyric : Gee.TreeMap<int64?, string> {
     Gee.BidirMapIterator<int64?, string> get_iterator () {
         if (lrc_iterator == null || !lrc_iterator.valid) {
             lrc_iterator = bidir_map_iterator ();
-
-            if (!lrc_iterator.valid) {
-                critical ("Can't iterate over null map");
-            }
-
             lrc_iterator.first ();
         }
 
