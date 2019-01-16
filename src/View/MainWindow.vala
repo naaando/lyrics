@@ -74,7 +74,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
                 break;
             case "When playing":
                 keep_above_when_playing = true;
-                set_keep_above (main_stack.visible_child_name == "PLAYING" ? true : false);
+                set_keep_above (main_stack.visible_child_name == "DISPLAYING" ? true : false);
                 break;
             case "Never keep above":
                 set_keep_above (false);
