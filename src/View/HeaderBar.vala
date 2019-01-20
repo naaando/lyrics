@@ -34,7 +34,8 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
     }
 
     void update_play_n_pause_icon () {
-        var icon_name = (players.active_player == null || players.active_player.state != PAUSED) ? "media-playback-start-symbolic" : "media-playback-pause-symbolic";
+        bool is_player_paused = players.active_player != null && players.active_player.state == Lyrics.Player.State.PAUSED;
+        var icon_name = is_player_paused ? "media-playback-start-symbolic" : "media-playback-pause-symbolic";
         if (play_n_pause_btn != null) {
             play_n_pause_btn.image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.SMALL_TOOLBAR);
         }
