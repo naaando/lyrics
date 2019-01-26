@@ -1,0 +1,121 @@
+# Swahili translations for lyrics package.
+# Copyright (C) 2019 THE lyrics'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the lyrics package.
+# Automatically generated, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lyrics\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-26 21:12-0200\n"
+"PO-Revision-Date: 2019-01-26 21:12-0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: sw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/View/Factory/ViewFactory.vala:3
+msgid "Couldn't find any player, check your player's MPRIS configuration"
+msgstr ""
+
+#: src/View/Factory/ViewFactory.vala:15
+msgid "Currently not playing"
+msgstr ""
+
+#: src/View/Factory/ViewFactory.vala:27
+msgid "Couldn't find lyrics for song"
+msgstr ""
+
+#: src/View/HeaderBar.vala:69
+msgid "Light background"
+msgstr ""
+
+#: src/View/HeaderBar.vala:70
+msgid "Dark background"
+msgstr ""
+
+#: src/View/MainWindow.vala:12
+msgid "Lyrics"
+msgstr ""
+
+#: src/View/SettingsPopover.vala:11
+msgid "Lyrics download folder:"
+msgstr ""
+
+#: src/View/SettingsPopover.vala:12
+msgid "Select folder to download lyrics"
+msgstr ""
+
+#: src/View/SettingsPopover.vala:16
+msgid "Couldn't add default lyrics folder to FileChooserButton"
+msgstr ""
+
+#: src/View/SettingsPopover.vala:19
+msgid "Keep window above:"
+msgstr ""
+
+#: src/View/SettingsPopover.vala:42
+msgid "Always"
+msgstr ""
+
+#: src/View/SettingsPopover.vala:43
+msgid "When playing"
+msgstr ""
+
+#: src/View/SettingsPopover.vala:44
+msgid "Never keep above"
+msgstr ""
+
+#: src/View/SettingsPopover.vala:52
+msgid "Make translucid on focus loss"
+msgstr ""
+
+#: src/View/SettingsPopover.vala:59
+msgid "Restore default settings"
+msgstr ""
+
+#: src/View/Widgets/DownloadView.vala:33
+msgid "Downloading"
+msgstr ""
+
+#: src/View/Widgets/DownloadView.vala:37
+msgid "by"
+msgstr ""
+
+#: src/View/Widgets/DownloadView.vala:37
+msgid "Unknown artist"
+msgstr ""
+
+#: src/View/Widgets/DownloadView.vala:38
+msgid "Unknown title"
+msgstr ""
+
+#: src/View/Widgets/SearchLyric.vala:59
+msgid "Title:"
+msgstr ""
+
+#: src/View/Widgets/SearchLyric.vala:61
+msgid "Artist:"
+msgstr ""
+
+#: src/View/Widgets/SearchLyric.vala:63
+msgid "Album:"
+msgstr ""
+
+#: src/View/Widgets/SearchLyric.vala:65
+msgid "Genre:"
+msgstr ""
+
+#: src/View/Widgets/SearchLyric.vala:67
+msgid "Length:"
+msgstr ""
+
+#: src/View/Widgets/SearchLyric.vala:74
+msgid "Close"
+msgstr ""
+
+#: src/View/Widgets/SearchLyric.vala:75
+msgid "Search"
+msgstr ""

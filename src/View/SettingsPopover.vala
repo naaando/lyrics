@@ -8,15 +8,15 @@ public class Lyrics.SettingsPopover : Gtk.Popover {
         grid.margin = 12;
         grid.row_spacing = grid.column_spacing = 12;
 
-        var lyrics_folder_label = new Gtk.Label ("Lyrics download folder:");
+        var lyrics_folder_label = new Gtk.Label (_("Lyrics download folder:"));
         folder_chooser_button = new FileChooserButton (_("Select folder to download lyrics"), Gtk.FileChooserAction.SELECT_FOLDER);
         try {
             folder_chooser_button.add_shortcut_folder (Application.DEFAULT_LYRICS_DIR);
         } catch (Error e) {
-            info ("Couldn't add default lyrics folder to FileChooserButton " + e.message);
+            info (_("Couldn't add default lyrics folder to FileChooserButton") + " " + e.message);
         }
 
-        var window_behavior_label = new Gtk.Label ("Keep window above:");
+        var window_behavior_label = new Gtk.Label (_("Keep window above:"));
         window_behavior_label.halign = Gtk.Align.START;
 
         combobox = create_combobox ();
@@ -39,9 +39,9 @@ public class Lyrics.SettingsPopover : Gtk.Popover {
 
     Gtk.ComboBox create_combobox () {
         var combobox = new Gtk.ComboBoxText ();
-        combobox.append ("Always", "Always");
-        combobox.append ("When playing", "When playing");
-        combobox.append ("Never keep above", "Never keep above");
+        combobox.append ("Always", _("Always"));
+        combobox.append ("When playing", _("When playing"));
+        combobox.append ("Never keep above", _("Never keep above"));
 
         return combobox;
     }
@@ -49,7 +49,7 @@ public class Lyrics.SettingsPopover : Gtk.Popover {
     Gtk.Container create_translucid_switch () {
         var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
         box.add (opacity_switch = new Gtk.Switch ());
-        box.add (new Gtk.Label ("Make translucid on focus loss"));
+        box.add (new Gtk.Label (_("Make translucid on focus loss")));
         box.halign = Gtk.Align.START;
 
         return box;

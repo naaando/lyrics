@@ -4,8 +4,8 @@ project ('com.github.naaando.lyrics', 'vala', 'c',
 )
 
 gnome = import ('gnome')
-
-add_global_arguments ('-DGETTEXT_PACKAGE="' + meson.project_name () + '"', language:'c')
+i18n = import('i18n')
+add_project_arguments('-DGETTEXT_PACKAGE="lyrics"', language:'c')
 
 asresources = gnome.compile_resources(
     'as-resources', 'data/' + meson.project_name() + '.gresource.xml',
@@ -65,5 +65,6 @@ executable(
 )
 
 subdir ('data')
+subdir('po')
 
 meson.add_install_script('meson/post_install.py')

@@ -1,0 +1,122 @@
+# English translations for lyrics package.
+# Copyright (C) 2019 THE lyrics'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the lyrics package.
+# Automatically generated, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lyrics\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-26 21:12-0200\n"
+"PO-Revision-Date: 2019-01-26 21:12-0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: en_CA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/View/Factory/ViewFactory.vala:3
+msgid "Couldn't find any player, check your player's MPRIS configuration"
+msgstr "Couldn't find any player, check your player's MPRIS configuration"
+
+#: src/View/Factory/ViewFactory.vala:15
+msgid "Currently not playing"
+msgstr "Currently not playing"
+
+#: src/View/Factory/ViewFactory.vala:27
+msgid "Couldn't find lyrics for song"
+msgstr "Couldn't find lyrics for song"
+
+#: src/View/HeaderBar.vala:69
+msgid "Light background"
+msgstr "Light background"
+
+#: src/View/HeaderBar.vala:70
+msgid "Dark background"
+msgstr "Dark background"
+
+#: src/View/MainWindow.vala:12
+msgid "Lyrics"
+msgstr "Lyrics"
+
+#: src/View/SettingsPopover.vala:11
+msgid "Lyrics download folder:"
+msgstr "Lyrics download folder:"
+
+#: src/View/SettingsPopover.vala:12
+msgid "Select folder to download lyrics"
+msgstr "Select folder to download lyrics"
+
+#: src/View/SettingsPopover.vala:16
+msgid "Couldn't add default lyrics folder to FileChooserButton"
+msgstr "Couldn't add default lyrics folder to FileChooserButton"
+
+#: src/View/SettingsPopover.vala:19
+msgid "Keep window above:"
+msgstr "Keep window above:"
+
+#: src/View/SettingsPopover.vala:42
+msgid "Always"
+msgstr "Always"
+
+#: src/View/SettingsPopover.vala:43
+msgid "When playing"
+msgstr "When playing"
+
+#: src/View/SettingsPopover.vala:44
+msgid "Never keep above"
+msgstr "Never keep above"
+
+#: src/View/SettingsPopover.vala:52
+msgid "Make translucid on focus loss"
+msgstr "Make translucid on focus loss"
+
+#: src/View/SettingsPopover.vala:59
+msgid "Restore default settings"
+msgstr "Restore default settings"
+
+#: src/View/Widgets/DownloadView.vala:33
+msgid "Downloading"
+msgstr "Downloading"
+
+#: src/View/Widgets/DownloadView.vala:37
+msgid "by"
+msgstr "by"
+
+#: src/View/Widgets/DownloadView.vala:37
+msgid "Unknown artist"
+msgstr "Unknown artist"
+
+#: src/View/Widgets/DownloadView.vala:38
+msgid "Unknown title"
+msgstr "Unknown title"
+
+#: src/View/Widgets/SearchLyric.vala:59
+msgid "Title:"
+msgstr "Title:"
+
+#: src/View/Widgets/SearchLyric.vala:61
+msgid "Artist:"
+msgstr "Artist:"
+
+#: src/View/Widgets/SearchLyric.vala:63
+msgid "Album:"
+msgstr "Album:"
+
+#: src/View/Widgets/SearchLyric.vala:65
+msgid "Genre:"
+msgstr "Genre:"
+
+#: src/View/Widgets/SearchLyric.vala:67
+msgid "Length:"
+msgstr "Length:"
+
+#: src/View/Widgets/SearchLyric.vala:74
+msgid "Close"
+msgstr "Close"
+
+#: src/View/Widgets/SearchLyric.vala:75
+msgid "Search"
+msgstr "Search"

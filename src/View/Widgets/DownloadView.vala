@@ -30,12 +30,12 @@ public class Lyrics.DownloadView : Gtk.Grid {
 
         attach (cover, 0, 0, 1, 2);
         attach (box, 1, 0);
-        attach (new Gtk.Label ("Downloading"), 1, 1);
+        attach (new Gtk.Label (_("Downloading")), 1, 1);
     }
 
     public void update (Player player) {
-        artist.label = "by "+(player.current_song.artist ?? "Unknown artist");
-        title.label = player.current_song.title ?? "Unknown title";
+        artist.label = _("by") + " " + player.current_song.artist ?? _("Unknown artist");
+        title.label = player.current_song.title ?? _("Unknown title");
         try {
             cover.set_from_pixbuf (new Gdk.Pixbuf.from_file_at_scale (player.current_song.thumb, 230, 230, true));
         } catch (Error e) {
