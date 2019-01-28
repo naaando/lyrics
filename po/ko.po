@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyrics\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-26 21:12-0200\n"
+"POT-Creation-Date: 2019-01-28 11:30-0200\n"
 "PO-Revision-Date: 2019-01-26 21:12-0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,6 +16,36 @@ msgstr ""
 "Content-Type: text/plain; charset=ASCII\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/com.github.naaando.lyrics.desktop:3
+#: data/com.github.naaando.lyrics.appdata.xml:6 src/View/MainWindow.vala:12
+msgid "Lyrics"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.desktop:4
+msgid "Lyrics displayer"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.desktop:5
+#: data/com.github.naaando.lyrics.appdata.xml:7
+msgid "The beautiful way to sing your songs"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.desktop:8
+msgid "com.github.naaando.lyrics"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.desktop:12
+msgid "lyrics;music;"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:9
+msgid "Listen to your songs reading their lyrics."
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:64
+msgid "Fernando da Silva Sousa"
+msgstr ""
 
 #: src/View/Factory/ViewFactory.vala:3
 msgid "Couldn't find any player, check your player's MPRIS configuration"
@@ -35,10 +65,6 @@ msgstr ""
 
 #: src/View/HeaderBar.vala:70
 msgid "Dark background"
-msgstr ""
-
-#: src/View/MainWindow.vala:12
-msgid "Lyrics"
 msgstr ""
 
 #: src/View/SettingsPopover.vala:11
