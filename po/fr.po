@@ -33,7 +33,7 @@ msgstr "La plus belle façon de chanter vos chansons"
 
 #: data/com.github.naaando.lyrics.desktop:8
 msgid "com.github.naaando.lyrics"
-msgstr com.github.naaando.lyrics""
+msgstr "com.github.naaando.lyrics"
 
 #: data/com.github.naaando.lyrics.desktop:12
 msgid "lyrics;music;"
