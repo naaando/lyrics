@@ -24,6 +24,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
 
         Application.settings.changed["window-keep-above"].connect (configure_window_keep_above_settings);
         Application.settings.changed["window-out-of-focus-translucid"].connect (configure_window_opacity_on_focus_loss);
+        Application.settings.changed["font"].connect (configure_font);
         main_stack.notify["visible-child-name"].connect (on_stack_visible_child_changed);
 
         add (main_stack);
@@ -44,6 +45,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
         configure_css_provider ();
         configure_window_keep_above_settings ();
         configure_window_opacity_on_focus_loss ();
+        configure_font ();
         stick ();
     }
 
@@ -89,6 +91,21 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
         } else {
             get_style_context ().remove_class ("translucid-backdrop");
         }
+    }
+
+    void configure_font () {
+        var font = Application.settings.get_string ("font");
+        if (font == "") return;
+
+        var fd = Pango.FontDescription.from_string (font);
+        var font_family = fd.get_family ();
+        var font_weight = ((int) fd.get_weight ()).to_string ();
+        var font_style = (fd.get_style ()).to_string ().substring(12).down ();
+        var font_size = (fd.get_size () / Pango.SCALE).to_string () + "px";
+
+        var provider = new Gtk.CssProvider ();
+        provider.load_from_data (@".lyrics .display { font-family: $(font_family); font-weight: $(font_weight); font-size: $(font_size); font-style: $(font_style); }");
+        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 
     void on_stack_visible_child_changed () {
