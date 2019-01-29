@@ -1,148 +1,148 @@
 # French translations for lyrics package.
 # Copyright (C) 2019 THE lyrics'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the lyrics package.
-# Automatically generated, 2019.
+# NathanBnm, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: lyrics\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-28 11:30-0200\n"
-"PO-Revision-Date: 2019-01-26 21:12-0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2019-01-26 19:30+0100\n"
+"Last-Translator: NathanBnm\n"
+"Language-Team: Français\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/com.github.naaando.lyrics.desktop:3
 #: data/com.github.naaando.lyrics.appdata.xml:6 src/View/MainWindow.vala:12
 msgid "Lyrics"
-msgstr ""
+msgstr "Lyrics"
 
 #: data/com.github.naaando.lyrics.desktop:4
 msgid "Lyrics displayer"
-msgstr ""
+msgstr "Afficheur de paroles"
 
 #: data/com.github.naaando.lyrics.desktop:5
 #: data/com.github.naaando.lyrics.appdata.xml:7
 msgid "The beautiful way to sing your songs"
-msgstr ""
+msgstr "La plus belle façon de chanter vos chansons"
 
 #: data/com.github.naaando.lyrics.desktop:8
 msgid "com.github.naaando.lyrics"
-msgstr ""
+msgstr com.github.naaando.lyrics""
 
 #: data/com.github.naaando.lyrics.desktop:12
 msgid "lyrics;music;"
-msgstr ""
+msgstr "paroles;musique;"
 
 #: data/com.github.naaando.lyrics.appdata.xml:9
 msgid "Listen to your songs reading their lyrics."
-msgstr ""
+msgstr "Écoutez vos chansons en lisant leurs paroles."
 
 #: data/com.github.naaando.lyrics.appdata.xml:64
 msgid "Fernando da Silva Sousa"
-msgstr ""
+msgstr "Fernando da Silva Sousa"
 
 #: src/View/Factory/ViewFactory.vala:3
 msgid "Couldn't find any player, check your player's MPRIS configuration"
-msgstr ""
+msgstr "Impossible de trouver un lecteur, vérifiez la configuration MPRIS de votre lecteur"
 
 #: src/View/Factory/ViewFactory.vala:15
 msgid "Currently not playing"
-msgstr ""
+msgstr "Pas de lecture en cours"
 
 #: src/View/Factory/ViewFactory.vala:27
 msgid "Couldn't find lyrics for song"
-msgstr ""
+msgstr "Pas de paroles trouvées pour cette chanson"
 
 #: src/View/HeaderBar.vala:69
 msgid "Light background"
-msgstr ""
+msgstr "Thème clair"
 
 #: src/View/HeaderBar.vala:70
 msgid "Dark background"
-msgstr ""
+msgstr "Thème sombre"
 
 #: src/View/SettingsPopover.vala:11
 msgid "Lyrics download folder:"
-msgstr ""
+msgstr "Dossier de téléchargement des paroles :"
 
 #: src/View/SettingsPopover.vala:12
 msgid "Select folder to download lyrics"
-msgstr ""
+msgstr "Sélectionnez le dossier dans lequel télécharger les paroles"
 
 #: src/View/SettingsPopover.vala:16
 msgid "Couldn't add default lyrics folder to FileChooserButton"
-msgstr ""
+msgstr "Impossible d'ajouter le dossier des paroles par défaut au bouton de choix du fichier"
 
 #: src/View/SettingsPopover.vala:19
 msgid "Keep window above:"
-msgstr ""
+msgstr "Conserver la fenêtre au premier plan :"
 
 #: src/View/SettingsPopover.vala:42
 msgid "Always"
-msgstr ""
+msgstr "Toujours"
 
 #: src/View/SettingsPopover.vala:43
 msgid "When playing"
-msgstr ""
+msgstr "Pendant de la lecture"
 
 #: src/View/SettingsPopover.vala:44
 msgid "Never keep above"
-msgstr ""
+msgstr "Jamais"
 
 #: src/View/SettingsPopover.vala:52
 msgid "Make translucid on focus loss"
-msgstr ""
+msgstr "Rendre translucide lorsque l'application n'est plus au premier plan"
 
 #: src/View/SettingsPopover.vala:59
 msgid "Restore default settings"
-msgstr ""
+msgstr "Restaurer les paramètres par défaut"
 
 #: src/View/Widgets/DownloadView.vala:33
 msgid "Downloading"
-msgstr ""
+msgstr "Téléchargement"
 
 #: src/View/Widgets/DownloadView.vala:37
 msgid "by"
-msgstr ""
+msgstr "par"
 
 #: src/View/Widgets/DownloadView.vala:37
 msgid "Unknown artist"
-msgstr ""
+msgstr "Artiste inconnu"
 
 #: src/View/Widgets/DownloadView.vala:38
 msgid "Unknown title"
-msgstr ""
+msgstr "Titre inconnu"
 
 #: src/View/Widgets/SearchLyric.vala:59
 msgid "Title:"
-msgstr ""
+msgstr "Titre :"
 
 #: src/View/Widgets/SearchLyric.vala:61
 msgid "Artist:"
-msgstr ""
+msgstr "Artiste :"
 
 #: src/View/Widgets/SearchLyric.vala:63
 msgid "Album:"
-msgstr ""
+msgstr "Album :"
 
 #: src/View/Widgets/SearchLyric.vala:65
 msgid "Genre:"
-msgstr ""
+msgstr "Genre :"
 
 #: src/View/Widgets/SearchLyric.vala:67
 msgid "Length:"
-msgstr ""
+msgstr "Durée :"
 
 #: src/View/Widgets/SearchLyric.vala:74
 msgid "Close"
-msgstr ""
+msgstr "Fermer"
 
 #: src/View/Widgets/SearchLyric.vala:75
 msgid "Search"
-msgstr ""
+msgstr "Rechercher"
