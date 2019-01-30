@@ -3,6 +3,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
     Gtk.Stack main_stack;
     Players players;
     bool keep_above_when_playing;
+    Gtk.CssProvider custom_font_provider;
 
     public MainWindow (Gtk.Application application, Players _players, Gtk.Stack stack) {
         Object (
@@ -95,6 +96,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
 
     void configure_font () {
         var font = Application.settings.get_string ("font");
+        Gtk.StyleContext.remove_provider_for_screen (Gdk.Screen.get_default (), custom_font_provider);
         if (font == "") return;
 
         var fd = Pango.FontDescription.from_string (font);
@@ -103,9 +105,13 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
         var font_style = (fd.get_style ()).to_string ().substring(12).down ();
         var font_size = (fd.get_size () / Pango.SCALE).to_string () + "px";
 
-        var provider = new Gtk.CssProvider ();
-        provider.load_from_data (@".lyrics .display { font-family: $(font_family); font-weight: $(font_weight); font-size: $(font_size); font-style: $(font_style); }");
-        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        custom_font_provider = new Gtk.CssProvider ();
+        try {
+            custom_font_provider.load_from_data (@".lyrics .display { font-family: $(font_family); font-weight: $(font_weight); font-size: $(font_size); font-style: $(font_style); }");
+            Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), custom_font_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        } catch (Error e) {
+            error ("Was not possible to add the custom font due to error: " + e.message);
+        }
     }
 
     void on_stack_visible_child_changed () {

@@ -69,6 +69,7 @@ public class Lyrics.SettingsPopover : Gtk.Popover {
             Application.settings.set_string ("download-location", Application.DEFAULT_LYRICS_DIR);
             Application.settings.reset ("window-keep-above");
             Application.settings.reset ("window-out-of-focus-translucid");
+            Application.settings.reset ("font");
         });
 
         return btn;
