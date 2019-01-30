@@ -33,5 +33,10 @@
       <default>''</default>
       <summary>Location to download and search for lyrics</summary>
     </key>
+    <key name="font" type="s">
+      <default>''</default>
+      <summary>Default font for lyrics</summary>
+      <description>Use [Font name][Style][Size] Open Sans Light 12</description>
+    </key>
   </schema>
 </schemalist>
