@@ -1,5 +1,5 @@
 
-public class Lyrics.MainWindow : Gtk.ApplicationWindow {
+public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
     Gtk.Stack main_stack;
     Players players;
     bool keep_above_when_playing;
@@ -11,8 +11,13 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
             icon_name: "com.github.naaando.lyrics",
             resizable: true,
             title: _("Lyrics"),
-            window_position: Gtk.WindowPosition.CENTER
+            window_position: Gtk.WindowPosition.CENTER,
+            default_height: 250,
+            default_width: 450
         );
+
+        //  SaveWindowStateMixin's restore window functionality
+        enable_restore_state (Application.settings);
 
         //  Add css classes to main window
         get_style_context ().add_class ("rounded");
@@ -30,15 +35,6 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
 
         add (main_stack);
         setup ();
-    }
-
-    public override bool configure_event (Gdk.EventConfigure event) {
-        int root_x, root_y;
-        get_position (out root_x, out root_y);
-        Application.settings.set_int ("window-x", root_x);
-        Application.settings.set_int ("window-y", root_y);
-
-        return base.configure_event (event);
     }
 
     void setup () {

@@ -33,14 +33,6 @@ public class Lyrics.Application : Gtk.Application {
         players.on_active_player_changed.connect (() => display_view.on_player_change (players.active_player));
 
         var main_window = new MainWindow (this, players, main_stack);
-
-        var window_x = settings.get_int ("window-x");
-        var window_y = settings.get_int ("window-y");
-
-        if (window_x != -1 ||  window_y != -1) {
-            main_window.move (window_x, window_y);
-        }
-
         main_window.show_all ();
 
         var quit_action = new SimpleAction ("quit", null);
