@@ -36,6 +36,13 @@
     <binary>com.github.naaando.lyrics</binary>
   </provides>
   ​<releases>
+    <release version="0.5.2" date="2019-01-30">
+      <ul>
+        <li>Reduce spacing spent on margins and borders</li>
+        <li>Saves window's width and height properties now</li>
+        <li>Under the hood code improvements</li>
+      </ul>
+    </release>
     <release version="0.5.1" date="2019-01-30">
       <ul>
         <li>Reset font on restore settings</li>
