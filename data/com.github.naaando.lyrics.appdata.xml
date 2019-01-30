@@ -32,6 +32,11 @@
     <binary>com.github.naaando.lyrics</binary>
   </provides>
   ​<releases>
+    <release version="0.5.1" date="2019-01-16">
+      <ul>
+        <li>Reset font on restore settings</li>
+      </ul>
+    </release>
     <release version="0.5.0" date="2019-01-16">
       <ul>
         <li>Make possible to choose custom fonts</li>
