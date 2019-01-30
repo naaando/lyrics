@@ -8,6 +8,9 @@ public class Lyrics.SettingsPopover : Gtk.Popover {
         grid.margin = 12;
         grid.row_spacing = grid.column_spacing = 12;
 
+        var font_selection_label = new Gtk.Label (_("Select custom font:"));
+        var font_selection_btn = new Gtk.FontButton ();
+
         var lyrics_folder_label = new Gtk.Label (_("Lyrics download folder:"));
         folder_chooser_button = new FileChooserButton (_("Select folder to download lyrics"), Gtk.FileChooserAction.SELECT_FOLDER);
         try {
@@ -22,12 +25,14 @@ public class Lyrics.SettingsPopover : Gtk.Popover {
         combobox = create_combobox ();
         var reset_default_button = create_reset_button ();
 
-        grid.attach (lyrics_folder_label, 0, 0);
-        grid.attach (folder_chooser_button, 1, 0);
-        grid.attach (window_behavior_label, 0, 1);
-        grid.attach (combobox, 1, 1);
-        grid.attach (create_translucid_switch (), 0, 2, 2);
-        grid.attach (reset_default_button, 0, 3, 2);
+        grid.attach (font_selection_label, 0, 0);
+        grid.attach (font_selection_btn, 1, 0);
+        grid.attach (lyrics_folder_label, 0, 1);
+        grid.attach (folder_chooser_button, 1, 1);
+        grid.attach (window_behavior_label, 0, 2);
+        grid.attach (combobox, 1, 2);
+        grid.attach (create_translucid_switch (), 0, 3, 2);
+        grid.attach (reset_default_button, 0, 4, 2);
         grid.show_all ();
 
         add (grid);
@@ -35,6 +40,7 @@ public class Lyrics.SettingsPopover : Gtk.Popover {
         Application.settings.bind ("download-location", folder_chooser_button, "filename", GLib.SettingsBindFlags.DEFAULT);
         Application.settings.bind ("window-keep-above", combobox, "active-id", GLib.SettingsBindFlags.DEFAULT);
         Application.settings.bind ("window-out-of-focus-translucid", opacity_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+        Application.settings.bind ("font", font_selection_btn, "font", GLib.SettingsBindFlags.DEFAULT);
     }
 
     Gtk.ComboBox create_combobox () {
@@ -63,6 +69,7 @@ public class Lyrics.SettingsPopover : Gtk.Popover {
             Application.settings.set_string ("download-location", Application.DEFAULT_LYRICS_DIR);
             Application.settings.reset ("window-keep-above");
             Application.settings.reset ("window-out-of-focus-translucid");
+            Application.settings.reset ("font");
         });
 
         return btn;
