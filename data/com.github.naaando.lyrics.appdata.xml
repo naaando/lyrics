@@ -6,7 +6,11 @@
   <name>Lyrics</name>
   <summary>The beautiful way to sing your songs</summary>
   <description>
-    <p>Listen to your songs reading their lyrics.</p>
+    <p>
+      Lyrics is an application that displays lyrics for songs you are listening
+      to, it query the song through MPRIS protocol, search, downloads the lyric
+      file and display it scrolling syncronized.
+    </p>
   </description>
   <categories>
 ​    <category>AudioVideo</category>
