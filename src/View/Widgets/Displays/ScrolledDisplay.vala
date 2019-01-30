@@ -13,12 +13,10 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
     public ScrolledDisplay () {
         adjustment = vadjustment;
         vscrollbar_policy = Gtk.PolicyType.EXTERNAL;
-        set_size_request (450, 250);
 
         lyrics_service = new LyricsService ();
 
         box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        box.margin_bottom = 20;
         box.expand = true;
         box.valign = Gtk.Align.END;
         add (box);
