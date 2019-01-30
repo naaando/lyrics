@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Lyrics
 GenericName=Lyrics displayer
-Comment=The beautiful way to sing your songs
-Categories=Utility;Graphics;
+Comment=The styleful way to sing your songs
+Categories=AudioVideo;Audio;Education;Music;
 Exec=com.github.naaando.lyrics
 Icon=com.github.naaando.lyrics
 Terminal=false

@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
   <id>com.github.naaando.lyrics</id>
-  <metadata_license>CC0</metadata_license>
+  <metadata_license>CC0-1.0 </metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>Lyrics</name>
   <summary>The beautiful way to sing your songs</summary>
   <description>
     <p>Listen to your songs reading their lyrics.</p>
   </description>
+  <categories>
+​    <category>AudioVideo</category>
+​    <category>Audio</category>
+​    <category>Education</category>
+​    <category>Music</category>
+  ​</categories>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/naaando/lyrics/master/data/screenshot.png</image>
@@ -26,6 +32,33 @@
     <binary>com.github.naaando.lyrics</binary>
   </provides>
   ​<releases>
+    <release version="0.5.0" date="2019-01-16">
+      <ul>
+        <li>Make possible to choose custom fonts</li>
+        <li>Make the app translatable</li>
+        <li>Add brazillian portuguese translation</li>
+        <li>Add french translation</li>
+        <li>Fixes for packaging to flatpak</li>
+      </ul>
+    </release>
+    <release version="0.4.5" date="2019-01-16">
+      <ul>
+        <li>Fix when playing setting</li>
+        <li>Fixes lyric parsing</li>
+        <li>Fix play and pause icons on player control button</li>
+        <li>Fix error where lyrics don't stop after closing the player</li>
+      </ul>
+    </release>
+    <release version="0.4.1" date="2019-01-13">
+      <description>
+        <p>A major rewrite of the application</p>
+        <ul>
+          <li>Fix lyrics sorting problem</li>
+          <li>Fix crashes on compact timestamps format: [mm:ss]</li>
+          <li>Lyrics now scroll on the center of window</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.1.1" date="2018-12-04">
       <description>
         <p>Initial release</p>
