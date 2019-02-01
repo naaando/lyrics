@@ -6,7 +6,7 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
     int64 time;
     Gtk.Box box;
     Gtk.Adjustment adjustment;
-    Lyric lyric;
+    Lyric? lyric;
     Gee.HashMap<string, Gtk.Label> labels;
     Cancellable cancellable;
 
@@ -33,7 +33,6 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
     }
 
     public void on_lyric_update (Lyric lyric) {
-        stop ();
         this.lyric = lyric;
         return_if_fail (lyric != null);
 
@@ -57,22 +56,29 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         cancellable = new Cancellable ();
 
         //  Start transition
-        transition_to (labels[lyric.get_next_lyric_timestamp (start_time).to_string ()]);
+        if (lyric != null) {
+            transition_to (labels[lyric.get_next_lyric_timestamp (start_time).to_string ()]);
+        }
 
         Timeout.add (250, () => {
             var elapsed = get_monotonic_time () - time;
-            var label = labels[lyric.get_next_lyric_timestamp (start_time + elapsed).to_string ()];
-            transition_to (label);
+            if (lyric != null) {
+                var label = labels[lyric.get_next_lyric_timestamp (start_time + elapsed).to_string ()];
+                transition_to (label);
+            }
 
             return !cancellable.is_cancelled ();
         });
     }
 
-    void transition_to (Gtk.Label next) {
+    void transition_to (Gtk.Label? next) {
         labels.foreach ((entry) => {
             entry.value.get_style_context ().remove_class ("selected");
             return true;
         });
+
+        return_if_fail (next != null);
+
         Gtk.Allocation allocation;
         next.get_allocation (out allocation);
         adjustment.value = allocation.y + allocation.height/2 - get_allocated_height ()/2;
