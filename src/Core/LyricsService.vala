@@ -1,14 +1,20 @@
 public class Lyrics.LyricsService : Object {
+    public signal void push_lyric (Lyric lyric);
+
     public State state { get; set; }
     IRepository lyric_repository = new Repository ();
 
-    public Lyric? get_lyric (Metasong song) {
+    public Lyric? request_lyric (Metasong song) {
         state = State.DOWNLOADING;
 
         var lyricfile = lyric_repository.find_first (song);
         if (lyricfile != null) {
             state = State.DOWNLOADED;
-            return lyricfile.to_lyric ();
+
+            var lyric = lyricfile.to_lyric ();
+            //  Emit a signal notifying that a new lyric arrived
+            push_lyric (lyric);
+            return lyric;
         }
 
         state = State.LYRICS_NOT_FOUND;
