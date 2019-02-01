@@ -1,5 +1,5 @@
 project ('com.github.naaando.lyrics', 'vala', 'c',
-    version: '0.5.2',
+    version: '0.6.0',
     license: 'GPL3'
 )
 
@@ -59,7 +59,6 @@ executable(
         dependency ('glib-2.0'),
         dependency ('gtk+-3.0'),
         dependency ('gee-0.8'),
-        dependency ('cairo')
     ],
     install: true
 )

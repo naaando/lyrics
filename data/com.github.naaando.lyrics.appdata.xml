@@ -36,6 +36,13 @@
     <binary>com.github.naaando.lyrics</binary>
   </provides>
   ​<releases>
+    <release version="0.6.0" date="2019-02-01">
+      <ul>
+        <li>Add lyric search</li>
+        <li>Remove Cairo dependency</li>
+        <li>Remove Granite dependency</li>
+      </ul>
+    </release>
     <release version="0.5.2" date="2019-01-30">
       <ul>
         <li>Reduce spacing spent on margins and borders</li>
