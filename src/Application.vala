@@ -35,6 +35,7 @@ public class Lyrics.Application : Gtk.Application {
         players.on_active_player_changed.connect (() => display_view.on_player_change (players.active_player));
 
         var main_window = new MainWindow (this, players, main_stack);
+        main_window.set_titlebar (new Lyrics.HeaderBar (players, lyrics_service));
         main_window.show_all ();
 
         var quit_action = new SimpleAction ("quit", null);
