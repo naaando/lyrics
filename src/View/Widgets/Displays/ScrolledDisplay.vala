@@ -10,11 +10,12 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
     Gee.HashMap<string, Gtk.Label> labels;
     Cancellable cancellable;
 
-    public ScrolledDisplay () {
+    public ScrolledDisplay (LyricsService lrservice) {
         adjustment = vadjustment;
         vscrollbar_policy = Gtk.PolicyType.EXTERNAL;
 
-        lyrics_service = new LyricsService ();
+        lyrics_service = lrservice;
+        lyrics_service.push_lyric.connect (on_lyric_update);
 
         box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         box.expand = true;
@@ -26,16 +27,16 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         stop ();
         debug (@"Player changed");
         if (player.state.to_string () == "PLAYING") {
-            lyric = lyrics_service.get_lyric (player.current_song);
-            if (lyric == null) return;
-
-            on_lyric_change ();
+            lyrics_service.request_lyric (player.current_song);
             start (player.position);
         }
     }
 
-    public void on_lyric_change () {
+    public void on_lyric_update (Lyric lyric) {
         stop ();
+        this.lyric = lyric;
+        return_if_fail (lyric != null);
+
         debug (@"Lyric changed - Displaying $lyric");
 
         labels = new Gee.HashMap<string, Gtk.Label> ();
