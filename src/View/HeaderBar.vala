@@ -2,8 +2,9 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
     Gtk.Settings settings = Gtk.Settings.get_default ();
     Gtk.Button play_n_pause_btn;
     Players players;
+    LyricsService lyrics_service;
 
-    public HeaderBar (Players _players) {
+    public HeaderBar (Players _players, LyricsService lrs) {
         decoration_layout = "close:menu";
         show_close_button = true;
         get_style_context ().add_class ("titlebar");
@@ -11,6 +12,8 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
 
         players = _players;
         players.on_active_player_changed.connect (() => update_play_n_pause_icon ());
+
+        lyrics_service = lrs;
 
         var previous_btn = new Gtk.Button.from_icon_name ("media-skip-backward-symbolic");
         previous_btn.clicked.connect (on_previous_btn_clicked);
@@ -31,6 +34,7 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
 
         pack_end (settings);
         pack_end (create_mode_switch ());
+        pack_end (create_lyrics_search ());
     }
 
     void update_play_n_pause_icon () {
@@ -73,5 +77,22 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
         Application.settings.bind ("dark", mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
 
         return mode_switch;
+    }
+
+    Gtk.Widget create_lyrics_search () {
+        var search_btn = new Gtk.Button.from_icon_name ("system-search-symbolic");
+        search_btn.margin_end = 6;
+
+        search_btn.clicked.connect (() => {
+            var parent_window = get_ancestor (typeof (Gtk.Window));
+            return_if_fail (parent_window != null);
+
+            var song = (players.active_player != null) ? players.active_player.current_song : null;
+            var search_dialog = new Lyrics.SearchLyric ((Gtk.Window) parent_window, song);
+            search_dialog.lyrics_service = lyrics_service;
+            search_dialog.show_all ();
+        });
+
+        return search_btn;
     }
 }

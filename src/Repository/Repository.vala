@@ -13,19 +13,23 @@ public class Lyrics.Repository : IRepository, Object {
         configure_download_local ();
     }
 
-    public ILyricFile? find_first (Metasong song) {
-        var local_file = local_repository.find_first (song);
+    public ILyricFile? find_first (Metasong song_metadata) {
+        var local_file = local_repository.find_first (song_metadata);
         if (local_file != null) {
             return local_file;
         }
 
-        var remote_file = lyricsources["viewlyrics"].find_first (song);
+        var remote_file = lyricsources["viewlyrics"].find_first (song_metadata);
         if (remote_file != null) {
-            local_repository.save (song, remote_file);
+            save (song_metadata, remote_file);
             return remote_file;
         }
 
         return null;
+    }
+
+    public bool save (Metasong song_metadata, Lyrics.ILyricFile lyric) {
+        return local_repository.save (song_metadata, lyric);
     }
 
     public Gee.Collection<ILyricFile>? find (Metasong song) {

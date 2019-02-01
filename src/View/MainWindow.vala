@@ -26,8 +26,6 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
         main_stack = stack;
         players = _players;
 
-        set_titlebar (new Lyrics.HeaderBar (players));
-
         Application.settings.changed["window-keep-above"].connect (configure_window_keep_above_settings);
         Application.settings.changed["window-out-of-focus-translucid"].connect (configure_window_opacity_on_focus_loss);
         Application.settings.changed["font"].connect (configure_font);
