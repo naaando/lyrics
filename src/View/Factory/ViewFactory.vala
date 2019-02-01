@@ -11,8 +11,8 @@ public class Lyrics.ViewFactory : GLib.Object {
         return create_message_view (_("Couldn't find lyrics for song"));
     }
 
-    public static IDisplay create_display_view () {
-        return new ScrolledDisplay ();
+    public static IDisplay create_display_view (LyricsService lyrics_service) {
+        return new ScrolledDisplay (lyrics_service);
     }
 
     public static Gtk.Container create_downloading_view () {

@@ -2,6 +2,7 @@
 public class Lyrics.Application : Gtk.Application {
     public static string DEFAULT_LYRICS_DIR = Environment.get_home_dir ()+"/.lyrics/";
     public static GLib.Settings settings = new Settings ("com.github.naaando.lyrics");
+    public LyricsService lyrics_service { get; set; }
 
     public Application () {
         Object (application_id: "com.github.naaando.lyrics",
@@ -17,9 +18,10 @@ public class Lyrics.Application : Gtk.Application {
             return;
         }
 
+        lyrics_service = new LyricsService ();
         var players = new Players ();
         var scanner = new Mpris.Service ();
-        var display_view = ViewFactory.create_display_view ();
+        var display_view = ViewFactory.create_display_view (lyrics_service);
         var main_stack = new MainStack (display_view);
 
         scanner.found.connect ((player) => players.add (player));
