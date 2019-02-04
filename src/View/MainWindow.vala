@@ -34,7 +34,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
         add (main_stack);
         setup ();
 
-        Timeout.add_seconds (1 , () => {
+            GLib.Timeout.add_seconds (1, () => {
             if (is_active) {
                 input_shape_combine_region (null);
             } else {
