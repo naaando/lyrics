@@ -33,6 +33,19 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
 
         add (main_stack);
         setup ();
+
+        Timeout.add_seconds (1 , () => {
+            if (is_active) {
+                input_shape_combine_region (null);
+            } else {
+                int width;
+                int height;
+                get_size (out width, out height);
+                event_mask = new ImageSurface (Format.ARGB32, width, height);
+                input_shape_combine_region(Gdk.cairo_region_create_from_surface (event_mask));
+            }
+            return true;
+        });
     }
 
     void setup () {
