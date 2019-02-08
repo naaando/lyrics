@@ -4,7 +4,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
     Players players;
     bool keep_above_when_playing;
     Gtk.CssProvider custom_font_provider;
-    Cairo.Surface event_mask;
+    ClickThroughHelper ghost_mode;
 
     public MainWindow (Gtk.Application application, Players _players, Gtk.Stack stack) {
         Object (
@@ -20,6 +20,9 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
         //  SaveWindowStateMixin's restore window functionality
         enable_restore_state (Application.settings);
 
+        //  Click through functionality
+        ghost_mode = new ClickThroughHelper (this);
+
         //  Add css classes to main window
         get_style_context ().add_class ("rounded");
         get_style_context ().add_class ("lyrics");
@@ -30,23 +33,11 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
         Application.settings.changed["window-keep-above"].connect (configure_window_keep_above_settings);
         Application.settings.changed["window-out-of-focus-translucid"].connect (configure_window_opacity_on_focus_loss);
         Application.settings.changed["font"].connect (configure_font);
+        Application.settings.changed["ghost-mode"].connect (configure_ghost_mode);
         main_stack.notify["visible-child-name"].connect (on_stack_visible_child_changed);
 
         add (main_stack);
         setup ();
-
-        GLib.Timeout.add_seconds (1, () => {
-            if (is_active) {
-                input_shape_combine_region (null);
-            } else {
-                int width;
-                int height;
-                get_size (out width, out height);
-                event_mask = new Cairo.ImageSurface (Cairo.Format.ARGB32, width, height);
-                input_shape_combine_region(Gdk.cairo_region_create_from_surface (event_mask));
-            }
-            return true;
-        });
     }
 
     void setup () {
@@ -54,6 +45,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
         configure_css_provider ();
         configure_window_keep_above_settings ();
         configure_window_opacity_on_focus_loss ();
+        configure_ghost_mode ();
         configure_font ();
         stick ();
     }
@@ -99,6 +91,18 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
             get_style_context ().add_class ("translucid-backdrop");
         } else {
             get_style_context ().remove_class ("translucid-backdrop");
+        }
+    }
+
+
+    void configure_ghost_mode () {
+        var is_translucid = Application.settings.get_boolean ("window-out-of-focus-translucid");
+        var ghost_mode_activated = Application.settings.get_boolean ("ghost-mode");
+
+        if (is_translucid && ghost_mode_activated) {
+            ghost_mode.enable ();
+        } else {
+            ghost_mode.disable ();
         }
     }
 
