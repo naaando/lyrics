@@ -4,6 +4,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
     Players players;
     bool keep_above_when_playing;
     Gtk.CssProvider custom_font_provider;
+    Cairo.Surface event_mask;
 
     public MainWindow (Gtk.Application application, Players _players, Gtk.Stack stack) {
         Object (
@@ -33,6 +34,19 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
 
         add (main_stack);
         setup ();
+
+        GLib.Timeout.add_seconds (1, () => {
+            if (is_active) {
+                input_shape_combine_region (null);
+            } else {
+                int width;
+                int height;
+                get_size (out width, out height);
+                event_mask = new Cairo.ImageSurface (Cairo.Format.ARGB32, width, height);
+                input_shape_combine_region(Gdk.cairo_region_create_from_surface (event_mask));
+            }
+            return true;
+        });
     }
 
     void setup () {
