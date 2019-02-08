@@ -46,6 +46,7 @@ executable(
     'src/View/MainWindow.vala',
     'src/View/SearchLyricDialog.vala',
     'src/View/SettingsPopover.vala',
+    'src/View/Helper/ClickThroughHelper.vala',
     'src/View/Helper/SaveWindowStateMixin.vala',
     'src/View/Widgets/Displays/IDisplay.vala',
     'src/View/Widgets/Displays/SimpleDisplay.vala',
