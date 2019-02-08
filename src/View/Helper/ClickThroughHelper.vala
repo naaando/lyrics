@@ -1,21 +1,32 @@
 public class ClickThroughHelper : Object {
     Gtk.Window window;
-    ulong signal_id;
+    Gtk.Widget? titlebar;
+    ulong window_event_handler_id = 0;
     bool inactive_only;
+    bool clickable_headerbar;
 
-    public ClickThroughHelper (Gtk.Window window) {
+    /**
+     * Make click pass through the window
+     *
+     * @param Gtk.Window
+     * @param Makes the window headerbar clickable to possibilite moving window and
+     * recovering focus on window
+     */
+    public ClickThroughHelper (Gtk.Window window, bool clickable_headerbar = true) {
         this.window = window;
+        this.titlebar = window.get_titlebar ();
+        this.clickable_headerbar = clickable_headerbar;
     }
 
     public void enable (bool inactive_only = true) {
         this.inactive_only = inactive_only;
 
         mask_input ();
-        signal_id = window.event.connect (listen_to_window_events);
+        window_event_handler_id = window.event.connect (listen_to_window_events);
     }
 
     public void disable () {
-        window.disconnect (signal_id);
+        window.disconnect (window_event_handler_id);
         window.input_shape_combine_region (null);
     }
 
@@ -32,16 +43,23 @@ public class ClickThroughHelper : Object {
         return false;
     }
 
-    /**
-     * Create a region with the window size
-     *
-     * @return cairo region with window size
-     */
     Cairo.Region create_mask () {
-        int width, height;
-        window.get_size (out width, out height);
-        var event_mask = new Cairo.ImageSurface (Cairo.Format.ARGB32, width, height);
+        Cairo.RectangleInt rect_int;
+        if (clickable_headerbar && get_titlebar () != null) {
+            titlebar.get_allocation (out rect_int);
+        } else {
+            rect_int = {0, 0, 0, 0};
+        }
 
-        return Gdk.cairo_region_create_from_surface (event_mask);
+        var region = new Cairo.Region.rectangle (rect_int);
+        return region;
+    }
+
+    Gtk.Widget? get_titlebar () {
+        if (titlebar == null) {
+            titlebar = window.get_titlebar ();
+        }
+
+        return titlebar;
     }
 }
