@@ -36,6 +36,16 @@
     <binary>com.github.naaando.lyrics</binary>
   </provides>
   ​<releases>
+    <release version="0.7.0" date="2019-02-08">
+      <description>
+        <ul>
+          <p>Adds ghost mode:</p>
+          <li>Let clicks pass through the window when it is translucid</li>
+          <li>Hide headerbar widgets when the app goes backdrop</li>
+          <li>Makes headerbar clickable on ghost mode to drag and to grab focus</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.6.0" date="2019-02-01">
       <description>
         <ul>
