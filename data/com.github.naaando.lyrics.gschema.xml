@@ -43,5 +43,10 @@
       <summary>Default font for lyrics</summary>
       <description>Use [Font name][Style][Size] Open Sans Light 12</description>
     </key>
+    <key name="hide-headerbar-widgets-on-backdrop" type="b">
+      <default>true</default>
+      <summary>Hide headerbar widgets on backdrop</summary>
+      <description>Whether the widgets on headerbar should be hidden on backdrop</description>
+    </key>
   </schema>
 </schemalist>
