@@ -87,8 +87,10 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
     void configure_window_opacity_on_focus_loss () {
         if (Application.settings.get_boolean ("window-out-of-focus-translucid")) {
             get_style_context ().add_class ("translucid-backdrop");
+            ghost_mode.enable ();
         } else {
             get_style_context ().remove_class ("translucid-backdrop");
+            ghost_mode.disable ();
         }
     }
 
