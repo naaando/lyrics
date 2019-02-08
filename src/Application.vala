@@ -36,7 +36,9 @@ public class Lyrics.Application : Gtk.Application {
 
         var main_window = new MainWindow (this, players, main_stack);
         var header_bar = new Lyrics.HeaderBar (players, lyrics_service);
-        main_window.bind_property ("is-active", header_bar, "parent-window-is-active", BindingFlags.DEFAULT);
+        main_window.state_flags_changed.connect (() => {
+            header_bar.parent_window_is_active = !(Gtk.StateFlags.BACKDROP in main_window.get_state_flags ());
+        });
         main_window.set_titlebar (header_bar);
         main_window.show_all ();
 
