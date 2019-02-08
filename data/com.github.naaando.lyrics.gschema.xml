@@ -48,5 +48,13 @@
       <summary>Hide headerbar widgets on backdrop</summary>
       <description>Whether the widgets on headerbar should be hidden on backdrop</description>
     </key>
+    <key name="ghost-mode" type="b">
+      <default>true</default>
+      <summary>Click through the window</summary>
+      <description>
+        Make possible to click through the window when it goes to backdrop and
+        translucid window is activated
+      </description>
+    </key>
   </schema>
 </schemalist>

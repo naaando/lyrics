@@ -33,6 +33,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
         Application.settings.changed["window-keep-above"].connect (configure_window_keep_above_settings);
         Application.settings.changed["window-out-of-focus-translucid"].connect (configure_window_opacity_on_focus_loss);
         Application.settings.changed["font"].connect (configure_font);
+        Application.settings.changed["ghost-mode"].connect (configure_ghost_mode);
         main_stack.notify["visible-child-name"].connect (on_stack_visible_child_changed);
 
         add (main_stack);
@@ -44,6 +45,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
         configure_css_provider ();
         configure_window_keep_above_settings ();
         configure_window_opacity_on_focus_loss ();
+        configure_ghost_mode ();
         configure_font ();
         stick ();
     }
@@ -87,9 +89,19 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
     void configure_window_opacity_on_focus_loss () {
         if (Application.settings.get_boolean ("window-out-of-focus-translucid")) {
             get_style_context ().add_class ("translucid-backdrop");
-            ghost_mode.enable ();
         } else {
             get_style_context ().remove_class ("translucid-backdrop");
+        }
+    }
+
+
+    void configure_ghost_mode () {
+        var is_translucid = Application.settings.get_boolean ("window-out-of-focus-translucid");
+        var ghost_mode_activated = Application.settings.get_boolean ("ghost-mode");
+
+        if (is_translucid && ghost_mode_activated) {
+            ghost_mode.enable ();
+        } else {
             ghost_mode.disable ();
         }
     }
