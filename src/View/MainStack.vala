@@ -7,8 +7,7 @@ public class Lyrics.MainStack : Gtk.Stack {
 
     public MainStack (IDisplay display) {
         transition_type = Gtk.StackTransitionType.CROSSFADE;
-        border_width = 16;
-        margin = 6;
+        margin = 12;
         expand = true;
 
         get_style_context ().add_class ("stack");
