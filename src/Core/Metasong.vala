@@ -6,7 +6,7 @@ public class Lyrics.Metasong : Object {
     public string album { get; set; }
     public int64 duration { get; set; }
     public string uri  { get; set; }
-    public string path  { get; set; }
+    public string? path  { get; set; }
     public string filename  { get; set; }
     public string thumb  { get; set; }
 
@@ -47,7 +47,7 @@ public class Lyrics.Metasong : Object {
         builder.append (@"Album: $album\n");
         builder.append (@"Duration: $duration\n");
         builder.append (@"URI: $uri\n");
-        builder.append (@"Path: $path\n");
+        if (path != null) builder.append (@"Path: $path\n");
         builder.append (@"Filename: $filename\n");
         return builder.str;
     }
