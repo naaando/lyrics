@@ -36,7 +36,7 @@
     <binary>com.github.naaando.lyrics</binary>
   </provides>
   ​<releases>
-    <release version="0.7.2" date="2019-02-08">
+    <release version="0.7.2" date="2019-02-14">
       <description>
         <ul>
           <li>Check repositories returning null collections</li>
