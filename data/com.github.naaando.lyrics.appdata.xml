@@ -36,10 +36,17 @@
     <binary>com.github.naaando.lyrics</binary>
   </provides>
   ​<releases>
+  <release version="0.7.3" date="2019-02-18">
+      <description>
+        <ul>
+          <li>Fix error where a searched lyric is not displayed if lyrics wasn't displaying already</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.7.2" date="2019-02-14">
       <description>
         <ul>
-          <li>Check repositories returning null collections</li>
+          <li>Fix repositories returning null collections</li>
         </ul>
       </description>
     </release>
