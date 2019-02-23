@@ -85,6 +85,7 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
                 settings_revealer.set_reveal_child (true);
                 create_mode_switch_revealer.set_reveal_child (true);
                 create_lyrics_search_revealer.set_reveal_child (true);
+                show_all ();
             } else {
                 previous_revealer.set_reveal_child (false);
                 play_n_pause_revealer.set_reveal_child (false);
