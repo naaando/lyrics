@@ -3,7 +3,7 @@
 .lyrics .titlebar {
     border: 0px solid transparent;
     box-shadow: 0 0 transparent;
-    transition: 500ms ease;
+    transition: 300ms ease;
     background-image: linear-gradient(to left, #abacae, #d4d4d4);
 }
 

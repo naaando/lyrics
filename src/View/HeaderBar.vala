@@ -1,4 +1,6 @@
 public class Lyrics.HeaderBar : Gtk.HeaderBar {
+    public bool parent_window_is_active { get; set; }
+
     Gtk.Settings settings = Gtk.Settings.get_default ();
     Gtk.Button play_n_pause_btn;
     Players players;
@@ -35,6 +37,24 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
         pack_end (settings);
         pack_end (create_mode_switch ());
         pack_end (create_lyrics_search ());
+
+        Application.settings.changed["hide-headerbar-widgets-on-backdrop"].connect (configure_widgets_on_backdrop);
+        notify["parent-window-is-active"].connect (() => configure_widgets_on_backdrop ());
+    }
+
+    void configure_widgets_on_backdrop () {
+        var should_hide_widgets = Application.settings.get_boolean ("hide-headerbar-widgets-on-backdrop");
+
+        //  Wrap within timeout to avoid activating a button
+        Timeout.add (50, () => {
+            if (parent_window_is_active || !should_hide_widgets) {
+                show_all ();
+            } else {
+                @foreach (widget => widget.hide ());
+            }
+
+            return false;
+        });
     }
 
     void update_play_n_pause_icon () {

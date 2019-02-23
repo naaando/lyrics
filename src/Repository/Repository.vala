@@ -34,9 +34,13 @@ public class Lyrics.Repository : IRepository, Object {
 
     public Gee.Collection<ILyricFile>? find (Metasong song) {
         var collection = new Gee.ArrayList<ILyricFile> ();
-        collection.add (local_repository.find_first (song));
-        collection.add_all (lyricsources["viewlyrics"].find (song));
-        return collection;
+        var local_result = local_repository.find_first (song);
+        if (local_result != null) collection.add (local_result);
+
+        var viewlyrics_results = lyricsources["viewlyrics"].find (song);
+        if (viewlyrics_results != null) collection.add_all (viewlyrics_results);
+
+        return collection.size != 0 ? collection : null;
     }
 
     void configure_download_local () {

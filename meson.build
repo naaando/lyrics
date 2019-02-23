@@ -1,5 +1,4 @@
 project ('com.github.naaando.lyrics', 'vala', 'c',
-    version: '0.6.0',
     license: 'GPL3'
 )
 
@@ -46,6 +45,7 @@ executable(
     'src/View/MainWindow.vala',
     'src/View/SearchLyricDialog.vala',
     'src/View/SettingsPopover.vala',
+    'src/View/Helper/ClickThroughHelper.vala',
     'src/View/Helper/SaveWindowStateMixin.vala',
     'src/View/Widgets/Displays/IDisplay.vala',
     'src/View/Widgets/Displays/SimpleDisplay.vala',

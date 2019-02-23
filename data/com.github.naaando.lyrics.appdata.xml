@@ -36,41 +36,82 @@
     <binary>com.github.naaando.lyrics</binary>
   </provides>
   ​<releases>
+  <release version="0.7.3" date="2019-02-18">
+      <description>
+        <ul>
+          <li>Fix error where a searched lyric is not displayed if lyrics wasn't displaying already</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.7.2" date="2019-02-14">
+      <description>
+        <ul>
+          <li>Fix repositories returning null collections</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.7.1" date="2019-02-08">
+      <description>
+        <ul>
+          <li>Fix settings popover menu closing on click</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.7.0" date="2019-02-08">
+      <description>
+        <ul>
+          <p>Adds ghost mode:</p>
+          <li>Let clicks pass through the window when it is translucid</li>
+          <li>Hide headerbar widgets when the app goes backdrop</li>
+          <li>Makes headerbar clickable on ghost mode to drag and to grab focus</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.6.0" date="2019-02-01">
-      <ul>
-        <li>Add lyric search</li>
-        <li>Remove Cairo dependency</li>
-        <li>Remove Granite dependency</li>
-      </ul>
+      <description>
+        <ul>
+          <li>Add lyric search</li>
+          <li>Remove Cairo dependency</li>
+          <li>Remove Granite dependency</li>
+        </ul>
+      </description>
     </release>
     <release version="0.5.2" date="2019-01-30">
-      <ul>
-        <li>Reduce spacing spent on margins and borders</li>
-        <li>Saves window's width and height properties now</li>
-        <li>Under the hood code improvements</li>
-      </ul>
+      <description>
+        <ul>
+          <li>Reduce spacing spent on margins and borders</li>
+          <li>Saves window's width and height properties now</li>
+          <li>Under the hood code improvements</li>
+        </ul>
+      </description>
     </release>
     <release version="0.5.1" date="2019-01-30">
-      <ul>
-        <li>Reset font on restore settings</li>
-      </ul>
+      <description>
+        <ul>
+          <li>Reset font on restore settings</li>
+        </ul>
+      </description>
     </release>
     <release version="0.5.0" date="2019-01-30">
-      <ul>
-        <li>Make possible to choose custom fonts</li>
-        <li>Make the app translatable</li>
-        <li>Add brazillian portuguese translation</li>
-        <li>Add french translation</li>
-        <li>Fixes for packaging to flatpak</li>
-      </ul>
+      <description>
+        <ul>
+          <li>Make possible to choose custom fonts</li>
+          <li>Make the app translatable</li>
+          <li>Add brazillian portuguese translation</li>
+          <li>Add french translation</li>
+          <li>Fixes for packaging to flatpak</li>
+        </ul>
+      </description>
     </release>
     <release version="0.4.5" date="2019-01-16">
-      <ul>
-        <li>Fix when playing setting</li>
-        <li>Fixes lyric parsing</li>
-        <li>Fix play and pause icons on player control button</li>
-        <li>Fix error where lyrics don't stop after closing the player</li>
-      </ul>
+      <description>
+        <ul>
+          <li>Fix when playing setting</li>
+          <li>Fixes lyric parsing</li>
+          <li>Fix play and pause icons on player control button</li>
+          <li>Fix error where lyrics don't stop after closing the player</li>
+        </ul>
+      </description>
     </release>
     <release version="0.4.1" date="2019-01-13">
       <description>

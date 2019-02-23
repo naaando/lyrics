@@ -86,9 +86,13 @@ public class Lyrics.SearchLyric : Gtk.Dialog {
 
     void search () {
         print (@"Searching for $song_metadata\n");
-        repository.find (song_metadata).foreach ((item) => {
-            var lyric = item as LyricsSources.RemoteFile;
-            if (lyric != null) add_result_to_tree_view (lyric);
+        var lyric_result = repository.find (song_metadata);
+
+        if (lyric_result == null) return;
+        lyric_result.foreach ((item) => {
+            if (item != null && item is LyricsSources.RemoteFile) {
+                add_result_to_tree_view (item as LyricsSources.RemoteFile);
+            }
             return true;
         });
     }
