@@ -39,7 +39,7 @@
     <release version="0.7.4" date="2019-02-23">
       <description>
         <ul>
-          <li>It solves the problem of the window undoing the resize when going to backdrop if it was shortened horizontally.</li>
+          <li>(Contribuition by Torikul Habib) Fix a bug where the window increases the minimum width on backdrop.</li>
           <li>Update translation files</li>
         </ul>
       </description>
