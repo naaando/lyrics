@@ -28,13 +28,15 @@ src/View/Factory/ViewFactory.vala
 src/View/HeaderBar.vala
 src/View/MainStack.vala
 src/View/MainWindow.vala
+src/View/SearchLyricDialog.vala
 src/View/SettingsPopover.vala
+src/View/Helper/ClickThroughHelper.vala
+src/View/Helper/SaveWindowStateMixin.vala
 src/View/Widgets/Displays/IDisplay.vala
 src/View/Widgets/Displays/SimpleDisplay.vala
 src/View/Widgets/Displays/ScrolledDisplay.vala
 src/View/Widgets/DownloadView.vala
 src/View/Widgets/FileChooserButton.vala
 src/View/Widgets/ModeSwitch.vala
-src/View/Widgets/SearchLyric.vala
 src/Application.vala
 src/SimplePlayer.vala

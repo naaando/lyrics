@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyrics\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-28 11:30-0200\n"
+"POT-Creation-Date: 2019-02-23 23:47-0300\n"
 "PO-Revision-Date: 2019-01-26 19:30+0100\n"
 "Last-Translator: NathanBnm\n"
 "Language-Team: Français\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/com.github.naaando.lyrics.desktop:3
-#: data/com.github.naaando.lyrics.appdata.xml:6 src/View/MainWindow.vala:12
+#: data/com.github.naaando.lyrics.appdata.xml:6 src/View/MainWindow.vala:14
 msgid "Lyrics"
 msgstr "Lyrics"
 
@@ -27,8 +27,8 @@ msgid "Lyrics displayer"
 msgstr "Afficheur de paroles"
 
 #: data/com.github.naaando.lyrics.desktop:5
-#: data/com.github.naaando.lyrics.appdata.xml:7
-msgid "The beautiful way to sing your songs"
+#, fuzzy
+msgid "The styleful way to sing your songs"
 msgstr "La plus belle façon de chanter vos chansons"
 
 #: data/com.github.naaando.lyrics.desktop:8
@@ -39,73 +39,230 @@ msgstr "com.github.naaando.lyrics"
 msgid "lyrics;music;"
 msgstr "paroles;musique;"
 
-#: data/com.github.naaando.lyrics.appdata.xml:9
-msgid "Listen to your songs reading their lyrics."
-msgstr "Écoutez vos chansons en lisant leurs paroles."
+#: data/com.github.naaando.lyrics.appdata.xml:7
+msgid "The beautiful way to sing your songs"
+msgstr "La plus belle façon de chanter vos chansons"
 
-#: data/com.github.naaando.lyrics.appdata.xml:64
+#: data/com.github.naaando.lyrics.appdata.xml:9
+msgid ""
+"Lyrics is an application that displays lyrics for songs you are listening "
+"to, it query the song through MPRIS protocol, search, downloads the lyric "
+"file and display it scrolling syncronized."
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:42
+msgid ""
+"It solves the problem of the window undoing the resize when going to "
+"backdrop if it was shortened horizontally."
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:49
+msgid ""
+"Fix error where a searched lyric is not displayed if lyrics wasn't "
+"displaying already"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:56
+msgid "Fix repositories returning null collections"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:63
+msgid "Fix settings popover menu closing on click"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:70
+msgid "Adds ghost mode:"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:71
+msgid "Let clicks pass through the window when it is translucid"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:72
+msgid "Hide headerbar widgets when the app goes backdrop"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:73
+msgid "Makes headerbar clickable on ghost mode to drag and to grab focus"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:80
+msgid "Add lyric search"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:81
+msgid "Remove Cairo dependency"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:82
+msgid "Remove Granite dependency"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:89
+msgid "Reduce spacing spent on margins and borders"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:90
+msgid "Saves window's width and height properties now"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:91
+msgid "Under the hood code improvements"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:98
+#, fuzzy
+msgid "Reset font on restore settings"
+msgstr "Restaurer les paramètres par défaut"
+
+#: data/com.github.naaando.lyrics.appdata.xml:105
+msgid "Make possible to choose custom fonts"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:106
+msgid "Make the app translatable"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:107
+msgid "Add brazillian portuguese translation"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:108
+msgid "Add french translation"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:109
+msgid "Fixes for packaging to flatpak"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:116
+#, fuzzy
+msgid "Fix when playing setting"
+msgstr "Pendant de la lecture"
+
+#: data/com.github.naaando.lyrics.appdata.xml:117
+msgid "Fixes lyric parsing"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:118
+msgid "Fix play and pause icons on player control button"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:119
+msgid "Fix error where lyrics don't stop after closing the player"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:125
+msgid "A major rewrite of the application"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:127
+msgid "Fix lyrics sorting problem"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:128
+msgid "Fix crashes on compact timestamps format: [mm:ss]"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:129
+msgid "Lyrics now scroll on the center of window"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:135
+msgid "Initial release"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:168
 msgid "Fernando da Silva Sousa"
 msgstr "Fernando da Silva Sousa"
 
 #: src/View/Factory/ViewFactory.vala:3
 msgid "Couldn't find any player, check your player's MPRIS configuration"
-msgstr "Impossible de trouver un lecteur, vérifiez la configuration MPRIS de votre lecteur"
+msgstr ""
+"Impossible de trouver un lecteur, vérifiez la configuration MPRIS de votre "
+"lecteur"
 
-#: src/View/Factory/ViewFactory.vala:15
+#: src/View/Factory/ViewFactory.vala:7
 msgid "Currently not playing"
 msgstr "Pas de lecture en cours"
 
-#: src/View/Factory/ViewFactory.vala:27
+#: src/View/Factory/ViewFactory.vala:11
 msgid "Couldn't find lyrics for song"
 msgstr "Pas de paroles trouvées pour cette chanson"
 
-#: src/View/HeaderBar.vala:69
+#: src/View/Factory/ViewFactory.vala:19 src/View/Widgets/DownloadView.vala:33
+msgid "Downloading"
+msgstr "Téléchargement"
+
+#: src/View/HeaderBar.vala:134
 msgid "Light background"
 msgstr "Thème clair"
 
-#: src/View/HeaderBar.vala:70
+#: src/View/HeaderBar.vala:135
 msgid "Dark background"
 msgstr "Thème sombre"
 
+#: src/View/SearchLyricDialog.vala:38
+msgid "Close"
+msgstr "Fermer"
+
+#: src/View/SearchLyricDialog.vala:39
+msgid "Search"
+msgstr "Rechercher"
+
+#: src/View/SearchLyricDialog.vala:76
+msgid "Title:"
+msgstr "Titre :"
+
+#: src/View/SearchLyricDialog.vala:78
+msgid "Artist:"
+msgstr "Artiste :"
+
+#: src/View/SearchLyricDialog.vala:80
+msgid "Album:"
+msgstr "Album :"
+
 #: src/View/SettingsPopover.vala:11
+msgid "Select custom font:"
+msgstr ""
+
+#: src/View/SettingsPopover.vala:14
 msgid "Lyrics download folder:"
 msgstr "Dossier de téléchargement des paroles :"
 
-#: src/View/SettingsPopover.vala:12
+#: src/View/SettingsPopover.vala:15
 msgid "Select folder to download lyrics"
 msgstr "Sélectionnez le dossier dans lequel télécharger les paroles"
 
-#: src/View/SettingsPopover.vala:16
-msgid "Couldn't add default lyrics folder to FileChooserButton"
-msgstr "Impossible d'ajouter le dossier des paroles par défaut au bouton de choix du fichier"
-
 #: src/View/SettingsPopover.vala:19
+msgid "Couldn't add default lyrics folder to FileChooserButton"
+msgstr ""
+"Impossible d'ajouter le dossier des paroles par défaut au bouton de choix du "
+"fichier"
+
+#: src/View/SettingsPopover.vala:22
 msgid "Keep window above:"
 msgstr "Conserver la fenêtre au premier plan :"
 
-#: src/View/SettingsPopover.vala:42
+#: src/View/SettingsPopover.vala:48
 msgid "Always"
 msgstr "Toujours"
 
-#: src/View/SettingsPopover.vala:43
+#: src/View/SettingsPopover.vala:49
 msgid "When playing"
 msgstr "Pendant de la lecture"
 
-#: src/View/SettingsPopover.vala:44
+#: src/View/SettingsPopover.vala:50
 msgid "Never keep above"
 msgstr "Jamais"
 
-#: src/View/SettingsPopover.vala:52
+#: src/View/SettingsPopover.vala:58
 msgid "Make translucid on focus loss"
 msgstr "Rendre translucide lorsque l'application n'est plus au premier plan"
 
-#: src/View/SettingsPopover.vala:59
+#: src/View/SettingsPopover.vala:65
 msgid "Restore default settings"
 msgstr "Restaurer les paramètres par défaut"
-
-#: src/View/Widgets/DownloadView.vala:33
-msgid "Downloading"
-msgstr "Téléchargement"
 
 #: src/View/Widgets/DownloadView.vala:37
 msgid "by"
@@ -119,30 +276,11 @@ msgstr "Artiste inconnu"
 msgid "Unknown title"
 msgstr "Titre inconnu"
 
-#: src/View/Widgets/SearchLyric.vala:59
-msgid "Title:"
-msgstr "Titre :"
+#~ msgid "Listen to your songs reading their lyrics."
+#~ msgstr "Écoutez vos chansons en lisant leurs paroles."
 
-#: src/View/Widgets/SearchLyric.vala:61
-msgid "Artist:"
-msgstr "Artiste :"
+#~ msgid "Genre:"
+#~ msgstr "Genre :"
 
-#: src/View/Widgets/SearchLyric.vala:63
-msgid "Album:"
-msgstr "Album :"
-
-#: src/View/Widgets/SearchLyric.vala:65
-msgid "Genre:"
-msgstr "Genre :"
-
-#: src/View/Widgets/SearchLyric.vala:67
-msgid "Length:"
-msgstr "Durée :"
-
-#: src/View/Widgets/SearchLyric.vala:74
-msgid "Close"
-msgstr "Fermer"
-
-#: src/View/Widgets/SearchLyric.vala:75
-msgid "Search"
-msgstr "Rechercher"
+#~ msgid "Length:"
+#~ msgstr "Durée :"

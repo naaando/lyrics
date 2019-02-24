@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyrics\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-28 11:30-0200\n"
+"POT-Creation-Date: 2019-02-23 23:47-0300\n"
 "PO-Revision-Date: 2019-01-26 21:12-0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/com.github.naaando.lyrics.desktop:3
-#: data/com.github.naaando.lyrics.appdata.xml:6 src/View/MainWindow.vala:12
+#: data/com.github.naaando.lyrics.appdata.xml:6 src/View/MainWindow.vala:14
 msgid "Lyrics"
 msgstr ""
 
@@ -27,8 +27,7 @@ msgid "Lyrics displayer"
 msgstr ""
 
 #: data/com.github.naaando.lyrics.desktop:5
-#: data/com.github.naaando.lyrics.appdata.xml:7
-msgid "The beautiful way to sing your songs"
+msgid "The styleful way to sing your songs"
 msgstr ""
 
 #: data/com.github.naaando.lyrics.desktop:8
@@ -39,11 +38,138 @@ msgstr ""
 msgid "lyrics;music;"
 msgstr ""
 
-#: data/com.github.naaando.lyrics.appdata.xml:9
-msgid "Listen to your songs reading their lyrics."
+#: data/com.github.naaando.lyrics.appdata.xml:7
+msgid "The beautiful way to sing your songs"
 msgstr ""
 
-#: data/com.github.naaando.lyrics.appdata.xml:64
+#: data/com.github.naaando.lyrics.appdata.xml:9
+msgid ""
+"Lyrics is an application that displays lyrics for songs you are listening "
+"to, it query the song through MPRIS protocol, search, downloads the lyric "
+"file and display it scrolling syncronized."
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:42
+msgid ""
+"It solves the problem of the window undoing the resize when going to "
+"backdrop if it was shortened horizontally."
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:49
+msgid ""
+"Fix error where a searched lyric is not displayed if lyrics wasn't "
+"displaying already"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:56
+msgid "Fix repositories returning null collections"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:63
+msgid "Fix settings popover menu closing on click"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:70
+msgid "Adds ghost mode:"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:71
+msgid "Let clicks pass through the window when it is translucid"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:72
+msgid "Hide headerbar widgets when the app goes backdrop"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:73
+msgid "Makes headerbar clickable on ghost mode to drag and to grab focus"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:80
+msgid "Add lyric search"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:81
+msgid "Remove Cairo dependency"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:82
+msgid "Remove Granite dependency"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:89
+msgid "Reduce spacing spent on margins and borders"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:90
+msgid "Saves window's width and height properties now"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:91
+msgid "Under the hood code improvements"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:98
+msgid "Reset font on restore settings"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:105
+msgid "Make possible to choose custom fonts"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:106
+msgid "Make the app translatable"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:107
+msgid "Add brazillian portuguese translation"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:108
+msgid "Add french translation"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:109
+msgid "Fixes for packaging to flatpak"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:116
+msgid "Fix when playing setting"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:117
+msgid "Fixes lyric parsing"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:118
+msgid "Fix play and pause icons on player control button"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:119
+msgid "Fix error where lyrics don't stop after closing the player"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:125
+msgid "A major rewrite of the application"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:127
+msgid "Fix lyrics sorting problem"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:128
+msgid "Fix crashes on compact timestamps format: [mm:ss]"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:129
+msgid "Lyrics now scroll on the center of window"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:135
+msgid "Initial release"
+msgstr ""
+
+#: data/com.github.naaando.lyrics.appdata.xml:168
 msgid "Fernando da Silva Sousa"
 msgstr ""
 
@@ -51,60 +177,84 @@ msgstr ""
 msgid "Couldn't find any player, check your player's MPRIS configuration"
 msgstr ""
 
-#: src/View/Factory/ViewFactory.vala:15
+#: src/View/Factory/ViewFactory.vala:7
 msgid "Currently not playing"
 msgstr ""
 
-#: src/View/Factory/ViewFactory.vala:27
+#: src/View/Factory/ViewFactory.vala:11
 msgid "Couldn't find lyrics for song"
 msgstr ""
 
-#: src/View/HeaderBar.vala:69
+#: src/View/Factory/ViewFactory.vala:19 src/View/Widgets/DownloadView.vala:33
+msgid "Downloading"
+msgstr ""
+
+#: src/View/HeaderBar.vala:134
 msgid "Light background"
 msgstr ""
 
-#: src/View/HeaderBar.vala:70
+#: src/View/HeaderBar.vala:135
 msgid "Dark background"
 msgstr ""
 
+#: src/View/SearchLyricDialog.vala:38
+msgid "Close"
+msgstr ""
+
+#: src/View/SearchLyricDialog.vala:39
+msgid "Search"
+msgstr ""
+
+#: src/View/SearchLyricDialog.vala:76
+msgid "Title:"
+msgstr ""
+
+#: src/View/SearchLyricDialog.vala:78
+msgid "Artist:"
+msgstr ""
+
+#: src/View/SearchLyricDialog.vala:80
+msgid "Album:"
+msgstr ""
+
 #: src/View/SettingsPopover.vala:11
+msgid "Select custom font:"
+msgstr ""
+
+#: src/View/SettingsPopover.vala:14
 msgid "Lyrics download folder:"
 msgstr ""
 
-#: src/View/SettingsPopover.vala:12
+#: src/View/SettingsPopover.vala:15
 msgid "Select folder to download lyrics"
 msgstr ""
 
-#: src/View/SettingsPopover.vala:16
+#: src/View/SettingsPopover.vala:19
 msgid "Couldn't add default lyrics folder to FileChooserButton"
 msgstr ""
 
-#: src/View/SettingsPopover.vala:19
+#: src/View/SettingsPopover.vala:22
 msgid "Keep window above:"
 msgstr ""
 
-#: src/View/SettingsPopover.vala:42
+#: src/View/SettingsPopover.vala:48
 msgid "Always"
 msgstr ""
 
-#: src/View/SettingsPopover.vala:43
+#: src/View/SettingsPopover.vala:49
 msgid "When playing"
 msgstr ""
 
-#: src/View/SettingsPopover.vala:44
+#: src/View/SettingsPopover.vala:50
 msgid "Never keep above"
 msgstr ""
 
-#: src/View/SettingsPopover.vala:52
+#: src/View/SettingsPopover.vala:58
 msgid "Make translucid on focus loss"
 msgstr ""
 
-#: src/View/SettingsPopover.vala:59
+#: src/View/SettingsPopover.vala:65
 msgid "Restore default settings"
-msgstr ""
-
-#: src/View/Widgets/DownloadView.vala:33
-msgid "Downloading"
 msgstr ""
 
 #: src/View/Widgets/DownloadView.vala:37
@@ -117,32 +267,4 @@ msgstr ""
 
 #: src/View/Widgets/DownloadView.vala:38
 msgid "Unknown title"
-msgstr ""
-
-#: src/View/Widgets/SearchLyric.vala:59
-msgid "Title:"
-msgstr ""
-
-#: src/View/Widgets/SearchLyric.vala:61
-msgid "Artist:"
-msgstr ""
-
-#: src/View/Widgets/SearchLyric.vala:63
-msgid "Album:"
-msgstr ""
-
-#: src/View/Widgets/SearchLyric.vala:65
-msgid "Genre:"
-msgstr ""
-
-#: src/View/Widgets/SearchLyric.vala:67
-msgid "Length:"
-msgstr ""
-
-#: src/View/Widgets/SearchLyric.vala:74
-msgid "Close"
-msgstr ""
-
-#: src/View/Widgets/SearchLyric.vala:75
-msgid "Search"
 msgstr ""
