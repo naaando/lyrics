@@ -9,8 +9,9 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
     Gtk.Revealer play_n_pause_revealer;
     Gtk.Revealer next_revealer;
     Gtk.Revealer settings_revealer;
-    Gtk.Revealer create_mode_switch_revealer;
-    Gtk.Revealer create_lyrics_search_revealer;
+    Gtk.Revealer mode_switch_btn_revealer;
+    Gtk.Revealer lyrics_search_btn_revealer;
+    Gtk.Revealer theme_editor_btn_revealer;
 
     public HeaderBar (Players _players, LyricsService lrs) {
         decoration_layout = "close:menu";
@@ -52,22 +53,26 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
         settings_revealer.add (settings);
         settings_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
 
-        create_mode_switch_revealer = new Gtk.Revealer ();
-        create_mode_switch_revealer.add (create_mode_switch ());
-        create_mode_switch_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
+        mode_switch_btn_revealer = new Gtk.Revealer ();
+        mode_switch_btn_revealer.add (create_mode_switch ());
+        mode_switch_btn_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
 
-        create_lyrics_search_revealer = new Gtk.Revealer ();
-        create_lyrics_search_revealer.add (create_lyrics_search ());
-        create_lyrics_search_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
+        lyrics_search_btn_revealer = new Gtk.Revealer ();
+        lyrics_search_btn_revealer.add (create_lyrics_search ());
+        lyrics_search_btn_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
 
+        theme_editor_btn_revealer = new Gtk.Revealer ();
+        theme_editor_btn_revealer.add (create_theme_editor_btn ());
+        theme_editor_btn_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
 
         pack_start (previous_revealer);
         pack_start (play_n_pause_revealer);
         pack_start (next_revealer);
 
         pack_end (settings_revealer);
-        pack_end (create_mode_switch_revealer);
-        pack_end (create_lyrics_search_revealer);
+        pack_end (mode_switch_btn_revealer);
+        pack_end (lyrics_search_btn_revealer);
+        pack_end (theme_editor_btn_revealer);
 
         Application.settings.changed["hide-headerbar-widgets-on-backdrop"].connect (configure_widgets_on_backdrop);
         notify["parent-window-is-active"].connect (() => configure_widgets_on_backdrop ());
@@ -83,15 +88,17 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
                 play_n_pause_revealer.set_reveal_child (true);
                 next_revealer.set_reveal_child (true);
                 settings_revealer.set_reveal_child (true);
-                create_mode_switch_revealer.set_reveal_child (true);
-                create_lyrics_search_revealer.set_reveal_child (true);
+                mode_switch_btn_revealer.set_reveal_child (true);
+                lyrics_search_btn_revealer.set_reveal_child (true);
+                theme_editor_btn_revealer.set_reveal_child (true);
             } else {
                 previous_revealer.set_reveal_child (false);
                 play_n_pause_revealer.set_reveal_child (false);
                 next_revealer.set_reveal_child (false);
                 settings_revealer.set_reveal_child (false);
-                create_mode_switch_revealer.set_reveal_child (false);
-                create_lyrics_search_revealer.set_reveal_child (false);
+                mode_switch_btn_revealer.set_reveal_child (false);
+                lyrics_search_btn_revealer.set_reveal_child (false);
+                theme_editor_btn_revealer.set_reveal_child (false);
             }
 
             return false;
