@@ -156,7 +156,7 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
             return_if_fail (parent_window != null);
 
             var song = (players.active_player != null) ? players.active_player.current_song : null;
-            var search_dialog = new Lyrics.SearchLyric ((Gtk.Window) parent_window, song);
+            var search_dialog = new Lyrics.SearchLyricDialog ((Gtk.Window) parent_window, song);
             search_dialog.lyrics_service = lyrics_service;
             search_dialog.show_all ();
         });

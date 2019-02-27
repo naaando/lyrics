@@ -1,4 +1,4 @@
-public class Lyrics.SearchLyric : Gtk.Dialog {
+public class Lyrics.SearchLyricDialog : Gtk.Dialog {
     public LyricsService? lyrics_service { get; set; }
 
     Repository repository = new Repository ();
