@@ -11,7 +11,7 @@ public class Lyrics.SearchLyricDialog : Gtk.Dialog {
     Gtk.TreeView lyrics_list;
     Gtk.ListStore lyrics_list_store;
 
-    public SearchLyric (Gtk.Window window, Metasong? metasong = null) {
+    public SearchLyricDialog (Gtk.Window window, Metasong? metasong = null) {
         Object (
             deletable: false,
             destroy_with_parent: true,
