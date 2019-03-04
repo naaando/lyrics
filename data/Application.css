@@ -1,46 +1,60 @@
+/* Light theme colors */
+@define-color lyrics_active_color #62005A;
+@define-color lyrics_color #0c0c0c;
+@define-color lyrics_bg_color #abacae;
+@define-color lyrics_bg_nd_color #d4d4d4;
+@define-color lyrics_backdrop_bg_color rgba(255, 255, 255, 0.25);
+
+/* Dark theme colors */
+@define-color lyrics_dark_active_color rgba(255, 200, 0, 1);
+@define-color lyrics_dark_color #fff;
+@define-color lyrics_dark_bg_color #7239b3;
+@define-color lyrics_dark_bg_nd_color #452981;
+@define-color lyrics_dark_backdrop_bg_color rgba(0, 0, 0, 0.5);
+
 /* Window and titlebar */
 .lyrics,
 .lyrics .titlebar {
     border: 0px solid transparent;
     box-shadow: 0 0 transparent;
     transition: 300ms ease;
-    background-image: linear-gradient(to left, #abacae, #d4d4d4);
+    background-image: linear-gradient(to left, @lyrics_bg_color, @lyrics_bg_nd_color);
 }
 
 .lyrics.dark,
 .lyrics.dark .titlebar {
-    background-image: linear-gradient(to right, #7239b3, #452981);
+    background-image: linear-gradient(to right, @lyrics_dark_bg_color, @lyrics_dark_bg_nd_color);
 }
 
 /* Window and titlebar inactive */
 .lyrics:backdrop.translucid-backdrop,
 .lyrics:backdrop.translucid-backdrop .titlebar {
-    color: #0c0c0c;
-    background: rgba(255, 255, 255, 0.25);
+    color: @lyrics_color;
+    background: @lyrics_backdrop_bg_color;
 }
 
 .lyrics.dark:backdrop.translucid-backdrop,
 .lyrics.dark:backdrop.translucid-backdrop .titlebar {
-    color: #fff;
-    background: rgba(0, 0, 0, 0.5);
+    color: @lyrics_dark_color;
+    background: @lyrics_dark_backdrop_bg_color;
 }
 
 /* Display colors */
-.lyrics .display:backdrop {
-    color: #0c0c0c;
+.lyrics .display {
+    color: @lyrics_color;
 }
 
-.lyrics.dark .display:backdrop {
-    color: #fff;
+.lyrics.dark .display {
+    color: @lyrics_dark_color;
 }
 
 .lyrics .display.selected {
     transition: 300ms linear;
-    color: #62005A;
+    color: @lyrics_active_color;
 }
 
 .lyrics.dark .display.selected {
-    color: rgba(255, 200, 0, 1);
+    color: @lyrics_dark_active_color;
 }
 
 /* Fonts */
