@@ -1,7 +1,15 @@
-public interface SaveWindowStateMixin : Gtk.Window {
+public class WindowStateSaver : Object {
+    int throttle_counter = 0;
+    int throttle_timeout = 1000;
+    weak Gtk.Window window;
+
+    public WindowStateSaver (Gtk.Window window) {
+        this.window = window;
+    }
+
     public virtual void enable_restore_state (GLib.Settings settings) {
         configure_window (settings);
-        configure_event.connect ((event) => on_configure_event (event, settings));
+        window.configure_event.connect ((event) => on_configure_event (event, settings));
     }
 
     public virtual string get_window_maximized_key () {
@@ -17,28 +25,23 @@ public interface SaveWindowStateMixin : Gtk.Window {
     }
 
     bool on_configure_event (Gdk.EventConfigure event, GLib.Settings settings) {
-        delay_write_settings (settings);
+        throttle_counter++;
+        var throttle_id = throttle_counter;
 
-        save_maximize_state (settings);
-        save_window_postion_state (settings);
-        save_window_size_state (settings);
+        Timeout.add (throttle_timeout, () => {
+            bool last_request = throttle_id == throttle_counter;
 
-        return false;
-    }
-
-    /**
-     * Delay write settings on disk
-     */
-    void delay_write_settings (GLib.Settings settings, uint timeout = 1000) {
-        settings.delay ();
-
-        Timeout.add (timeout, () => {
-            if (settings.has_unapplied) {
-                settings.apply ();
+            if (!last_request) {
+                throttle_counter = 0;
+                save_maximize_state (settings);
+                save_window_postion_state (settings);
+                save_window_size_state (settings);
             }
 
             return false;
         });
+
+        return false;
     }
 
     void configure_window (GLib.Settings settings) {
@@ -48,24 +51,24 @@ public interface SaveWindowStateMixin : Gtk.Window {
     }
 
     void save_maximize_state (GLib.Settings settings) {
-        settings.set_boolean (get_window_maximized_key (), is_maximized);
+        settings.set_boolean (get_window_maximized_key (), window.is_maximized);
     }
 
     void save_window_postion_state (GLib.Settings settings) {
         int window_x, window_y;
-        get_position (out window_x, out window_y);
+        window.get_position (out window_x, out window_y);
         settings.set (get_window_position_key (), "(ii)", window_x, window_y);
     }
 
     void save_window_size_state (GLib.Settings settings) {
         int window_width, window_height;
-        get_size (out window_width, out window_height);
+        window.get_size (out window_width, out window_height);
         settings.set (get_window_size_key (), "(ii)", window_width, window_height);
     }
 
     void restore_maximize_state (GLib.Settings settings) {
         if (settings.get_boolean (get_window_maximized_key ())) {
-            this.maximize ();
+            window.maximize ();
         }
     }
 
@@ -74,7 +77,7 @@ public interface SaveWindowStateMixin : Gtk.Window {
         settings.get (get_window_position_key (), "(ii)", out window_x, out window_y);
 
         if (window_x != -1 ||  window_y != -1) {
-            this.move (window_x, window_y);
+            window.move (window_x, window_y);
         }
     }
 
@@ -83,8 +86,8 @@ public interface SaveWindowStateMixin : Gtk.Window {
         settings.get (get_window_size_key (), "(ii)", out window_width, out window_height);
 
         if (window_width + window_height > 0) {
-            this.default_width = window_width;
-            this.default_height = window_height;
+            window.default_width = window_width;
+            window.default_height = window_height;
         }
     }
 }

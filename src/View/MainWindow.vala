@@ -1,10 +1,11 @@
 
-public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
+public class Lyrics.MainWindow : Gtk.ApplicationWindow {
     Gtk.Stack main_stack;
     Players players;
     bool keep_above_when_playing;
     Gtk.CssProvider custom_font_provider;
     ClickThroughHelper ghost_mode;
+    WindowStateSaver window_state_saver;
 
     public MainWindow (Gtk.Application application, Players _players, Gtk.Stack stack) {
         Object (
@@ -17,8 +18,8 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
             default_width: 450
         );
 
-        //  SaveWindowStateMixin's restore window functionality
-        enable_restore_state (Application.settings);
+        window_state_saver = new WindowStateSaver (this);
+        window_state_saver.enable_restore_state (Application.settings);
 
         //  Click through functionality
         ghost_mode = new ClickThroughHelper (this);
