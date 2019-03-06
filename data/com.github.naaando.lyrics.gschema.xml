@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+  <schema id="com.github.naaando.lyrics.theme">
+    <key name="font-color-active" type="s">
+      <default>''</default>
+    </key>
+    <key name="font-color" type="s">
+      <default>''</default>
+    </key>
+    <key name="background-color" type="s">
+      <default>''</default>
+    </key>
+    <key name="background-second-color" type="s">
+      <default>''</default>
+    </key>
+    <key name="backdrop-background-color" type="s">
+      <default>''</default>
+    </key>
+  </schema>
   <schema path="/com/github/naaando/lyrics/" id="com.github.naaando.lyrics">
+    <child name="light-theme" schema="com.github.naaando.lyrics.theme"/>
+    <child name="dark-theme" schema="com.github.naaando.lyrics.theme"/>
     <key name="dark" type="b">
       <default>false</default>
       <summary>If on a dark background</summary>
