@@ -4,6 +4,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
     Players players;
     bool keep_above_when_playing;
     Gtk.CssProvider custom_font_provider;
+    ThemeLoader theme_loader;
     ClickThroughHelper ghost_mode;
     WindowStateSaver window_state_saver;
 
@@ -48,6 +49,7 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
         configure_window_opacity_on_focus_loss ();
         configure_ghost_mode ();
         configure_font ();
+        configure_colors ();
         stick ();
     }
 
@@ -124,6 +126,16 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow {
             Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), custom_font_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         } catch (Error e) {
             error ("Was not possible to add the custom font due to error: " + e.message);
+        }
+    }
+
+    void configure_colors () {
+        theme_loader = new ThemeLoader ();
+
+        try {
+            Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), theme_loader.style_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        } catch (Error e) {
+            error ("Was not possible to add the theme loader due to error: " + e.message);
         }
     }
 
