@@ -53,10 +53,7 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         debug (@"Starting display on position $position");
         time = get_monotonic_time ();
         var start_time = (int64) position;
-        if (current_source_id > 0) {
-            debug (@"Removing source $(current_source_id)");
-            Source.remove (current_source_id);
-        }
+        remove_source ();
 
         //  Start transition
         if (lyric != null) {
@@ -95,10 +92,7 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
 
     public void stop () {
         debug ("Stopping display");
-        if (current_source_id > 0) {
-            debug (@"Removing source $(current_source_id)");
-            Source.remove (current_source_id);
-        }
+        remove_source ();
         clear ();
     }
 
@@ -115,5 +109,13 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         lyric_label.show_all ();
 
         return lyric_label;
+    }
+
+    void remove_source () {
+        if (current_source_id > 0) {
+            debug (@"Removing source $(current_source_id)");
+            Source.remove (current_source_id);
+            current_source_id = 0;
+        }
     }
 }
