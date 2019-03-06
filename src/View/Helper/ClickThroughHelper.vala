@@ -26,7 +26,9 @@ public class ClickThroughHelper : Object {
     }
 
     public void disable () {
-        window.disconnect (window_event_handler_id);
+        if (window_event_handler_id > 0) {
+            window.disconnect (window_event_handler_id);
+        }
         window.input_shape_combine_region (null);
     }
 
