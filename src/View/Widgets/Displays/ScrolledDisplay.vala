@@ -95,7 +95,10 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
 
     public void stop () {
         debug ("Stopping display");
-        if (cancellable != null) cancellable.cancel ();
+        if (current_source_id > 0) {
+            debug (@"Removing source $(current_source_id)");
+            Source.remove (current_source_id);
+        }
         clear ();
     }
 
