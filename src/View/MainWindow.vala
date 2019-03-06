@@ -112,8 +112,12 @@ public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
     void configure_font () {
         var font = Application.settings.get_string ("font");
         if (font == "") {
-            //  Clear any css defined before
-            custom_font_provider.load_from_data ("");
+            try {
+                //  Clear any css defined before
+                custom_font_provider.load_from_data ("");
+            } catch (Error e) {
+                error ("Was not possible to add the custom font due to error: " + e.message);
+            }
             return;
         }
 
