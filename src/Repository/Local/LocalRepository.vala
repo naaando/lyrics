@@ -1,8 +1,9 @@
 
 public class Lyrics.LocalRepository : IRepository, Object {
-    public string local_storage { get; set; default = Environment.get_home_dir ()+"/.lyrics/"; }
+    public string local_storage { get; set; default = Environment.get_home_dir () + "/.lyrics/"; }
 
     public bool save (Metasong song, ILyricFile lyric_file) {
+        validate_or_create_local_storage ();
         var file = File.new_for_path (local_storage+get_filename_for_song (song));
         message (@"Saving file to $(file.get_path ())");
         try {
@@ -15,8 +16,6 @@ public class Lyrics.LocalRepository : IRepository, Object {
             return false;
         }
     }
-
-    //  public Gee.Collection<ILyricFile> all () {}
 
     public ILyricFile? find_first (Metasong song) {
         return find_by_filename (get_filename_for_song(song));
@@ -34,6 +33,13 @@ public class Lyrics.LocalRepository : IRepository, Object {
             return new LocalFile (file);
         }
         return null;
+    }
+
+    public bool validate_or_create_local_storage () {
+        var local_storage_file = File.new_for_path (local_storage);
+
+        //  Check if it exist and tries to create directory if not
+        return local_storage_file.query_exists () || local_storage_file.make_directory_with_parents ();
     }
 
     string get_filename_for_song (Metasong song) {
