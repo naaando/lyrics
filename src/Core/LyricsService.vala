@@ -1,8 +1,10 @@
 public class Lyrics.LyricsService : Object {
-    public signal void push_lyric (Lyric lyric);
-
     public State state { get; set; }
     IRepository lyric_repository = new Repository ();
+
+    public virtual signal void push_lyric (Lyric lyric) {
+        state = State.DOWNLOADED;
+    }
 
     public Lyric? request_lyric (Metasong song) {
         state = State.DOWNLOADING;
