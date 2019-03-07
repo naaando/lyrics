@@ -50,7 +50,6 @@ executable(
     'src/View/Helper/ClickThroughHelper.vala',
     'src/View/Helper/WindowStateSaver.vala',
     'src/View/Widgets/Displays/IDisplay.vala',
-    'src/View/Widgets/Displays/SimpleDisplay.vala',
     'src/View/Widgets/Displays/ScrolledDisplay.vala',
     'src/View/Widgets/DownloadView.vala',
     'src/View/Widgets/FileChooserButton.vala',

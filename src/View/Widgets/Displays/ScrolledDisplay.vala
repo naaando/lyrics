@@ -8,7 +8,8 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
     Gtk.Adjustment adjustment;
     Lyric? lyric;
     Gee.HashMap<string, Gtk.Label> labels;
-    Cancellable cancellable;
+    Gtk.Label current_label;
+    uint current_source_id = 0;
 
     public ScrolledDisplay (LyricsService lrservice) {
         adjustment = vadjustment;
@@ -52,42 +53,46 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         debug (@"Starting display on position $position");
         time = get_monotonic_time ();
         var start_time = (int64) position;
-        if (cancellable != null) cancellable.cancel ();
-        cancellable = new Cancellable ();
+        remove_source ();
 
         //  Start transition
         if (lyric != null) {
             transition_to (labels[lyric.get_next_lyric_timestamp (start_time).to_string ()]);
         }
 
-        Timeout.add (250, () => {
+        current_source_id = Timeout.add (250, () => {
             var elapsed = get_monotonic_time () - time;
             if (lyric != null) {
                 var label = labels[lyric.get_next_lyric_timestamp (start_time + elapsed).to_string ()];
                 transition_to (label);
             }
 
-            return !cancellable.is_cancelled ();
+            return Source.CONTINUE;
         });
     }
 
     void transition_to (Gtk.Label? next) {
+        if (next == current_label) {
+            return;
+        }
+
         labels.foreach ((entry) => {
             entry.value.get_style_context ().remove_class ("selected");
             return true;
         });
 
         return_if_fail (next != null);
+        current_label = next;
 
         Gtk.Allocation allocation;
-        next.get_allocation (out allocation);
+        current_label.get_allocation (out allocation);
         adjustment.value = allocation.y + allocation.height/2 - get_allocated_height ()/2;
-        next.get_style_context ().add_class ("selected");
+        current_label.get_style_context ().add_class ("selected");
     }
 
     public void stop () {
         debug ("Stopping display");
-        if (cancellable != null) cancellable.cancel ();
+        remove_source ();
         clear ();
     }
 
@@ -104,5 +109,13 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         lyric_label.show_all ();
 
         return lyric_label;
+    }
+
+    void remove_source () {
+        if (current_source_id > 0) {
+            debug (@"Removing source $(current_source_id)");
+            Source.remove (current_source_id);
+            current_source_id = 0;
+        }
     }
 }
