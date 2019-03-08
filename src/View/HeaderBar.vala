@@ -163,4 +163,19 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
 
         return search_btn;
     }
+
+    Gtk.Widget create_theme_editor_btn () {
+        var theme_editor_btn = new Gtk.Button.from_icon_name ("preferences-color");
+        theme_editor_btn.margin_end = 6;
+
+        theme_editor_btn.clicked.connect (() => {
+            var parent_window = get_ancestor (typeof (Gtk.Window));
+            return_if_fail (parent_window != null);
+
+            var theme_editor_dialog = new Lyrics.ThemeEditorDialog ((Gtk.Window) parent_window);
+            theme_editor_dialog.show_all ();
+        });
+
+        return theme_editor_btn;
+    }
 }
