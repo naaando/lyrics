@@ -40,10 +40,10 @@ public class Lyrics.LocalRepository : IRepository, Object {
     }
 
     public bool validate_or_create_local_storage () {
-        var local_storage_file = File.new_for_path (local_storage);
+        var local_storage_directory = File.new_for_path (local_storage);
 
         //  Check if it exist and tries to create directory if not
-        return local_storage_file.query_exists () || local_storage_file.make_directory_with_parents ();
+        return local_storage_directory.query_exists () || local_storage_directory.make_directory_with_parents ();
     }
 
     string get_filename_for_song (Metasong song) {
