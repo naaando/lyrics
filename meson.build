@@ -28,6 +28,7 @@ executable(
     'src/Repository/LyricSources/LyricSourcesDownloader.vala',
     'src/Repository/LyricSources/LyricSourcesRemoteFile.vala',
     'src/Repository/LyricSources/LyricSourcesRepository.vala',
+    'src/Repository/Remote/ViewlyricsRepository.vala',
     'src/Repository/Repository.vala',
     'src/Mpris/MprisClient.vala',
     'src/Mpris/MprisPlayer.vala',
@@ -58,6 +59,7 @@ executable(
         dependency ('glib-2.0'),
         dependency ('gtk+-3.0'),
         dependency ('gee-0.8'),
+        dependency ('libsoup-2.4'),
     ],
     install: true
 )
