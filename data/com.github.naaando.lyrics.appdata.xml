@@ -36,6 +36,14 @@
     <binary>com.github.naaando.lyrics</binary>
   </provides>
   ​<releases>
+    <release version="0.7.6" date="2019-03-08">
+      <description>
+        <ul>
+          <li>Fixes file saving when the directory to save don't exists</li>
+          <li>Fix bug where selecting a lyric from the search dialog don't display it</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.7.5" date="2019-03-06">
       <description>
         <ul>
