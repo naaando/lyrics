@@ -29,6 +29,10 @@ public class LyricsSources.RemoteFile : Lyrics.ILyricFile, Object {
         loop.run ();
     }
 
+    public string? get_metadata (string attribute) {
+        return metadata[attribute].get_string ();
+    }
+
     public string get_content () {
         if (content == null) {
             load ();
