@@ -124,6 +124,12 @@ public class Lyrics.SearchLyric : Gtk.Dialog {
         var artist = remote_file.get_metadata ("artist");
         var album  = remote_file.get_metadata ("album");
 
+        //  Nothing to show
+        bool is_local = (title == null && artist == null && album == null);
+        if (is_local) {
+            return;
+        }
+
         result[id] = remote_file;
 
         Gtk.TreeIter iter;
