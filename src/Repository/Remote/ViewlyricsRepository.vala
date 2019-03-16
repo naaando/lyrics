@@ -76,10 +76,26 @@ public class Remote.ViewlyricsRepository : Lyrics.IRepository, Object {
 
         var root = parser.get_root_tag ();
         foreach (var tag in root) {
-            files += new RemoteFile.from_xmlbird_attributes (this, tag.get_attributes ());
+            var attributes = tag.get_attributes ();
+
+            if (link_points_to_lrc (attributes)) {
+                files += new RemoteFile.from_xmlbird_attributes (this, attributes);
+            }
         }
 
         return files;
+    }
+
+    bool link_points_to_lrc (B.Attributes attributes) {
+        bool is_lrc = false;
+
+        foreach (var attribute in attributes) {
+            if (attribute.get_name () == "link") {
+                is_lrc = attribute.get_content ().contains (".lrc");
+            }
+        }
+
+        return is_lrc;
     }
 
     static string mount_query (Lyrics.Metasong song) {
