@@ -71,7 +71,7 @@ public class Remote.ViewlyricsRepository : Lyrics.IRepository, Object {
         var parser = new B.XmlParser (response);
         if (!parser.validate ()) {
             warning ("Invalid XML.");
-            return null;
+            return files;
         }
 
         var root = parser.get_root_tag ();
