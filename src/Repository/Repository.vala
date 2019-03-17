@@ -20,7 +20,8 @@ public class Lyrics.Repository : IRepository, Object {
             return local_file;
         }
 
-        var remote_file = remote_repositories["viewlyrics"].find_first (song_metadata);
+        var remote_file = remote_repositories["lyricsources_viewlyrics"].find_first (song_metadata) ?? remote_repositories["viewlyrics"].find_first (song_metadata);
+
         if (remote_file != null) {
             save (song_metadata, remote_file);
             return remote_file;
@@ -38,7 +39,7 @@ public class Lyrics.Repository : IRepository, Object {
         var local_result = local_repository.find_first (song);
         if (local_result != null) collection.add (local_result);
 
-        var viewlyrics_results = remote_repositories["viewlyrics"].find (song);
+        var viewlyrics_results = remote_repositories["lyricsources_viewlyrics"].find (song) ?? remote_repositories["viewlyrics"].find (song);;
         if (viewlyrics_results != null) collection.add_all (viewlyrics_results);
 
         return collection.size != 0 ? collection : null;
