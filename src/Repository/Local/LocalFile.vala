@@ -6,6 +6,10 @@ public class Lyrics.LocalFile : Lyrics.ILyricFile, Object {
         this.file = file;
     }
 
+    public string? get_metadata (string attribute) {
+        return null;
+    }
+
     public string get_content () {
         var builder = new StringBuilder ();
         try {

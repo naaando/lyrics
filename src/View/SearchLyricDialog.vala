@@ -2,7 +2,7 @@ public class Lyrics.SearchLyric : Gtk.Dialog {
     public LyricsService? lyrics_service { get; set; }
 
     Repository repository = new Repository ();
-    Gee.HashMap<int, LyricsSources.RemoteFile> result = new Gee.HashMap<int, LyricsSources.RemoteFile> ();
+    Gee.HashMap<int, Lyrics.ILyricFile> result = new Gee.HashMap<int, Lyrics.ILyricFile> ();
     Metasong song_metadata;
 
     Gtk.Entry title_entry = new Gtk.Entry ();
@@ -90,8 +90,8 @@ public class Lyrics.SearchLyric : Gtk.Dialog {
 
         if (lyric_result == null) return;
         lyric_result.foreach ((item) => {
-            if (item != null && item is LyricsSources.RemoteFile) {
-                add_result_to_tree_view (item as LyricsSources.RemoteFile);
+            if (item != null) {
+                add_result_to_tree_view (item);
             }
             return true;
         });
@@ -118,11 +118,17 @@ public class Lyrics.SearchLyric : Gtk.Dialog {
         return list_store;
     }
 
-    void add_result_to_tree_view (LyricsSources.RemoteFile remote_file) {
+    void add_result_to_tree_view (Lyrics.ILyricFile remote_file) {
         var id = result.size + 1;
-        var title  = remote_file.metadata["title"].get_string ()  ?? "";
-        var artist = remote_file.metadata["artist"].get_string () ?? "";
-        var album  = remote_file.metadata["album"].get_string ()  ?? "";
+        var title  = remote_file.get_metadata ("title");
+        var artist = remote_file.get_metadata ("artist");
+        var album  = remote_file.get_metadata ("album");
+
+        //  Nothing to show
+        bool is_local = (title == null && artist == null && album == null);
+        if (is_local) {
+            return;
+        }
 
         result[id] = remote_file;
 
