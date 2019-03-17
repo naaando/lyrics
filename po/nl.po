@@ -8,263 +8,258 @@ msgstr ""
 "Project-Id-Version: lyrics\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-23 23:47-0300\n"
-"PO-Revision-Date: 2019-01-26 21:12-0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2019-03-16 18:51+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ASCII\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: data/com.github.naaando.lyrics.desktop:3
 #: data/com.github.naaando.lyrics.appdata.xml:6 src/View/MainWindow.vala:14
 msgid "Lyrics"
-msgstr ""
+msgstr "Lyrics"
 
 #: data/com.github.naaando.lyrics.desktop:4
 msgid "Lyrics displayer"
-msgstr ""
+msgstr "Songtekstweergave"
 
 #: data/com.github.naaando.lyrics.desktop:5
 msgid "The styleful way to sing your songs"
-msgstr ""
+msgstr "De stijlvolle manier om je nummers mee te zingen"
 
 #: data/com.github.naaando.lyrics.desktop:8
 msgid "com.github.naaando.lyrics"
-msgstr ""
+msgstr "com.github.naaando.lyrics"
 
 #: data/com.github.naaando.lyrics.desktop:12
 msgid "lyrics;music;"
-msgstr ""
+msgstr "songtekst;muziek;"
 
 #: data/com.github.naaando.lyrics.appdata.xml:7
 msgid "The beautiful way to sing your songs"
-msgstr ""
+msgstr "De stijlvolle manier om je nummers mee te zingen"
 
 #: data/com.github.naaando.lyrics.appdata.xml:9
-msgid ""
-"Lyrics is an application that displays lyrics for songs you are listening "
-"to, it query the song through MPRIS protocol, search, downloads the lyric "
-"file and display it scrolling syncronized."
-msgstr ""
+msgid "Lyrics is an application that displays lyrics for songs you are listening to, it query the song through MPRIS protocol, search, downloads the lyric file and display it scrolling syncronized."
+msgstr "Lyrics is een app die songteksten toont als je een nummer luistert. Het nummer wordt opgevraagd middels het MPRIS-protocol. Daarna wordt de songtekst gezocht en gedownload en vervolgens gesynchroniseerd getoond."
 
 #: data/com.github.naaando.lyrics.appdata.xml:42
-msgid ""
-"It solves the problem of the window undoing the resize when going to "
-"backdrop if it was shortened horizontally."
-msgstr ""
+msgid "It solves the problem of the window undoing the resize when going to backdrop if it was shortened horizontally."
+msgstr "Probleem opgelost met het aanpassen van de vensterafmetingen als de app horizontaal verkleind werd."
 
 #: data/com.github.naaando.lyrics.appdata.xml:49
-msgid ""
-"Fix error where a searched lyric is not displayed if lyrics wasn't "
-"displaying already"
-msgstr ""
+msgid "Fix error where a searched lyric is not displayed if lyrics wasn't displaying already"
+msgstr "Fout opgelost als een opgevraagde songtekst niet getoond werd"
 
 #: data/com.github.naaando.lyrics.appdata.xml:56
 msgid "Fix repositories returning null collections"
-msgstr ""
+msgstr "Probleem met bronnen opgelost die null-verzamelingen aangaven"
 
 #: data/com.github.naaando.lyrics.appdata.xml:63
 msgid "Fix settings popover menu closing on click"
-msgstr ""
+msgstr "Probleem opgelost met sluiten van instellingenmenu bij klikken"
 
 #: data/com.github.naaando.lyrics.appdata.xml:70
 msgid "Adds ghost mode:"
-msgstr ""
+msgstr "Spookmodus toegevoegd:"
 
 #: data/com.github.naaando.lyrics.appdata.xml:71
 msgid "Let clicks pass through the window when it is translucid"
-msgstr ""
+msgstr "Kliks worden buiten het venster gerekend als het doorzichtig is"
 
 #: data/com.github.naaando.lyrics.appdata.xml:72
 msgid "Hide headerbar widgets when the app goes backdrop"
-msgstr ""
+msgstr "Verbergt de headerbarwidgets als de app naar het bureaublad gaat"
 
 #: data/com.github.naaando.lyrics.appdata.xml:73
 msgid "Makes headerbar clickable on ghost mode to drag and to grab focus"
-msgstr ""
+msgstr "Maakt de headerbar aanklikbaar in spookmodus om focus op te eisen"
 
 #: data/com.github.naaando.lyrics.appdata.xml:80
 msgid "Add lyric search"
-msgstr ""
+msgstr "Zoekfunctie toegevoegd"
 
 #: data/com.github.naaando.lyrics.appdata.xml:81
 msgid "Remove Cairo dependency"
-msgstr ""
+msgstr "Cairo-afhankelijkheid verwijderd"
 
 #: data/com.github.naaando.lyrics.appdata.xml:82
 msgid "Remove Granite dependency"
-msgstr ""
+msgstr "Granite-afhankelijkheid verwijderd"
 
 #: data/com.github.naaando.lyrics.appdata.xml:89
 msgid "Reduce spacing spent on margins and borders"
-msgstr ""
+msgstr "Ruimte verminderd tussen randen"
 
 #: data/com.github.naaando.lyrics.appdata.xml:90
 msgid "Saves window's width and height properties now"
-msgstr ""
+msgstr "Onthoudt nu de venstereigenschappen voor breedte en hoogte"
 
 #: data/com.github.naaando.lyrics.appdata.xml:91
 msgid "Under the hood code improvements"
-msgstr ""
+msgstr "Verbeteringen onder de motorkap"
 
 #: data/com.github.naaando.lyrics.appdata.xml:98
 msgid "Reset font on restore settings"
-msgstr ""
+msgstr "Lettertype wordt hersteld bij terugzetten van instellingen"
 
 #: data/com.github.naaando.lyrics.appdata.xml:105
 msgid "Make possible to choose custom fonts"
-msgstr ""
+msgstr "Mogelijkheid toegevoegd voor het kiezen van aangepaste lettertypen"
 
 #: data/com.github.naaando.lyrics.appdata.xml:106
 msgid "Make the app translatable"
-msgstr ""
+msgstr "App vertaalbaar gemaakt"
 
 #: data/com.github.naaando.lyrics.appdata.xml:107
 msgid "Add brazillian portuguese translation"
-msgstr ""
+msgstr "Braziliaans-Portugese vertaling toevoegd"
 
 #: data/com.github.naaando.lyrics.appdata.xml:108
 msgid "Add french translation"
-msgstr ""
+msgstr "Franse vertaling toegevoegd"
 
 #: data/com.github.naaando.lyrics.appdata.xml:109
 msgid "Fixes for packaging to flatpak"
-msgstr ""
+msgstr "Problemen opgelost met Flatpak-pakketten"
 
 #: data/com.github.naaando.lyrics.appdata.xml:116
 msgid "Fix when playing setting"
-msgstr ""
+msgstr "Afspeelinstelling gerepareerd"
 
 #: data/com.github.naaando.lyrics.appdata.xml:117
 msgid "Fixes lyric parsing"
-msgstr ""
+msgstr "Songtekstverwerking gerapereerd"
 
 #: data/com.github.naaando.lyrics.appdata.xml:118
 msgid "Fix play and pause icons on player control button"
-msgstr ""
+msgstr "Bedieningsknoppen op speler gerepareerd"
 
 #: data/com.github.naaando.lyrics.appdata.xml:119
 msgid "Fix error where lyrics don't stop after closing the player"
-msgstr ""
+msgstr "Fout opgelost waarbij songteksten niet werden stopgezet na het sluiten van de speler"
 
 #: data/com.github.naaando.lyrics.appdata.xml:125
 msgid "A major rewrite of the application"
-msgstr ""
+msgstr "App volledig opnieuw in elkaar gezet"
 
 #: data/com.github.naaando.lyrics.appdata.xml:127
 msgid "Fix lyrics sorting problem"
-msgstr ""
+msgstr "Songtekstsorteerprobleem opgelost"
 
 #: data/com.github.naaando.lyrics.appdata.xml:128
 msgid "Fix crashes on compact timestamps format: [mm:ss]"
-msgstr ""
+msgstr "Crashes bij compacte tijdweergave opgelost: [mm:ss]"
 
 #: data/com.github.naaando.lyrics.appdata.xml:129
 msgid "Lyrics now scroll on the center of window"
-msgstr ""
+msgstr "Songteksten schuiven nu gecentreerd"
 
 #: data/com.github.naaando.lyrics.appdata.xml:135
 msgid "Initial release"
-msgstr ""
+msgstr "Initiële uitgave"
 
 #: data/com.github.naaando.lyrics.appdata.xml:168
 msgid "Fernando da Silva Sousa"
-msgstr ""
+msgstr "Fernando da Silva Sousa"
 
 #: src/View/Factory/ViewFactory.vala:3
 msgid "Couldn't find any player, check your player's MPRIS configuration"
-msgstr ""
+msgstr "Geen speler aangetroffen; controleer de MPRIS-configuratie van je speler"
 
 #: src/View/Factory/ViewFactory.vala:7
 msgid "Currently not playing"
-msgstr ""
+msgstr "Er wordt momenteel niks afgespeeld"
 
 #: src/View/Factory/ViewFactory.vala:11
 msgid "Couldn't find lyrics for song"
-msgstr ""
+msgstr "Geen songtekst gevonden bij nummer"
 
 #: src/View/Factory/ViewFactory.vala:19 src/View/Widgets/DownloadView.vala:33
 msgid "Downloading"
-msgstr ""
+msgstr "Bezig met downloaden..."
 
 #: src/View/HeaderBar.vala:134
 msgid "Light background"
-msgstr ""
+msgstr "Lichte achtergrond"
 
 #: src/View/HeaderBar.vala:135
 msgid "Dark background"
-msgstr ""
+msgstr "Donkere achtergrond"
 
 #: src/View/SearchLyricDialog.vala:38
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
 #: src/View/SearchLyricDialog.vala:39
 msgid "Search"
-msgstr ""
+msgstr "Zoeken"
 
 #: src/View/SearchLyricDialog.vala:76
 msgid "Title:"
-msgstr ""
+msgstr "Titel:"
 
 #: src/View/SearchLyricDialog.vala:78
 msgid "Artist:"
-msgstr ""
+msgstr "Artiest:"
 
 #: src/View/SearchLyricDialog.vala:80
 msgid "Album:"
-msgstr ""
+msgstr "Album:"
 
 #: src/View/SettingsPopover.vala:11
 msgid "Select custom font:"
-msgstr ""
+msgstr "Kies een aangepast lettertype:"
 
 #: src/View/SettingsPopover.vala:14
 msgid "Lyrics download folder:"
-msgstr ""
+msgstr "Downloadmap voor songteksten:"
 
 #: src/View/SettingsPopover.vala:15
 msgid "Select folder to download lyrics"
-msgstr ""
+msgstr "Kies de map waarin songteksten moeten worden opgeslagen"
 
 #: src/View/SettingsPopover.vala:19
 msgid "Couldn't add default lyrics folder to FileChooserButton"
-msgstr ""
+msgstr "Kan standaard songtekstmap niet toevoegen aan FileChooserButton"
 
 #: src/View/SettingsPopover.vala:22
 msgid "Keep window above:"
-msgstr ""
+msgstr "Venster bovenop:"
 
 #: src/View/SettingsPopover.vala:48
 msgid "Always"
-msgstr ""
+msgstr "Altijd"
 
 #: src/View/SettingsPopover.vala:49
 msgid "When playing"
-msgstr ""
+msgstr "Tijdens afspelen"
 
 #: src/View/SettingsPopover.vala:50
 msgid "Never keep above"
-msgstr ""
+msgstr "Nooit bovenop houden"
 
 #: src/View/SettingsPopover.vala:58
 msgid "Make translucid on focus loss"
-msgstr ""
+msgstr "Doorzichtig maken bij verliezen van focus"
 
 #: src/View/SettingsPopover.vala:65
 msgid "Restore default settings"
-msgstr ""
+msgstr "Standaardinstellingen herstellen"
 
 #: src/View/Widgets/DownloadView.vala:37
 msgid "by"
-msgstr ""
+msgstr "door"
 
 #: src/View/Widgets/DownloadView.vala:37
 msgid "Unknown artist"
-msgstr ""
+msgstr "Onbekende artiest"
 
 #: src/View/Widgets/DownloadView.vala:38
 msgid "Unknown title"
-msgstr ""
+msgstr "Onbekende titel"
+
