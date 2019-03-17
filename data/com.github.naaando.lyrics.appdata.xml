@@ -12,12 +12,6 @@
       file and display it scrolling syncronized.
     </p>
   </description>
-  <categories>
-​    <category>AudioVideo</category>
-​    <category>Audio</category>
-​    <category>Education</category>
-​    <category>Music</category>
-  ​</categories>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/naaando/lyrics/master/data/screenshot.png</image>
@@ -85,8 +79,8 @@
     </release>
     <release version="0.7.0" date="2019-02-08">
       <description>
+        <p>Adds ghost mode:</p>
         <ul>
-          <p>Adds ghost mode:</p>
           <li>Let clicks pass through the window when it is translucid</li>
           <li>Hide headerbar widgets when the app goes backdrop</li>
           <li>Makes headerbar clickable on ghost mode to drag and to grab focus</li>
