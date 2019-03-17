@@ -30,6 +30,16 @@
     <binary>com.github.naaando.lyrics</binary>
   </provides>
   ​<releases>
+    <release version="0.8.1" date="2019-03-16">
+      <p>Release flatpak</p>
+    </release>
+    <release version="0.8.0" date="2019-03-16">
+      <description>
+        <ul>
+          <li>Ported viewlwyrics source</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.7.6" date="2019-03-08">
       <description>
         <ul>
