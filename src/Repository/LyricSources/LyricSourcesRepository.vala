@@ -51,6 +51,7 @@ public class LyricSources.Repository : Lyrics.IRepository, Object {
         } catch (Error e) {
             loop.quit ();
             warning (e.message);
+            return null;
         }
 
         loop.run ();
