@@ -1,5 +1,5 @@
-data/com.github.naaando.lyrics.desktop
-data/com.github.naaando.lyrics.appdata.xml
+data/com.github.naaando.lyrics.desktop.in
+data/com.github.naaando.lyrics.appdata.xml.in
 src/Core/Factory/MetasongFactory.vala
 src/Core/Lyric.vala
 src/Core/LyricsService.vala
