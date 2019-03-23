@@ -51,7 +51,7 @@
     <release version="0.7.5" date="2019-03-06">
       <description>
         <ul>
-          <li>Fix bug where the lyrics start to overlap.</li>
+          <li>Fix bug where the lyrics start to overlap</li>
           <li>Remove legacy code for old lyric displayers</li>
           <li>Fix warnings related to custom font provider</li>
           <li>Fix warnings related to ClickThroughHelper</li>
