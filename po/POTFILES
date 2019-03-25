@@ -1,5 +1,5 @@
-data/com.github.naaando.lyrics.desktop
-data/com.github.naaando.lyrics.appdata.xml
+data/com.github.naaando.lyrics.desktop.in
+data/com.github.naaando.lyrics.appdata.xml.in
 src/Core/Factory/MetasongFactory.vala
 src/Core/Lyric.vala
 src/Core/LyricsService.vala
@@ -12,7 +12,6 @@ src/Repository/Local/LocalRepository.vala
 src/Repository/LyricSources/LyricSourcesDownloader.vala
 src/Repository/LyricSources/LyricSourcesRemoteFile.vala
 src/Repository/LyricSources/LyricSourcesRepository.vala
-src/Repository/ILyricFile.vala
 src/Repository/Repository.vala
 src/Mpris/MprisClient.vala
 src/Mpris/MprisPlayer.vala
@@ -33,7 +32,6 @@ src/View/SettingsPopover.vala
 src/View/Helper/ClickThroughHelper.vala
 src/View/Helper/SaveWindowStateMixin.vala
 src/View/Widgets/Displays/IDisplay.vala
-src/View/Widgets/Displays/SimpleDisplay.vala
 src/View/Widgets/Displays/ScrolledDisplay.vala
 src/View/Widgets/DownloadView.vala
 src/View/Widgets/FileChooserButton.vala
