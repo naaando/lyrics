@@ -1,7 +1,17 @@
-# Lyrics - Download and display lyrics for musics
-Display lyrics of your media player if it has support to MPRIS-2
+# Lyrics - Sing along with your songs
+Display lyrics on media players with MPRIS-2 interface
 
-**.deb packages [here](https://github.com/naaando/lyrics/releases)**
+<p align=center>
+    <a href='https://appcenter.elementary.io/com.github.naaando.lyrics/'>
+        <img alt='Get it on AppCenter' src='https://appcenter.elementary.io/badge.svg'/>
+    </a>
+    <a href='https://github.com/naaando/lyrics/releases'>
+        <img alt='Get the .deb' src='https://robertsanseries.github.io/ciano/img/badge.svg'/>
+    </a>
+    <a href='https://flathub.org/apps/details/com.github.naaando.lyrics'>
+        <img alt='Get flatpak' width=150 src='https://flathub.org/assets/badges/flathub-badge-en.png'/>
+    </a>
+</p>
 
 ![Screenshot](data/screenshot-dark.png)
 ![Screenshot](data/screenshot.png)
