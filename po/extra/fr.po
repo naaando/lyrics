@@ -20,7 +20,7 @@ msgstr ""
 #: data/com.github.naaando.lyrics.desktop.in:3
 #: data/com.github.naaando.lyrics.appdata.xml.in:6
 msgid "Lyrics"
-msgstr "Lyrics"
+msgstr "Paroles"
 
 #: data/com.github.naaando.lyrics.desktop.in:4
 msgid "Lyrics displayer"
