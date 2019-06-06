@@ -1,6 +1,7 @@
 # Lyrics - Sing along with your songs
 Display lyrics on media players with MPRIS-2 interface
 
+**notice:** temporarily unmaintained due to broken computer, however keep pushing issues anyway guys, I'll fix them ASAP
 <p align=center>
     <a href='https://appcenter.elementary.io/com.github.naaando.lyrics/'>
         <img alt='Get it on AppCenter' src='https://appcenter.elementary.io/badge.svg'/>
