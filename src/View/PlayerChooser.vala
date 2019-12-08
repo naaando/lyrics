@@ -15,6 +15,8 @@ public class Lyrics.PlayerChooser : Gtk.ComboBoxText {
 
     public void update_view () {
         this.remove_all ();
+        this.visible = players.get_players ().length >= 2;
+        if (!this.visible) return;
 
         foreach (var item in players.get_players ()) {
             this.append (item.busname, item.identity);
@@ -24,9 +26,14 @@ public class Lyrics.PlayerChooser : Gtk.ComboBoxText {
     }
 
     public void set_active_player () {
-        players.set_player_busname_active (this.active_id);
+        bool id_changed = players.active_player.busname != this.active_id;
+
+        if (this.active_id != null && id_changed) {
+            message ("Changing current player.");
+            players.set_player_busname_active (this.active_id);
+        }
     }
-}
+
     /**
      * Override show () method to avoid show_all () toggling
      * visibility when less than two players has been found
