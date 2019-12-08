@@ -4,6 +4,7 @@ public interface Lyrics.Player : Object {
     public abstract Metasong current_song { get;set; }
     public abstract State state { get; protected set; }
     public abstract string busname { get; protected set; }
+    public abstract string identity { get;protected set; }
 
     public abstract void toggle_play_pause ();
     public abstract void previous ();
