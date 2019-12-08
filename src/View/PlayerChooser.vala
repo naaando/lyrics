@@ -27,3 +27,16 @@ public class Lyrics.PlayerChooser : Gtk.ComboBoxText {
         players.set_player_busname_active (this.active_id);
     }
 }
+    /**
+     * Override show () method to avoid show_all () toggling
+     * visibility when less than two players has been found
+     */
+    public override void show () {
+        if (players.get_players ().length < 2) {
+            this.visible = false;
+            return;
+        }
+
+        base.show ();
+    }
+}
