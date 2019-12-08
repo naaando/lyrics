@@ -23,6 +23,17 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
 
         lyrics_service = lrs;
 
+        var player_chooser = new PlayerChooser (players);
+        custom_title = player_chooser;
+
+        build_start_pack ();
+        build_end_pack ();
+
+        Application.settings.changed["hide-headerbar-widgets-on-backdrop"].connect (configure_widgets_on_backdrop);
+        notify["parent-window-is-active"].connect (() => configure_widgets_on_backdrop ());
+    }
+
+    void build_start_pack () {
         var previous_btn = new Gtk.Button.from_icon_name ("media-skip-backward-symbolic");
         previous_btn.clicked.connect (on_previous_btn_clicked);
 
@@ -31,10 +42,6 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
 
         var next_btn = new Gtk.Button.from_icon_name ("media-skip-forward-symbolic");
         next_btn.clicked.connect (on_next_btn_clicked);
-
-        var settings = new Gtk.MenuButton ();
-        settings.image = new Gtk.Image.from_icon_name ("open-menu-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
-        settings.popover = new SettingsPopover ();
 
         previous_revealer = new Gtk.Revealer ();
         previous_revealer.add (previous_btn);
@@ -48,6 +55,16 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
         next_revealer.add (next_btn);
         next_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
 
+        pack_start (previous_revealer);
+        pack_start (play_n_pause_revealer);
+        pack_start (next_revealer);
+    }
+
+    void build_end_pack () {
+        var settings = new Gtk.MenuButton ();
+        settings.image = new Gtk.Image.from_icon_name ("open-menu-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
+        settings.popover = new SettingsPopover ();
+
         settings_revealer = new Gtk.Revealer ();
         settings_revealer.add (settings);
         settings_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
@@ -60,17 +77,9 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
         create_lyrics_search_revealer.add (create_lyrics_search ());
         create_lyrics_search_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
 
-
-        pack_start (previous_revealer);
-        pack_start (play_n_pause_revealer);
-        pack_start (next_revealer);
-
         pack_end (settings_revealer);
         pack_end (create_mode_switch_revealer);
         pack_end (create_lyrics_search_revealer);
-
-        Application.settings.changed["hide-headerbar-widgets-on-backdrop"].connect (configure_widgets_on_backdrop);
-        notify["parent-window-is-active"].connect (() => configure_widgets_on_backdrop ());
     }
 
     void configure_widgets_on_backdrop () {
