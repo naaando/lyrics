@@ -59,6 +59,17 @@ public class Lyrics.Players : Object {
             remove (player_to_remove);
         }
     }
-        }
+
+    public Player[] get_players () {
+        return players.to_array();
+    }
+
+    public bool set_player_busname_active (string busname) {
+        var new_active = players.first_match ((player) => player.busname == busname);
+
+        if (new_active == null) return false;
+
+        this.active_player = new_active;
+        return true;
     }
 }
