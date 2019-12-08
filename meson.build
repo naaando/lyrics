@@ -13,7 +13,7 @@ asresources = gnome.compile_resources(
 )
 
 executable(
-    meson.project_name (),
+    meson.project_name(),
     asresources,
     'src/Application.vala',
     'src/Core/Factory/MetasongFactory.vala',
