@@ -7,6 +7,26 @@
     background-image: linear-gradient(to left, #abacae, #d4d4d4);
 }
 
+.lyrics .titlebar .combo,
+.lyrics .titlebar .combo * {
+    border: 0px;
+    box-shadow: 0 0 transparent;
+    background: none;
+}
+
+.lyrics .titlebar .combo {
+    padding: 0px 6px;
+    border: 0px;
+}
+
+.lyrics .titlebar .combo:hover {
+    background-color: #ffffff;
+}
+
+.lyrics .titlebar .combo:hover * {
+    color: #62005A;
+}
+
 .lyrics.dark,
 .lyrics.dark .titlebar {
     background-image: linear-gradient(to right, #7239b3, #452981);
