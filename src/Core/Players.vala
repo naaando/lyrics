@@ -54,10 +54,11 @@ public class Lyrics.Players : Object {
     }
 
     public void remove_by_busname (string name) {
-        foreach (var player in players) {
-            if (player.busname == name) {
-                remove (player);
-            }
+        var player_to_remove = players.first_match ((player) => player.busname == name);
+        if (player_to_remove != null) {
+            remove (player_to_remove);
+        }
+    }
         }
     }
 }
