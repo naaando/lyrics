@@ -45,8 +45,8 @@ public class Lyrics.MainStack : Gtk.Stack {
     public void on_lyric_service_change () {
         var state = display_view.lyrics_service.state;
 
-        if (state == Lyrics.LyricsService.DOWNLOADING) { visible_child_name = "DOWNLOADING"; }
-        if (state == Lyrics.LyricsService.LYRICS_NOT_FOUND) { visible_child_name = "NO_LYRICS"; }
-        if (state == Lyrics.LyricsService.DOWNLOADED) { visible_child_name = "DISPLAYING"; }
+        if (state == Lyrics.LyricsService.State.DOWNLOADING) { visible_child_name = "DOWNLOADING"; }
+        if (state == Lyrics.LyricsService.State.LYRICS_NOT_FOUND) { visible_child_name = "NO_LYRICS"; }
+        if (state == Lyrics.LyricsService.State.DOWNLOADED) { visible_child_name = "DISPLAYING"; }
     }
 }
