@@ -1,46 +1,47 @@
 # Portuguese translations for lyrics package.
 # Copyright (C) 2019 THE lyrics'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the lyrics package.
-# Automatically generated, 2019.
+# André Barata <andretiagob@protonmail.com>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: lyrics\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-29 20:11+0100\n"
-"PO-Revision-Date: 2019-01-26 21:12-0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2020-08-29 13:27+0100\n"
+"Last-Translator: André Barata <andretiagob@protonmail.com>\n"
 "Language-Team: none\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: data/com.github.naaando.lyrics.desktop.in:3
 #: data/com.github.naaando.lyrics.appdata.xml.in:6
 msgid "Lyrics"
-msgstr ""
+msgstr "Lyrics"
 
 #: data/com.github.naaando.lyrics.desktop.in:4
 msgid "Lyrics displayer"
-msgstr ""
+msgstr "Exibe letras de música"
 
 #: data/com.github.naaando.lyrics.desktop.in:5
 msgid "The styleful way to sing your songs"
-msgstr ""
+msgstr "A maneira com estilo para cantar as suas músicas"
 
 #: data/com.github.naaando.lyrics.desktop.in:8
 msgid "com.github.naaando.lyrics"
-msgstr ""
+msgstr "com.github.naaando.lyrics"
 
 #: data/com.github.naaando.lyrics.desktop.in:12
 msgid "lyrics;music;"
-msgstr ""
+msgstr "lyrics;letras;music;música;"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:7
 msgid "The beautiful way to sing your songs"
-msgstr ""
+msgstr "A maneira bonita para cantar as suas músicas"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:9
 msgid ""
@@ -48,159 +49,177 @@ msgid ""
 "to, it query the song through MPRIS protocol, search, downloads the lyric "
 "file and display it scrolling syncronized."
 msgstr ""
+"O Lyrics é uma aplicação que exibe letras de músicas para as canções que "
+"estiver a ouvir. Ele consulta a música através do protocolo MPRIS, procura, "
+"transfere e exibe o ficheiro de letra de forma sincronizada deslizando para "
+"baixo."
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:39
 msgid "Ported viewlwyrics source"
-msgstr ""
+msgstr "Fonte viewlwyrics transferida"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:46
 msgid "Fixes file saving when the directory to save don't exists"
-msgstr ""
+msgstr "Correção ao gravar quando a diretoria para gravar não existe"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:47
 msgid "Fix bug where selecting a lyric from the search dialog don't display it"
 msgstr ""
+"Correção de um problema em que a letra não era exibida ao seleciona-la no "
+"dialogo de procura"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:54
 msgid "Fix bug where the lyrics start to overlap"
-msgstr ""
+msgstr "Correção de um problema em que as letras começavam a sobrepor-se"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:55
 msgid "Remove legacy code for old lyric displayers"
-msgstr ""
+msgstr "Código antigo removido para exibidores antigos de letras"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:56
 msgid "Fix warnings related to custom font provider"
 msgstr ""
+"Correção de avisos relacionados com o fornecedor de fontes personalizáveis"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:57
 msgid "Fix warnings related to ClickThroughHelper"
-msgstr ""
+msgstr "Correção de avisos relacionados com o ClicarAtravésAjudante"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:64
 msgid ""
 "(Contribuition by Torikul Habib) Fix a bug where the window increases the "
 "minimum width on backdrop."
 msgstr ""
+"(Contribuição por Torikul Habib) Corrigido um problema em que a janela "
+"aumentava a largura mínima do pano de fundo."
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:65
 msgid "Update translation files"
-msgstr ""
+msgstr "Atualização de ficheiros de tradução"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:72
 msgid ""
 "Fix error where a searched lyric is not displayed if lyrics wasn't "
 "displaying already"
 msgstr ""
+"Corrigido um erro em que a letra de música encontrada não era exibida se a "
+"mesma não estivesse já a ser exibida"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:79
 msgid "Fix repositories returning null collections"
-msgstr ""
+msgstr "Correção de repositórios a retornar coleções nulas"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:86
 msgid "Fix settings popover menu closing on click"
-msgstr ""
+msgstr "Correção do menu flutuante de definições ao fechar com um clique"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:92
 msgid "Adds ghost mode:"
-msgstr ""
+msgstr "Modo fantasma adicionado:"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:94
 msgid "Let clicks pass through the window when it is translucid"
 msgstr ""
+"Deixar passar cliques através da janela quando esta estiver translucida"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:95
 msgid "Hide headerbar widgets when the app goes backdrop"
 msgstr ""
+"Esconder a barra de topo dos widgets quando a aplicação passar a pano de "
+"fundo"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:96
 msgid "Makes headerbar clickable on ghost mode to drag and to grab focus"
 msgstr ""
+"Faz com que a barra de topo seja clicável no modo fantasma para arrastar e "
+"agarrar o foco"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:103
 msgid "Add lyric search"
-msgstr ""
+msgstr "Procura de letras de música adicionada"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:104
 msgid "Remove Cairo dependency"
-msgstr ""
+msgstr "Dependência Cairo removida"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:105
 msgid "Remove Granite dependency"
-msgstr ""
+msgstr "Dependência Granite removida"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:112
 msgid "Reduce spacing spent on margins and borders"
-msgstr ""
+msgstr "Espaço das margens e bordas reduzidas"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:113
 msgid "Saves window's width and height properties now"
-msgstr ""
+msgstr "Grava agora as propriedades da largura e altura da janela"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:114
 msgid "Under the hood code improvements"
-msgstr ""
+msgstr "Melhorias do código"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:121
 msgid "Reset font on restore settings"
-msgstr ""
+msgstr "Restaura fontes ao restaurar as definições"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:128
 msgid "Make possible to choose custom fonts"
-msgstr ""
+msgstr "Faz com que seja possível escolher fontes personalizáveis"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:129
 msgid "Make the app translatable"
-msgstr ""
+msgstr "Faz com que a aplicação seja traduzível"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:130
 msgid "Add brazillian portuguese translation"
-msgstr ""
+msgstr "Tradução Português do Brasil adicionada"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:131
 msgid "Add french translation"
-msgstr ""
+msgstr "Tradução Francesa adicionada"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:132
 msgid "Fixes for packaging to flatpak"
-msgstr ""
+msgstr "Correções do pacote flatpack"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:139
 msgid "Fix when playing setting"
-msgstr ""
+msgstr "Correção da definição ao tocar"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:140
 msgid "Fixes lyric parsing"
-msgstr ""
+msgstr "Correção da análise de letras de músicas"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:141
 msgid "Fix play and pause icons on player control button"
-msgstr ""
+msgstr "Correção dos ícones tocar e pausar no botão de controlo do leitor"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:142
 msgid "Fix error where lyrics don't stop after closing the player"
 msgstr ""
+"Correção de um erro em que as letras de músicas não paravam depois de fechar "
+"o leitor"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:148
 msgid "A major rewrite of the application"
-msgstr ""
+msgstr "Uma grande reescrita da aplicação"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:150
 msgid "Fix lyrics sorting problem"
-msgstr ""
+msgstr "Correção de um problema na organização das letras de música"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:151
 msgid "Fix crashes on compact timestamps format: [mm:ss]"
-msgstr ""
+msgstr "Correção de falhas em formatos compactos de marca temporal: [mm:ss]"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:152
 msgid "Lyrics now scroll on the center of window"
-msgstr ""
+msgstr "As letras de música agora descem para baixo no centro da janela"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:158
 msgid "Initial release"
-msgstr ""
+msgstr "Lançamento inicial"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:191
 msgid "Fernando da Silva Sousa"
-msgstr ""
+msgstr "Fernando da Silva Sousa"
