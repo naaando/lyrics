@@ -60,7 +60,7 @@ msgstr "Fonte viewlwyrics transferida"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:46
 msgid "Fixes file saving when the directory to save don't exists"
-msgstr "Correção ao gravar quando a diretoria para gravar não existe"
+msgstr "Correção ao guardar quando a diretoria para guardar não existe"
 
 #: data/com.github.naaando.lyrics.appdata.xml.in:47
 msgid "Fix bug where selecting a lyric from the search dialog don't display it"
