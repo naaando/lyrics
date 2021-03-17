@@ -47,7 +47,11 @@ public class Lyrics.LocalRepository : IRepository, Object {
     }
 
     string get_filename_for_song (Metasong song) {
-        // string[0:-4] will slice the last 3 characters
-        return song.filename[0:-4]+".lrc";
+        var song_filename = song.filename;
+        var position_of_last_dot = song_filename.last_index_of (".");
+        if(position_of_last_dot != 0 && position_of_last_dot != -1) {
+            return song_filename.substring (0, position_of_last_dot) + ".lrc";
+        }
+        return song_filename + ".lrc";
     }
 }
