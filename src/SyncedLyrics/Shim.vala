@@ -31,11 +31,11 @@ public class SyncedLyrics.Shim : Object {
         int status = 0;
 
         var app_local_storage = Lyrics.Application.DEFAULT_LYRICS_DIR;
-        var path = app_local_storage + artist + " - " + title + ".lrc";
+        var path = app_local_storage + title + " - " + artist + ".lrc";
 
         Process.spawn_command_line_sync (
             //  @"Finished saving file to $(file.get_path ())"
-            @"$(Lyrics.Application.DEFAULT_LYRICS_DIR).venv/bin/syncedlyrics -o \"$(path)\" --allow-plain \"$(artist) $(title)\"",
+            @"$(Lyrics.Application.DEFAULT_LYRICS_DIR).venv/bin/syncedlyrics -o \"$(path)\" \"$(title) - $(artist)\"",
             out stdout,
             out stderr,
             out status
