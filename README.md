@@ -27,10 +27,6 @@ If you're using Chromium based browsers you can use lyrics on Youtube with this 
 #### Known issue
 Lyrics isn't able to syncronize with Spotify App (at least for free accounts) due to null MPRIS position, so the Lyrics will always start from beginnig wherever the track position is.
 
-## Downloading lyrics
-
-To enable the app to download lyrics you should install also [lyricsources](https://github.com/naaando/lyricsources), a python library adapted from [OSDLyrics](https://github.com/osdlyrics/osdlyrics)
-
 ## Building and Installation
 You'll need the following dependencies:
 
