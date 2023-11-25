@@ -10,6 +10,10 @@ public class Lyrics.Application : Gtk.Application {
         if (settings.get_string ("download-location") == "") {
             settings.set_string ("download-location", DEFAULT_LYRICS_DIR);
         }
+
+        if (!validate_or_create_local_storage ()) {
+            warning (@"Unable to save to $DEFAULT_LYRICS_DIR, verify your directory or choose another");
+        }
     }
 
     protected override void activate () {
@@ -17,6 +21,9 @@ public class Lyrics.Application : Gtk.Application {
             get_windows ().data.present ();
             return;
         }
+
+        var syncedLyrics = new SyncedLyrics.Shim();
+        syncedLyrics.install();
 
         lyrics_service = new LyricsService ();
         var players = new Players ();
@@ -57,5 +64,12 @@ public class Lyrics.Application : Gtk.Application {
     private static int main (string[] args) {
         var app = new Application ();
         return app.run (args);
+    }
+
+    private bool validate_or_create_local_storage () {
+        var local_storage_directory = File.new_for_path (DEFAULT_LYRICS_DIR);
+
+        //  Check if it exist and tries to create directory if not
+        return local_storage_directory.query_exists () || local_storage_directory.make_directory_with_parents ();
     }
 }

@@ -3,12 +3,11 @@ public class Lyrics.Repository : IRepository, Object {
     string[] viewlyrics_dbus = { "org.lyricsources.LyricSourcePlugin.viewlyrics",
                                  "/org/lyricsources/LyricSourcePlugin/viewlyrics"};
 
-    Gee.HashMap<string, Lyrics.IRepository> remote_repositories = new Gee.HashMap<string, LyricSources.Repository> ();
+    Gee.HashMap<string, Lyrics.IRepository> remote_repositories = new Gee.HashMap<string, Lyrics.IRepository> ();
     LocalRepository local_repository = new LocalRepository ();
 
     public Repository () {
-        remote_repositories["lyricsources_viewlyrics"] = new LyricSources.Repository (viewlyrics_dbus[0], viewlyrics_dbus[1]);
-        remote_repositories["viewlyrics"] = new Remote.ViewlyricsRepository ();
+        remote_repositories["first"] = new Lyrics.SyncedLyricsRepository ();
 
         Application.settings.changed["download-location"].connect (configure_download_local);
         configure_download_local ();
@@ -20,7 +19,7 @@ public class Lyrics.Repository : IRepository, Object {
             return local_file;
         }
 
-        var remote_file = remote_repositories["lyricsources_viewlyrics"].find_first (song_metadata) ?? remote_repositories["viewlyrics"].find_first (song_metadata);
+        var remote_file = remote_repositories["first"].find_first (song_metadata);
 
         if (remote_file != null) {
             save (song_metadata, remote_file);
@@ -39,7 +38,7 @@ public class Lyrics.Repository : IRepository, Object {
         var local_result = local_repository.find_first (song);
         if (local_result != null) collection.add (local_result);
 
-        var viewlyrics_results = remote_repositories["lyricsources_viewlyrics"].find (song) ?? remote_repositories["viewlyrics"].find (song);;
+        var viewlyrics_results = remote_repositories["first"].find (song);
         if (viewlyrics_results != null) collection.add_all (viewlyrics_results);
 
         return collection.size != 0 ? collection : null;
