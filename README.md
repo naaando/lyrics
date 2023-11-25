@@ -1,5 +1,3 @@
-I miss this app too but unfortunately by legal reason I don't host the lyrics and looks like they were taken down, I'm browsing some possibilities with P2P or AI but nothing was defined yet, sorry.
-
 # Lyrics - Sing along with your songs
 Display lyrics on media players with MPRIS-2 interface
 
