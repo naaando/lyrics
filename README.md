@@ -32,6 +32,7 @@ Lyrics isn't able to syncronize with Spotify App (at least for free accounts) du
 To enable the app to download lyrics you should install also [lyricsources](https://github.com/naaando/lyricsources), a python library adapted from [OSDLyrics](https://github.com/osdlyrics/osdlyrics)
 
 ## Building and Installation
+
 You'll need the following dependencies:
 
     libglib2.0-dev
@@ -42,10 +43,18 @@ You'll need the following dependencies:
     xmlbird
     meson
     valac
+    gettext
+
+
+Ubuntu 23.10
+
+```shell
+sudo apt install libglib2.0-dev libgranite-dev libgtk-3-dev libcairo2-dev meson valac libsoup2.4-dev libsoup-gnome2.4-dev libxmlbird-dev gettext
+```
 
 Run `meson` to configure the build environment and then `ninja` to build
 
-    meson build --prefix=/usr
+    meson build --prefix=/usr/local
     ninja -C build
 
 To install, use `ninja install`
