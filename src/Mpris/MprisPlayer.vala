@@ -43,6 +43,12 @@ public class Mpris.Player : Object, Lyrics.Player {
             update_metadata ();
             update_state ();
         });
+
+        player.seeked.connect (() => {
+            debug (@"$(player.identity) seeked\n");
+            update_metadata ();
+            update_state ();
+        });
     }
 
     ~Player () {
