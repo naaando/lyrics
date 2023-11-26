@@ -24,7 +24,7 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         add (box);
     }
 
-    public void on_player_change (Player player) {
+    public void set_player (Player player) {
         stop ();
         debug (@"Player changed");
         if (player.state.to_string () == "PLAYING") {

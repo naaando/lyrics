@@ -1,6 +1,6 @@
 
 public class Lyrics.LocalRepository : IRepository, Object {
-    public string local_storage { get; set; default = Environment.get_home_dir () + "/.lyrics/"; }
+    public string local_storage { get; set; default = Lyrics.Application.DEFAULT_LYRICS_DIR; }
 
     public bool save (Metasong song, ILyricFile lyric_file) {
         if (!validate_or_create_local_storage ()) {

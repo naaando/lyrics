@@ -43,6 +43,12 @@ public class Mpris.Player : Object, Lyrics.Player {
             update_metadata ();
             update_state ();
         });
+
+        player.seeked.connect (() => {
+            debug (@"$(player.identity) seeked\n");
+            update_metadata ();
+            update_state ();
+        });
     }
 
     ~Player () {
@@ -50,15 +56,19 @@ public class Mpris.Player : Object, Lyrics.Player {
     }
 
     void update_metadata () {
-        if (metadata != null) {
-            if (current_song != null) {
-                if (metadata["xesam:url"] != null && !current_song.compare_uri (metadata["xesam:url"].get_string ())) {
-                    current_song = new Lyrics.Metasong.from_metadata (metadata);
-                }
-            } else if (metadata["xesam:url"] != null) {
-                current_song = new Lyrics.Metasong.from_metadata (metadata);
-            }
+        if (metadata == null) {
+            current_song = null;
+            return;
         }
+
+        var new_song = new Lyrics.Metasong.from_metadata (metadata);
+
+        if (current_song?.to_string () == new_song?.to_string ()) {
+            return;
+        }
+
+        current_song = new_song;
+        debug(current_song?.to_string ());
     }
 
     void update_state () {

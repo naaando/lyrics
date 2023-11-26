@@ -70,5 +70,6 @@ public interface PlayerIface : Iface {
     public abstract bool can_play { get; }
     public abstract bool can_pause { get; }
     public abstract int64 position { get; }
+    public signal void seeked (int64 position);
 }
 }

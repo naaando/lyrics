@@ -26,6 +26,7 @@ If you're using Chromium based browsers you can use lyrics on Youtube with this 
 Lyrics isn't able to syncronize with Spotify App (at least for free accounts) due to null MPRIS position, so the Lyrics will always start from beginnig wherever the track position is.
 
 ## Building and Installation
+
 You'll need the following dependencies:
 
     libglib2.0-dev
@@ -36,10 +37,18 @@ You'll need the following dependencies:
     xmlbird
     meson
     valac
+    gettext
+
+
+Ubuntu 23.10
+
+```shell
+sudo apt install libglib2.0-dev libgranite-dev libgtk-3-dev libcairo2-dev meson valac libsoup2.4-dev libsoup-gnome2.4-dev libxmlbird-dev gettext
+```
 
 Run `meson` to configure the build environment and then `ninja` to build
 
-    meson build --prefix=/usr
+    meson build --prefix=/usr/local
     ninja -C build
 
 To install, use `ninja install`
