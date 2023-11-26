@@ -30,7 +30,7 @@ public class Lyrics.MainStack : Gtk.Stack {
         display_view.lyrics_service.notify["state"].connect (on_lyric_service_change);
     }
 
-    public void on_player_change (Player? player) {
+    public void set_player (Player? player) {
         debug (@"Player has changed, player : $(player.busname), state: $(player.state)");
 
         if (player == null) {
