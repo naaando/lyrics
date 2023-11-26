@@ -62,13 +62,13 @@ public class Mpris.Player : Object, Lyrics.Player {
         }
 
         var new_song = new Lyrics.Metasong.from_metadata (metadata);
-        print(new_song?.to_string ());
 
         if (current_song?.to_string () == new_song?.to_string ()) {
             return;
         }
 
-        current_song = new Lyrics.Metasong.from_metadata (metadata);
+        current_song = new_song;
+        debug(current_song?.to_string ());
     }
 
     void update_state () {
