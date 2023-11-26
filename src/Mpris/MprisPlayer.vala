@@ -50,15 +50,19 @@ public class Mpris.Player : Object, Lyrics.Player {
     }
 
     void update_metadata () {
-        if (metadata != null) {
-            if (current_song != null) {
-                if (metadata["xesam:url"] != null && !current_song.compare_uri (metadata["xesam:url"].get_string ())) {
-                    current_song = new Lyrics.Metasong.from_metadata (metadata);
-                }
-            } else if (metadata["xesam:url"] != null) {
-                current_song = new Lyrics.Metasong.from_metadata (metadata);
-            }
+        if (metadata == null) {
+            current_song = null;
+            return;
         }
+
+        var new_song = new Lyrics.Metasong.from_metadata (metadata);
+        print(new_song?.to_string ());
+
+        if (current_song?.to_string () == new_song?.to_string ()) {
+            return;
+        }
+
+        current_song = new Lyrics.Metasong.from_metadata (metadata);
     }
 
     void update_state () {
