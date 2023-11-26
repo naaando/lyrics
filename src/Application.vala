@@ -4,6 +4,10 @@ public class Lyrics.Application : Gtk.Application {
     public static GLib.Settings settings = new Settings ("com.github.naaando.lyrics");
     public LyricsService lyrics_service { get; set; }
 
+    private Players players;
+    private IDisplay display_view;
+    private MainStack main_stack;
+
     public Application () {
         Object (application_id: "com.github.naaando.lyrics",
         flags: ApplicationFlags.FLAGS_NONE);
@@ -14,6 +18,8 @@ public class Lyrics.Application : Gtk.Application {
         if (!validate_or_create_local_storage ()) {
             warning (@"Unable to save to $DEFAULT_LYRICS_DIR, verify your directory or choose another");
         }
+
+        setup_services ();
     }
 
     protected override void activate () {
@@ -22,24 +28,10 @@ public class Lyrics.Application : Gtk.Application {
             return;
         }
 
-        var syncedLyrics = new SyncedLyrics.Shim();
-        syncedLyrics.install();
-
-        lyrics_service = new LyricsService ();
-        var players = new Players ();
-        var scanner = new Mpris.Service ();
-        var display_view = ViewFactory.create_display_view (lyrics_service);
-        var main_stack = new MainStack (display_view);
-
-        scanner.found.connect ((player) => players.add (player));
-        scanner.lost.connect (players.remove_by_busname);
-        scanner.setup_dbus ();
-
-        players.notify["active-player"].connect (() => main_stack.on_player_change (players.active_player));
-        players.on_active_player_changed.connect (() => main_stack.on_player_change (players.active_player));
-
-        players.notify["active-player"].connect (() => display_view.on_player_change (players.active_player));
-        players.on_active_player_changed.connect (() => display_view.on_player_change (players.active_player));
+        display_view = ViewFactory.create_display_view (lyrics_service);
+        main_stack = new MainStack (display_view);
+        players.on_active_player_changed.connect (() => main_stack.set_player (players.active_player));
+        players.on_active_player_changed.connect (() => display_view.set_player (players.active_player));
 
         var main_window = new MainWindow (this, players, main_stack);
         var header_bar = new Lyrics.HeaderBar (players, lyrics_service);
@@ -64,6 +56,14 @@ public class Lyrics.Application : Gtk.Application {
     private static int main (string[] args) {
         var app = new Application ();
         return app.run (args);
+    }
+
+    private void setup_services () {
+        var syncedLyrics = new SyncedLyrics.Shim();
+        syncedLyrics.install();
+
+        lyrics_service = new LyricsService ();
+        players = new Players ();
     }
 
     private bool validate_or_create_local_storage () {

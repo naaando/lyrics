@@ -1,5 +1,7 @@
 
 public class Lyrics.Players : Object {
+    private Mpris.Service scanner;
+
     public signal void added (Player player);
     public signal void removed (Player player);
     public signal void on_active_player_changed (Player player);
@@ -33,6 +35,16 @@ public class Lyrics.Players : Object {
                 active_player = !players.is_empty ? players.first () : null;
             }
         });
+
+        scanner = new Mpris.Service ();
+
+        scanner.found.connect ((player) => add (player));
+        scanner.lost.connect (remove_by_busname);
+        scanner.setup_dbus ();
+
+        notify["active-player"].connect (() => on_active_player_changed (active_player));
+        notify["active-player"].connect (() => on_active_player_changed (active_player));
+
     }
 
     public bool add (Player player) {
