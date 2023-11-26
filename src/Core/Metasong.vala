@@ -28,7 +28,7 @@ public class Lyrics.Metasong : Object {
             uri = metadata["xesam:url"].get_string ();
         }
 
-        filename = @"$(title) - $(artist).lrc";
+        filename = @"$(artist ?? "") - $(album ?? "") - $(title ?? "").lrc";
 
         if (metadata.contains("mpris:artUrl")) {
             thumb = File.parse_name (metadata["mpris:artUrl"].get_string ()).get_path ();

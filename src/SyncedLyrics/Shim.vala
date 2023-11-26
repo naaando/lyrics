@@ -25,13 +25,13 @@ public class SyncedLyrics.Shim : Object {
         print (stderr);
     }
 
-    public File? search(string search_terms) {
+    public File? search(string search_terms, string filename) {
         string stdout = "";
         string stderr = "";
         int status = 0;
 
         var app_local_storage = Lyrics.Application.DEFAULT_LYRICS_DIR;
-        var path = app_local_storage + search_terms + ".lrc";
+        var path = app_local_storage + filename;
 
         Process.spawn_command_line_sync (
             @"$(Lyrics.Application.DEFAULT_LYRICS_DIR).venv/bin/syncedlyrics -o \"$(path)\" \"$(search_terms)\"",

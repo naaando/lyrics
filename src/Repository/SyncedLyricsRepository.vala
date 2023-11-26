@@ -16,7 +16,7 @@ public class Lyrics.SyncedLyricsRepository : Lyrics.IRepository, Object {
         .append(song.album);
         debug (@"Searching for $(search_terms.str)");
 
-        var file = shim.search (search_terms.str );
+        var file = shim.search (search_terms.str, song.filename);
         return file != null ? new Lyrics.LocalFile(file) : null;
     }
 
