@@ -15,8 +15,12 @@ public class Parser.LRC : Object {
         try {
             DataInputStream dis = new DataInputStream (file.read ());
             string ln;
-            while ((ln = dis.read_line ()) != null) {
-                parse_chain.parse (lyric, ln.strip ());
+            size_t length;
+
+            while ((ln = dis.read_upto ("[", -1, out length)) != null) {
+                debug ("Parsing line: " + ln);
+                parse_chain.parse (lyric, "[" + ln.strip ());
+                dis.read_byte ();
             }
         } catch (Error e) {
             warning (e.message);
