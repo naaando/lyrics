@@ -37,13 +37,13 @@ public class Lyrics.Metasong : Object {
 
     public string to_string () {
         var builder = new StringBuilder ();
-        builder.append (@"Artist: $artist\n");
-        builder.append (@"Title: $title\n");
-        builder.append (@"Album: $album\n");
+        if (artist != null) builder.append (@"Artist: $artist\n");
+        if (title != null) builder.append (@"Title: $title\n");
+        if (album != null) builder.append (@"Album: $album\n");
         builder.append (@"Duration: $duration\n");
-        builder.append (@"URI: $uri\n");
+        if (uri != null) builder.append (@"URI: $uri\n");
         if (path != null) builder.append (@"Path: $path\n");
-        builder.append (@"Filename: $filename\n");
+        if (filename != null) builder.append (@"Filename: $filename\n");
         return builder.str;
     }
 }
