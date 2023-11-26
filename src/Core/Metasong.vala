@@ -27,17 +27,12 @@ public class Lyrics.Metasong : Object {
         if (metadata["xesam:url"] != null) {
             uri = metadata["xesam:url"].get_string ();
         }
-        var file = File.parse_name (uri);
-        path = file.get_path ();
-        filename = file.get_basename ();
+
+        filename = @"$(title) - $(artist).lrc";
 
         if (metadata.contains("mpris:artUrl")) {
             thumb = File.parse_name (metadata["mpris:artUrl"].get_string ()).get_path ();
         }
-    }
-
-    public bool compare_uri (string uri2) {
-        return uri == uri2;
     }
 
     public string to_string () {
