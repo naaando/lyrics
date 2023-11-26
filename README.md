@@ -1,6 +1,8 @@
 # Lyrics - Sing along with your songs
 Display lyrics on media players with MPRIS-2 interface
 
+Heavily inspired by [Minilyrics](https://www.crintsoft.com/minilyrics/)
+
 <p align=center>
     <a href='https://appcenter.elementary.io/com.github.naaando.lyrics/'>
         <img alt='Get it on AppCenter' src='https://appcenter.elementary.io/badge.svg'/>
