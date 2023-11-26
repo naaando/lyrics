@@ -6,8 +6,17 @@ public class Lyrics.SyncedLyricsRepository : Lyrics.IRepository, Object {
 
     public ILyricFile? find_first (Metasong song) {
         var shim = new SyncedLyrics.Shim ();
-        print (@"Looking up for $(song.artist) - $(song.title)");
-        var file = shim.search (song.artist, song.title);
+
+        var search_terms = new StringBuilder ();
+        search_terms
+        .append(song.title)
+        .append(" ")
+        .append(song.artist)
+        .append(" ")
+        .append(song.album);
+        debug (@"Searching for $(search_terms.str)");
+
+        var file = shim.search (search_terms.str );
         return file != null ? new Lyrics.LocalFile(file) : null;
     }
 

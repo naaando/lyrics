@@ -25,17 +25,16 @@ public class SyncedLyrics.Shim : Object {
         print (stderr);
     }
 
-    public File? search(string artist, string title) {
+    public File? search(string search_terms) {
         string stdout = "";
         string stderr = "";
         int status = 0;
 
         var app_local_storage = Lyrics.Application.DEFAULT_LYRICS_DIR;
-        var path = app_local_storage + title + " - " + artist + ".lrc";
+        var path = app_local_storage + search_terms + ".lrc";
 
         Process.spawn_command_line_sync (
-            //  @"Finished saving file to $(file.get_path ())"
-            @"$(Lyrics.Application.DEFAULT_LYRICS_DIR).venv/bin/syncedlyrics -o \"$(path)\" \"$(title) - $(artist)\"",
+            @"$(Lyrics.Application.DEFAULT_LYRICS_DIR).venv/bin/syncedlyrics -o \"$(path)\" \"$(search_terms)\"",
             out stdout,
             out stderr,
             out status
