@@ -19,7 +19,7 @@ public class Lyrics.PlayerChooser : Gtk.ComboBoxText {
         if (!this.visible) return;
 
         foreach (var item in players.get_players ()) {
-            this.append (item.busname, item.identity);
+            this.append (item.busname, item.identity ?? item.busname);
         }
 
         this.set_active_id (players.active_player.busname);
