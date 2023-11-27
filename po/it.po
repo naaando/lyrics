@@ -2,15 +2,16 @@
 # Copyright (C) 2019 THE lyrics'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the lyrics package.
 # Automatically generated, 2019.
+# Albano Battistella <albano_battistella@hotmail.com>,2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: lyrics\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-29 20:09+0100\n"
-"PO-Revision-Date: 2019-01-26 21:12-0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-02-16 19:12-0100\n"
+"Last-Translator: Albano Battistella\n"
+"Language-Team: Italian\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,100 +20,100 @@ msgstr ""
 
 #: src/View/Factory/ViewFactory.vala:3
 msgid "Couldn't find any player, check your player's MPRIS configuration"
-msgstr ""
+msgstr "Impossibile trovare un lettore, controlla la configurazione MPRIS del lettore"
 
 #: src/View/Factory/ViewFactory.vala:7
 msgid "Currently not playing"
-msgstr ""
+msgstr "Attualmente non in riproduzione"
 
 #: src/View/Factory/ViewFactory.vala:11
 msgid "Couldn't find lyrics for song"
-msgstr ""
+msgstr "Impossibile trovare il testo della canzone"
 
 #: src/View/Factory/ViewFactory.vala:19 src/View/Widgets/DownloadView.vala:33
 msgid "Downloading"
-msgstr ""
+msgstr "Scaricamento"
 
 #: src/View/HeaderBar.vala:134
 msgid "Light background"
-msgstr ""
+msgstr "Sfondo chiaro"
 
 #: src/View/HeaderBar.vala:135
 msgid "Dark background"
-msgstr ""
+msgstr "Sfondo scuro"
 
 #: src/View/MainWindow.vala:14
 msgid "Lyrics"
-msgstr ""
+msgstr "Lyrics"
 
 #: src/View/SearchLyricDialog.vala:38
 msgid "Close"
-msgstr ""
+msgstr "Chiudi"
 
 #: src/View/SearchLyricDialog.vala:39
 msgid "Search"
-msgstr ""
+msgstr "Cerca"
 
 #: src/View/SearchLyricDialog.vala:76
 msgid "Title:"
-msgstr ""
+msgstr "Titolo:"
 
 #: src/View/SearchLyricDialog.vala:78
 msgid "Artist:"
-msgstr ""
+msgstr "Artista:"
 
 #: src/View/SearchLyricDialog.vala:80
 msgid "Album:"
-msgstr ""
+msgstr "Album":
 
 #: src/View/SettingsPopover.vala:11
 msgid "Select custom font:"
-msgstr ""
+msgstr "Seleziona font personalizzato:"
 
 #: src/View/SettingsPopover.vala:14
 msgid "Lyrics download folder:"
-msgstr ""
+msgstr "Cartella di download dei testi:"
 
 #: src/View/SettingsPopover.vala:15
 msgid "Select folder to download lyrics"
-msgstr ""
+msgstr "Seleziona la cartella per scaricare i testi"
 
 #: src/View/SettingsPopover.vala:19
 msgid "Couldn't add default lyrics folder to FileChooserButton"
-msgstr ""
+msgstr "Impossibile aggiungere la cartella predefinita dei testi al pulsante di selezione file"
 
 #: src/View/SettingsPopover.vala:22
 msgid "Keep window above:"
-msgstr ""
+msgstr "Mantieni la finestra sopra:"
 
 #: src/View/SettingsPopover.vala:48
 msgid "Always"
-msgstr ""
+msgstr "Sempre"
 
 #: src/View/SettingsPopover.vala:49
 msgid "When playing"
-msgstr ""
+msgstr "Durante la riproduzione"
 
 #: src/View/SettingsPopover.vala:50
 msgid "Never keep above"
-msgstr ""
+msgstr "Mai sopra"
 
 #: src/View/SettingsPopover.vala:58
 msgid "Make translucid on focus loss"
-msgstr ""
+msgstr "Rendi traslucido sulla perdita di messa a fuoco"
 
 #: src/View/SettingsPopover.vala:65
 msgid "Restore default settings"
-msgstr ""
+msgstr "Ripristina le impostazioni predefinite"
 
 #: src/View/Widgets/DownloadView.vala:37
 msgid "by"
-msgstr ""
+msgstr "di"
 
 #: src/View/Widgets/DownloadView.vala:37
 msgid "Unknown artist"
-msgstr ""
+msgstr "Artista sconosciuto"
 
 #: src/View/Widgets/DownloadView.vala:38
 msgid "Unknown title"
-msgstr ""
+msgstr "Titolo sconosciuto"
