@@ -4,25 +4,30 @@ public class SyncedLyrics.Shim : Object {
         string stderr = "";
         int status = 0;
 
-        Process.spawn_command_line_sync (
-            @"python3 -m venv $(Lyrics.Application.DEFAULT_LYRICS_DIR)/.venv",
-            out stdout,
-            out stderr,
-            out status
-        );
+        try {
 
-        print (stdout);
-        print (stderr);
+            Process.spawn_command_line_sync (
+                @"python3 -m venv $(Lyrics.Application.DEFAULT_LYRICS_DIR)/.venv",
+                out stdout,
+                out stderr,
+                out status
+            );
 
-        Process.spawn_command_line_sync (
-            Lyrics.Application.DEFAULT_LYRICS_DIR + ".venv/bin/pip install syncedlyrics",
-            out stdout,
-            out stderr,
-            out status
-        );
+            print (stdout);
+            print (stderr);
 
-        print (stdout);
-        print (stderr);
+            Process.spawn_command_line_sync (
+                Lyrics.Application.DEFAULT_LYRICS_DIR + ".venv/bin/pip install syncedlyrics",
+                out stdout,
+                out stderr,
+                out status
+            );
+
+            print (stdout);
+            print (stderr);
+        } catch (SpawnError e) {
+            critical(e.message);
+        }
     }
 
     public File? search(string search_terms, string filename) {
@@ -33,15 +38,20 @@ public class SyncedLyrics.Shim : Object {
         var app_local_storage = Lyrics.Application.DEFAULT_LYRICS_DIR;
         var path = app_local_storage + filename;
 
-        Process.spawn_command_line_sync (
-            @"$(Lyrics.Application.DEFAULT_LYRICS_DIR).venv/bin/syncedlyrics -o \"$(path)\" \"$(search_terms)\"",
-            out stdout,
-            out stderr,
-            out status
-        );
+        try {
+            Process.spawn_command_line_sync (
+                @"$(Lyrics.Application.DEFAULT_LYRICS_DIR).venv/bin/syncedlyrics -o \"$(path)\" \"$(search_terms)\"",
+                out stdout,
+                out stderr,
+                out status
+            );
 
-        print (stdout);
-        print (stderr);
+            print (stdout);
+            print (stderr);
+        } catch (SpawnError e) {
+            critical(e.message);
+            return null;
+        }
 
         if (status != 0) {
             return null;
