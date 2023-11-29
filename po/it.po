@@ -64,7 +64,7 @@ msgstr "Artista:"
 
 #: src/View/SearchLyricDialog.vala:80
 msgid "Album:"
-msgstr "Album":
+msgstr "Album:"
 
 #: src/View/SettingsPopover.vala:11
 msgid "Select custom font:"
