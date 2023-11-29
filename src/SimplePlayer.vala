@@ -9,7 +9,7 @@ public class SimplePlayer : Object, Lyrics.Player {
     public HashTable<string,Variant> metadata  { owned get; }
     public Lyrics.Player.State state { get; set; }
     public string busname { get; protected set; }
-    public string identity { get; protected set; default = "Simple player"; }
+    public string? identity { get; protected set; default = "Simple player"; }
 
     //  private timer;
 
