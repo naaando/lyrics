@@ -53,11 +53,6 @@ public class Lyrics.Application : Gtk.Application {
         });
     }
 
-    private static int main (string[] args) {
-        var app = new Application ();
-        return app.run (args);
-    }
-
     private void setup_services () {
         var syncedLyrics = new SyncedLyrics.Shim();
         syncedLyrics.install();
