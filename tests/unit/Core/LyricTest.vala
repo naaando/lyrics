@@ -46,17 +46,21 @@ public class Unit.Core.LyricTest : Unit.TestCase {
         Test.skip("Offset is broken");
         return;
 
-        Lyric lyric = new Lyric();
-        lyric.add_line (0, "Hello");
-        lyric.add_line (500, "World");
+        Lyric lyric = hello_world_lyric ();
         if (lyric.get_current_line (0) != "Hello") Test.fail();
         if (lyric.get_current_line (500) != "World") Test.fail();
 
-        Lyric lyric_offsetted = new Lyric();
+        Lyric lyric_offsetted = hello_world_lyric ();
         lyric_offsetted.add_metadata("offset", "500");
-        lyric_offsetted.add_line (0, "Hello");
-        lyric_offsetted.add_line (500, "World");
         if (lyric_offsetted.get_current_line (500) != "Hello") Test.fail();
         if (lyric_offsetted.get_current_line (1000) != "World") Test.fail();
+    }
+
+    private Lyric hello_world_lyric () {
+        Lyric lyric = new Lyric();
+        lyric.add_line (0, "Hello");
+        lyric.add_line (500, "World");
+        lyric.add_line (1000, "!");
+        return lyric;
     }
 }

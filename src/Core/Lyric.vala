@@ -43,7 +43,7 @@ public class Lyrics.Lyric {
         treemap.set (time, text);
     }
 
-    Gee.BidirMapIterator<int64?, string> get_iterator () throws Error {
+    private Gee.BidirMapIterator<int64?, string> get_iterator () throws Error {
         if (treemap.is_empty) {
             Quark q = Quark.from_string ("my-test-str-1");
             throw new Error (q, 1, @"Lyric is empty");
@@ -73,7 +73,7 @@ public class Lyrics.Lyric {
         }
     }
 
-    Gee.BidirMapIterator<int64?, string> iterator_find_next_timestamp (int64 time_in_us) throws Error {
+    private Gee.BidirMapIterator<int64?, string> iterator_find_next_timestamp (int64 time_in_us) throws Error {
         var iterator = get_iterator ();
 
         if (iterator.get_key () > time_in_us) {
