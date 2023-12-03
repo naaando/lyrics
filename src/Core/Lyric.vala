@@ -5,9 +5,10 @@ public class Lyrics.Lyric {
         string info;
     }
 
-    private Metadata[] metadata = {};
+    private Gee.HashMap<string, string> metadata = new Gee.HashMap<string, string> ();
     private Gee.BidirMapIterator<int64?, string> lrc_iterator;
     private Gee.TreeMap<int64?, string> treemap;
+
     int offset = 0;
 
     public int size {
@@ -26,11 +27,16 @@ public class Lyrics.Lyric {
     }
 
     public void add_metadata (string _tag, string _info) {
-        metadata += Metadata () { tag = _tag, info = _info };
+        metadata[_tag] = _info;
+
         if (_tag == "offset") {
             offset = int.parse (_info);
             message (@"Lyric offset: $offset");
         }
+    }
+
+    public string get_metadata (string _tag) {
+        return metadata[_tag];
     }
 
     public void add_line (int64 time, string text) {
@@ -90,8 +96,8 @@ public class Lyrics.Lyric {
 
         builder.append (@"Metadata:\n");
         foreach (var data in metadata) {
-            builder.append (@"$(data.tag) = ");
-            builder.append (@"$(data.info)\n");
+            builder.append (@"$(data.key) = ");
+            builder.append (@"$(data.value)\n");
         }
 
         builder.append (@"Lyric:\n");
