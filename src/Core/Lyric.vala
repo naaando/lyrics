@@ -1,10 +1,5 @@
 
 public class Lyrics.Lyric {
-    private struct Metadata {
-        string tag;
-        string info;
-    }
-
     private Gee.HashMap<string, string> metadata = new Gee.HashMap<string, string> ();
     private Gee.BidirMapIterator<int64?, string> lrc_iterator;
     private Gee.TreeMap<int64?, string> treemap;
@@ -57,9 +52,15 @@ public class Lyrics.Lyric {
         return lrc_iterator;
     }
 
-    public string get_current_line (int64 time_in_us) {
+    public string? get_current_line (int64 time_in_us) {
         var time_with_offset = time_in_us + offset;
-        return iterator_find_next_timestamp (time_with_offset).get_value ().to_string ();
+
+        try {
+            var iterator = iterator_find_next_timestamp (time_with_offset);
+            return iterator.get_value ().to_string ();
+        } catch (Error e) {
+            return null;
+        }
     }
 
     public int64? get_next_lyric_timestamp (int64 time_in_us) {
