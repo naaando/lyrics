@@ -15,7 +15,7 @@ asresources = gnome.compile_resources(
     c_name: 'as'
 )
 
-sources = run_command('find_sources.sh', check: true).stdout().strip().split('\n')
+sources = run_command('meson/find_sources.sh', check: true).stdout().strip().split('\n')
 
 deps = [
     dependency ('glib-2.0'),
@@ -41,7 +41,7 @@ subdir('po')
 
 meson.add_install_script('meson/post_install.py')
 
-unit_test_sources = run_command('find_unit_test_sources.sh', check: true).stdout().strip().split('\n')
+unit_test_sources = run_command('meson/find_unit_test_sources.sh', check: true).stdout().strip().split('\n')
 
 test(
   'unit',
