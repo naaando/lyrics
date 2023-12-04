@@ -56,7 +56,7 @@ sudo apt install libglib2.0-dev libgranite-dev libgtk-3-dev libcairo2-dev meson 
 Run `meson` to configure the build environment and then `ninja` to build
 
     meson setup build --prefix=/usr/local
-    meson compile -C build
+    ninja -C build
 
 To install, use `ninja install`
 
