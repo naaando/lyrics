@@ -72,7 +72,9 @@ The unit tests can be run on the build directory with the following command:
 
     meson -Db_coverage=true build
 
-    meson test -C build --print-errorlogs
+    ninja -C build test
+
+Commands above are not working
 
     ninja -C build coverage-text
 
