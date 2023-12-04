@@ -79,3 +79,8 @@ The unit tests can be run on the build directory with the following command:
     ninja -C build coverage-html
 
 ## Coverage
+
+Coverage is currently broken on meson setup
+A workaround is to run coverage.sh
+
+    ./coverage.sh

@@ -1,4 +1,5 @@
 project ('com.github.naaando.lyrics', 'vala', 'c',
+    version: '0.9.1',
     license: 'GPL3'
 )
 
@@ -30,7 +31,8 @@ executable(
     asresources,
     sources,
     dependencies: deps,
-    vala_args: ['-g', '-X', '-rdynamic'],
+    c_args: ['-fprofile-arcs', '-ftest-coverage', '-fprofile-abs-path'],
+    link_args: ['-fprofile-arcs', '-ftest-coverage', '-fprofile-abs-path'],
     install: true
 )
 
@@ -43,7 +45,13 @@ unit_test_sources = run_command('find_unit_test_sources.sh', check: true).stdout
 
 test(
   'unit',
-  executable('unit', unit_test_sources, dependencies: deps),
+  executable(
+    'unit',
+    unit_test_sources,
+    dependencies: deps,
+    c_args: ['-fprofile-arcs', '-ftest-coverage', '-fprofile-abs-path'],
+    link_args: ['-fprofile-arcs', '-ftest-coverage', '-fprofile-abs-path'],
+  ),
   args: ['--tap'],
   env: [
     'G_TEST_SRCDIR=@0@'.format(meson.current_source_dir()),
