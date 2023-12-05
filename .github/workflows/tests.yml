@@ -1,4 +1,4 @@
-name: Build 'n test
+name: Build 'n tests
 
 on:
   push:
