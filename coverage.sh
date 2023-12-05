@@ -14,3 +14,4 @@ gcovr --version
 gcovr -r $ROOT --txt --jacoco jacoco.xml -o $ROOT/build/meson-logs/ --gcov-ignore-errors=all
 
 cat $ROOT/build/meson-logs/coverage.txt
+rm $ROOT/build/meson-logs/coverage.txt
