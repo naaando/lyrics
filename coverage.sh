@@ -1,7 +1,5 @@
 #!/bin/bash
 
-ROOT=$PWD
-
 meson test -C build
 
 cp /usr/share/vala-0.56/vapi/glib-2.0.vapi build/unit.p
@@ -10,6 +8,7 @@ find ./build/unit.p -type f -name "*.c" -exec cp {} build/unit.p \;
 
 gcovr --version
 
-gcovr -r $ROOT --txt -o $ROOT/build/meson-logs/ --gcov-ignore-errors=all
+gcovr -r $PWD --txt --jacoco -o $PWD/build/meson-logs/ --gcov-ignore-errors=all
 
-cat $ROOT/build/meson-logs/coverage.txt
+cat $PWD/build/meson-logs/coverage.txt
+rm $PWD/build/meson-logs/coverage.txt
