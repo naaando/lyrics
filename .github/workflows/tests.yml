@@ -28,6 +28,9 @@ jobs:
     - name: Test
       run: ninja -C build test
 
+    - name: Install gcovr
+      run: pip install git+https://github.com/gcovr/gcovr.git --break-system-packages
+
     - name: Coverage
       run: ./coverage.sh
 
