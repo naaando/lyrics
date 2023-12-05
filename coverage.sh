@@ -10,7 +10,6 @@ find ./build/unit.p -type f -name "*.c" -exec cp {} build/unit.p \;
 
 gcovr --version
 
-gcovr -r $ROOT --txt --jacoco -o $ROOT/build/meson-logs/ --gcov-ignore-errors=all
+gcovr -r $ROOT --txt -o $ROOT/build/meson-logs/ --gcov-ignore-errors=all
 
 cat $ROOT/build/meson-logs/coverage.txt
-rm $ROOT/build/meson-logs/coverage.txt
