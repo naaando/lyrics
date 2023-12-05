@@ -1,7 +1,7 @@
 # Lyrics - Sing along with your songs
 
 [![codecov](https://codecov.io/github/naaando/lyrics/graph/badge.svg?token=ZQ5X9QAYVA)](https://codecov.io/github/naaando/lyrics)
-[![Build 'n tests](https://github.com/naaando/lyrics/actions/workflows/tests.yml/badge.svg)](https://github.com/naaando/lyrics/actions/workflows/tests.yml)yml)
+[![Build 'n tests](https://github.com/naaando/lyrics/actions/workflows/tests.yml/badge.svg)](https://github.com/naaando/lyrics/actions/workflows/tests.yml)
 
 Display lyrics on media players with MPRIS-2 interface
 
