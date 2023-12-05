@@ -23,7 +23,6 @@ deps = [
     dependency ('gee-0.8'),
     dependency ('libsoup-2.4'),
     dependency ('xmlbird'),
-    dependency ('ivy'),
 ]
 
 executable(
