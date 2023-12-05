@@ -25,12 +25,25 @@ public class Unit.Parser.LrcParserTest : Unit.TestCase {
     void test_can_parse_empty_lrc_file() {
         GLib.FileIOStream iostream = null;
         Lyric? lrc = null;
+        GLib.File file = null;
 
-        var file = GLib.File.new_tmp ("test-XXXXXX.lrc", out iostream);
+        try {
+            file = GLib.File.new_tmp ("test-XXXXXX.lrc", out iostream);
+        } catch (GLib.Error e) {
+            Test.fail ();
+            GLib.warning ("Erro de E/S: %s", e.message);
+            return;
+        }
 
         string data = "";
 
-        iostream.output_stream.write (data.data);
+        try {
+            iostream.output_stream.write (data.data);
+        } catch (GLib.IOError e) {
+            Test.fail ();
+            GLib.warning ("Erro de E/S: %s", e.message);
+            return;
+        }
 
         var parser = new LrcParser();
         lrc = parser.parse_file (file);
