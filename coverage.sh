@@ -11,6 +11,6 @@ find ./ -type f -name "*.c" -exec cp {} . \;
 
 gcovr --version
 
-gcovr -r $ROOT --txt --sonarqube -o $ROOT/build/meson-logs/ --gcov-ignore-errors=all
+gcovr -r $ROOT --txt --jacoco jacoco.xml -o $ROOT/build/meson-logs/ --gcov-ignore-errors=all
 
 cat $ROOT/build/meson-logs/coverage.txt
