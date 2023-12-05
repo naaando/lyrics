@@ -43,7 +43,12 @@ public class Lyrics.LocalRepository : IRepository, Object {
         var local_storage_directory = File.new_for_path (local_storage);
 
         //  Check if it exist and tries to create directory if not
-        return local_storage_directory.query_exists () || local_storage_directory.make_directory_with_parents ();
+        try {
+            return local_storage_directory.query_exists () || local_storage_directory.make_directory_with_parents ();
+        } catch (Error e) {
+            warning (e.message);
+            return false;
+        }
     }
 
     string get_filename_for_song (Metasong song) {

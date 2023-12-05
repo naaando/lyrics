@@ -1,8 +1,5 @@
 
 public class Lyrics.Repository : IRepository, Object {
-    string[] viewlyrics_dbus = { "org.lyricsources.LyricSourcePlugin.viewlyrics",
-                                 "/org/lyricsources/LyricSourcePlugin/viewlyrics"};
-
     Gee.HashMap<string, Lyrics.IRepository> remote_repositories = new Gee.HashMap<string, Lyrics.IRepository> ();
     LocalRepository local_repository = new LocalRepository ();
 

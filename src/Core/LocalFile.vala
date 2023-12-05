@@ -26,7 +26,7 @@ public class Lyrics.LocalFile : Lyrics.ILyricFile, Object {
     }
 
     public Lyrics.Lyric to_lyric () {
-        return new Parser.LRC ().parse (file);
+        return new Parser.LrcParser ().parse_file (file);
     }
 
     public string to_string () {

@@ -55,7 +55,7 @@ sudo apt install libglib2.0-dev libgranite-dev libgtk-3-dev libcairo2-dev meson 
 
 Run `meson` to configure the build environment and then `ninja` to build
 
-    meson build --prefix=/usr/local
+    meson setup build --prefix=/usr/local
     ninja -C build
 
 To install, use `ninja install`
@@ -65,3 +65,24 @@ To install, use `ninja install`
 And execute
 
   `com.github.naaando.lyrics`
+
+## Unit testing
+
+The unit tests can be run on the build directory with the following command:
+
+    meson -Db_coverage=true build
+
+    ninja -C build test
+
+Commands above are not working
+
+    ninja -C build coverage-text
+
+    ninja -C build coverage-html
+
+## Coverage
+
+Coverage is currently broken on meson setup
+A workaround is to run coverage.sh
+
+    ./coverage.sh

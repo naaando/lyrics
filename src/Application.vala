@@ -53,11 +53,6 @@ public class Lyrics.Application : Gtk.Application {
         });
     }
 
-    private static int main (string[] args) {
-        var app = new Application ();
-        return app.run (args);
-    }
-
     private void setup_services () {
         var syncedLyrics = new SyncedLyrics.Shim();
         syncedLyrics.install();
@@ -70,6 +65,11 @@ public class Lyrics.Application : Gtk.Application {
         var local_storage_directory = File.new_for_path (DEFAULT_LYRICS_DIR);
 
         //  Check if it exist and tries to create directory if not
-        return local_storage_directory.query_exists () || local_storage_directory.make_directory_with_parents ();
+        try {
+            return local_storage_directory.query_exists () || local_storage_directory.make_directory_with_parents ();
+        } catch (Error e) {
+            warning (e.message);
+            return false;
+        }
     }
 }

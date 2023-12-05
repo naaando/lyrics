@@ -23,7 +23,7 @@ public class Mpris.Player : Object, Lyrics.Player {
 
     public Lyrics.Player.State state { get; protected set; default = Lyrics.Player.State.STOPPED; }
     public string busname { get;protected set; }
-    public string identity { get;protected set; }
+    public string? identity { get;protected set; }
 
     public Player (string busname) {
         try {

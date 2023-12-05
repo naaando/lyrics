@@ -45,7 +45,7 @@ public interface DbusPropIface : Object {
 public interface Iface : Object {
     public abstract void raise () throws GLib.Error;
     public abstract bool can_raise { get; }
-    public abstract string identity { owned get; }
+    public abstract string? identity { owned get; }
     public abstract string desktop_entry { owned get; }
 }
 
