@@ -1,0 +1,29 @@
+name: Build and run test
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Configure meson
+      run: meson setup build
+
+    - name: Build
+      run: ninja -C build
+
+    - name: Test
+      run: ninja -C build test
+
+    - name: Coverage
+      run: ./coverage.sh
