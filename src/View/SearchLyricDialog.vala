@@ -58,7 +58,7 @@ public class Lyrics.SearchLyric : Gtk.Dialog {
             debug (@"Retrieving lyric for row id $id\n");
 
             repository.save (song_metadata, result[id]);
-            lyrics_service.push_lyric (result[id].to_lyric ());
+            lyrics_service.set_lyric (result[id].to_lyric ());
         }
     }
 

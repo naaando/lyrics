@@ -15,9 +15,6 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         adjustment = vadjustment;
         vscrollbar_policy = Gtk.PolicyType.EXTERNAL;
 
-        lyrics_service = lrservice;
-        lyrics_service.push_lyric.connect (on_lyric_update);
-
         box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         box.expand = true;
         box.valign = Gtk.Align.END;
@@ -28,12 +25,11 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         stop ();
         debug (@"Player changed");
         if (player.state.to_string () == "PLAYING") {
-            lyrics_service.request_lyric (player.current_song);
             start (player.position);
         }
     }
 
-    public void on_lyric_update (Lyric lyric) {
+    public void set_lyric (Lyric? lyric) {
         this.lyric = lyric;
         return_if_fail (lyric != null);
 
@@ -56,7 +52,7 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         remove_source ();
 
         //  Start transition
-        if (lyric != null) {
+        if (lyric != null && lyric.size > 0) {
             transition_to (labels[lyric.get_next_lyric_timestamp (start_time).to_string ()]);
         }
 

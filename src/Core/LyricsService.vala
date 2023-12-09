@@ -1,26 +1,36 @@
 public class Lyrics.LyricsService : Object {
     public State state { get; set; }
     IRepository lyric_repository = new Repository ();
+    public Lyric? lyric  { get; set; }
 
-    public virtual signal void push_lyric (Lyric lyric) {
+    public void set_player (Player player) {
+        GLib.MainLoop loop = new GLib.MainLoop ();
+        request_lyric.begin (player.current_song, () => {
+            request_lyric (player.current_song);
+            loop.quit ();
+        });
+        loop.run ();
+    }
+
+    public signal void set_lyric (Lyric lyric) {
+        this.lyric = lyric;
         state = State.DOWNLOADED;
     }
 
-    public Lyric? request_lyric (Metasong song) {
+    private async void request_lyric (Metasong song) {
         state = State.DOWNLOADING;
 
         var lyricfile = lyric_repository.find_first (song);
-        if (lyricfile != null) {
-            state = State.DOWNLOADED;
 
-            var lyric = lyricfile.to_lyric ();
-            //  Emit a signal notifying that a new lyric arrived
-            push_lyric (lyric);
-            return lyric;
+        if (lyricfile != null) {
+            lyric = lyricfile.to_lyric ();
+            state = State.DOWNLOADED;
+            return;
         }
 
         state = State.LYRICS_NOT_FOUND;
-        return  null;
+
+        lyric = null;
     }
 
     public enum State {
