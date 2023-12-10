@@ -85,6 +85,8 @@ public class Lyrics.Lyric : Object {
             iterator.next ();
         }
 
+        if (iterator.has_previous ()) iterator.previous ();
+
         return iterator;
     }
 
