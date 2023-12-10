@@ -59,7 +59,8 @@ public class Lyrics.Application : Gtk.Application {
         var syncedLyrics = new SyncedLyrics.Shim();
         syncedLyrics.install();
 
-        lyrics_service = new LyricsService ();
+        var repository = new Repository ();
+        lyrics_service = new LyricsService (repository);
         players = new Players ();
     }
 

@@ -1,12 +1,22 @@
 public class Lyrics.LyricsService : Object {
     public State state { get; set; }
-    IRepository lyric_repository = new Repository ();
+    IRepository lyric_repository;
     public Lyric? lyric  { get; set; }
+
+    public LyricsService (IRepository repository) {
+        lyric_repository = repository;
+        state = State.UNKNOWN;
+    }
 
     public void set_player (Player player) {
         GLib.MainLoop loop = new GLib.MainLoop ();
+
+        if (player.current_song == null) {
+            state = State.UNKNOWN;
+            return;
+        }
+
         request_lyric.begin (player.current_song, () => {
-            request_lyric (player.current_song);
             loop.quit ();
         });
         loop.run ();
@@ -15,22 +25,6 @@ public class Lyrics.LyricsService : Object {
     public signal void set_lyric (Lyric lyric) {
         this.lyric = lyric;
         state = State.DOWNLOADED;
-    }
-
-    private async void request_lyric (Metasong song) {
-        state = State.DOWNLOADING;
-
-        var lyricfile = lyric_repository.find_first (song);
-
-        if (lyricfile != null) {
-            lyric = lyricfile.to_lyric ();
-            state = State.DOWNLOADED;
-            return;
-        }
-
-        state = State.LYRICS_NOT_FOUND;
-
-        lyric = null;
     }
 
     public enum State {
@@ -53,5 +47,21 @@ public class Lyrics.LyricsService : Object {
                     assert_not_reached();
             }
         }
+    }
+
+    private async void request_lyric (Metasong song) {
+        state = State.DOWNLOADING;
+
+        var lyricfile = lyric_repository.find_first (song);
+
+        if (lyricfile != null) {
+            lyric = lyricfile.to_lyric ();
+            state = State.DOWNLOADED;
+            return;
+        }
+
+        state = State.LYRICS_NOT_FOUND;
+
+        lyric = null;
     }
 }
