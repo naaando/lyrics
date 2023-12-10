@@ -32,6 +32,8 @@ public class Lyrics.Application : Gtk.Application {
         main_stack = new MainStack (display_view);
         players.on_active_player_changed.connect (() => main_stack.set_player (players.active_player));
         players.on_active_player_changed.connect (() => display_view.set_player (players.active_player));
+        players.on_active_player_changed.connect (() => lyrics_service.set_player (players.active_player));
+        lyrics_service.notify["lyric"].connect (() => display_view.set_lyric (lyrics_service.lyric));
 
         var main_window = new MainWindow (this, players, main_stack);
         var header_bar = new Lyrics.HeaderBar (players, lyrics_service);
@@ -57,7 +59,8 @@ public class Lyrics.Application : Gtk.Application {
         var syncedLyrics = new SyncedLyrics.Shim();
         syncedLyrics.install();
 
-        lyrics_service = new LyricsService ();
+        var repository = new Repository ();
+        lyrics_service = new LyricsService (repository);
         players = new Players ();
     }
 

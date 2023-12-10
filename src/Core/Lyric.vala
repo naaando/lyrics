@@ -1,5 +1,5 @@
 
-public class Lyrics.Lyric {
+public class Lyrics.Lyric : Object {
     private Gee.HashMap<string, string> metadata = new Gee.HashMap<string, string> ();
     private Gee.BidirMapIterator<int64?, string> lrc_iterator;
     private Gee.TreeMap<int64?, string> treemap;
