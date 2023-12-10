@@ -108,13 +108,13 @@ public class Unit.Parser.LrcParserTest : Unit.TestCase {
         assert_cmpstr (
             lrc.get_current_line (one_minute_in_us),
             GLib.CompareOperator.EQ,
-            "Chorus"
+            "But silence is all I hear"
         );
 
         assert_cmpstr (
             lrc.get_current_line (2 * one_minute_in_us),
             GLib.CompareOperator.EQ,
-            "Verse 2"
+            "Hoping for a glimpse of your light"
         );
     }
 
@@ -150,13 +150,13 @@ public class Unit.Parser.LrcParserTest : Unit.TestCase {
         assert_cmpstr (
             lrc.get_current_line (one_minute_in_us),
             GLib.CompareOperator.EQ,
-            "Chorus"
+            "But silence is all I hear"
         );
 
         assert_cmpstr (
             lrc.get_current_line (2 * one_minute_in_us),
             GLib.CompareOperator.EQ,
-            "Verse 2"
+            "Hoping for a glimpse of your light"
         );
     }
 }
