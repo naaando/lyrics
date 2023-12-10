@@ -25,14 +25,19 @@ public class Lyrics.SettingsPopover : Gtk.Popover {
         combobox = create_combobox ();
         var reset_default_button = create_reset_button ();
 
+        var offset_label = new Gtk.Label (_("Offset:"));
+        var offset_input = new Gtk.SpinButton.with_range (-100, 100, 1);
+
         grid.attach (font_selection_label, 0, 0);
         grid.attach (font_selection_btn, 1, 0);
         grid.attach (lyrics_folder_label, 0, 1);
         grid.attach (folder_chooser_button, 1, 1);
         grid.attach (window_behavior_label, 0, 2);
         grid.attach (combobox, 1, 2);
-        grid.attach (create_translucid_switch (), 0, 3, 2);
-        grid.attach (reset_default_button, 0, 4, 2);
+        grid.attach (offset_label, 0, 3);
+        grid.attach (offset_input, 1, 3);
+        grid.attach (create_translucid_switch (), 0, 4, 2);
+        grid.attach (reset_default_button, 0, 5, 2);
         grid.show_all ();
 
         add (grid);
@@ -41,6 +46,7 @@ public class Lyrics.SettingsPopover : Gtk.Popover {
         Application.settings.bind ("window-keep-above", combobox, "active-id", GLib.SettingsBindFlags.DEFAULT);
         Application.settings.bind ("window-out-of-focus-translucid", opacity_switch, "active", GLib.SettingsBindFlags.DEFAULT);
         Application.settings.bind ("font", font_selection_btn, "font", GLib.SettingsBindFlags.DEFAULT);
+        Application.settings.bind ("offset", offset_input, "value", GLib.SettingsBindFlags.DEFAULT);
     }
 
     Gtk.ComboBox create_combobox () {
@@ -70,6 +76,7 @@ public class Lyrics.SettingsPopover : Gtk.Popover {
             Application.settings.reset ("window-keep-above");
             Application.settings.reset ("window-out-of-focus-translucid");
             Application.settings.reset ("font");
+            Application.settings.reset ("offset");
         });
 
         return btn;
