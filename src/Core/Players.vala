@@ -41,6 +41,8 @@ public class Lyrics.Players : Object {
         scanner.found.connect ((player) => add (player));
         scanner.lost.connect (remove_by_busname);
         scanner.setup_dbus ();
+
+        notify["active-player"].connect (() => on_active_player_changed (active_player));
     }
 
     public bool add (Player player) {

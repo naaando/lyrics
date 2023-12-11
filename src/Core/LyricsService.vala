@@ -2,6 +2,7 @@ public class Lyrics.LyricsService : Object {
     public State state { get; set; }
     IRepository lyric_repository;
     public Lyric? lyric  { get; set; }
+    GLib.MainLoop request_event_loop;
 
     public LyricsService (IRepository repository) {
         lyric_repository = repository;
@@ -9,7 +10,11 @@ public class Lyrics.LyricsService : Object {
     }
 
     public void set_player (Player player) {
-        GLib.MainLoop loop = new GLib.MainLoop ();
+        if (request_event_loop != null) {
+            request_event_loop.quit ();
+        }
+
+        request_event_loop = new GLib.MainLoop ();
 
         if (player.current_song == null) {
             state = State.UNKNOWN;
@@ -17,9 +22,10 @@ public class Lyrics.LyricsService : Object {
         }
 
         request_lyric.begin (player.current_song, () => {
-            loop.quit ();
+            request_event_loop.quit ();
         });
-        loop.run ();
+
+        request_event_loop.run ();
     }
 
     public signal void set_lyric (Lyric lyric) {
