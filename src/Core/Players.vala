@@ -43,8 +43,6 @@ public class Lyrics.Players : Object {
         scanner.setup_dbus ();
 
         notify["active-player"].connect (() => on_active_player_changed (active_player));
-        notify["active-player"].connect (() => on_active_player_changed (active_player));
-
     }
 
     public bool add (Player player) {
