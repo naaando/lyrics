@@ -1,4 +1,4 @@
-public class FileMock : MockClass, Lyrics.ILyricFile {
+public class FileMock : MockClass, ILyricFile {
     public string? get_metadata (string attribute_name) {
         assert_not_reached ();
     }
@@ -7,7 +7,7 @@ public class FileMock : MockClass, Lyrics.ILyricFile {
         assert_not_reached ();
     }
 
-    public Lyrics.Lyric to_lyric () {
+    public Lyric to_lyric () {
         assert_not_reached ();
     }
 }

@@ -5,7 +5,7 @@ public class Parser.CompressedLyricContentParser : ChainOfResponsability {
         return is_compressed (lyric_formatter.split_simple_lrc (item)) || is_compressed (lyric_formatter.split_lrc (item));
     }
 
-    public override void process (Lyrics.Lyric lyric, string ln) {
+    public override void process (Lyric lyric, string ln) {
         var lns = lyric_formatter.split (ln);
         var text_pos = find_text_pos (lns);
 

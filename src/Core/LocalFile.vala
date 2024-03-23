@@ -1,5 +1,5 @@
 
-public class Lyrics.LocalFile : Lyrics.ILyricFile, Object {
+public class LocalFile : ILyricFile, Object {
     File file;
 
     public LocalFile (File file) {
@@ -25,7 +25,7 @@ public class Lyrics.LocalFile : Lyrics.ILyricFile, Object {
         return builder.str;
     }
 
-    public Lyrics.Lyric to_lyric () {
+    public Lyric to_lyric () {
         return new Parser.LrcParser ().parse_file (file);
     }
 

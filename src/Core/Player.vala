@@ -1,5 +1,5 @@
 
-public interface Lyrics.Player : Object {
+public interface Player : Object {
     public abstract int64 position { get; }
     public abstract SongMetadata current_song { get;set; }
     public abstract State state { get; protected set; }

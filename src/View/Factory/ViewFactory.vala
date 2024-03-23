@@ -1,4 +1,4 @@
-public class Lyrics.ViewFactory : GLib.Object {
+public class ViewFactory : GLib.Object {
     public static Gtk.Container create_no_player_view () {
         return create_message_view (_("Couldn't find any player, check your player's MPRIS configuration"));
     }
@@ -12,7 +12,9 @@ public class Lyrics.ViewFactory : GLib.Object {
     }
 
     public static IDisplay create_display_view (LyricsService lyrics_service) {
-        return new ScrolledDisplay (lyrics_service);
+        return new StaticDisplay (lyrics_service);
+
+        //  return new ScrolledDisplay (lyrics_service);
     }
 
     public static Gtk.Container create_downloading_view () {

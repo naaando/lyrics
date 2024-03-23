@@ -1,4 +1,4 @@
-public class Lyrics.FileChooserButton : Gtk.FileChooserButton {
+public class FileChooserButton : Gtk.FileChooserButton {
     string? _filename;
     public string filename {
         get {

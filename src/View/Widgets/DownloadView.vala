@@ -1,5 +1,5 @@
 
-public class Lyrics.DownloadView : Gtk.Grid {
+public class DownloadView : Gtk.Grid {
     private Gtk.Label artist;
     private Gtk.Label title;
     private Gtk.Image? cover;

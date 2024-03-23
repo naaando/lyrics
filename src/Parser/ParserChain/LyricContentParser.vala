@@ -5,7 +5,7 @@ public class Parser.LyricContentParser : ChainOfResponsability {
         return lyric_formatter.is_simplified_lrc (item) || lyric_formatter.is_lrc (item);
     }
 
-    public override void process (Lyrics.Lyric lyric, string ln) {
+    public override void process (Lyric lyric, string ln) {
         var lns = lyric_formatter.split (ln);
 
         int minutes, seconds, milli;

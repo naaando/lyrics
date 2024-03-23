@@ -12,7 +12,7 @@ public abstract class Parser.ChainOfResponsability : Object {
         next_parser.add_parser_to_chain (parser);
     }
 
-    public void parse (Lyrics.Lyric lyric, string ln) {
+    public void parse (Lyric lyric, string ln) {
         if (can_parse (ln)) {
             debug (this.get_class ().get_name () + " is able to parse " + ln);
             process (lyric, ln);
@@ -24,5 +24,5 @@ public abstract class Parser.ChainOfResponsability : Object {
     }
 
     public abstract bool can_parse (string item);
-    public abstract void process (Lyrics.Lyric lyric, string ln);
+    public abstract void process (Lyric lyric, string ln);
 }

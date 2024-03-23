@@ -1,5 +1,5 @@
 
-public class Lyrics.Factory.SongMetadataFactory : Object {
+public class Factory.SongMetadataFactory : Object {
     public static SongMetadata get_unknow_SongMetadata () {
         var SongMetadata = new SongMetadata ();
         SongMetadata.artist = "Unknow artist";

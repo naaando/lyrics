@@ -1,4 +1,4 @@
-public class SyncedLyrics.Shim : Object {
+public class SyncedLyricsShim : Object {
     public void install() {
         string stdout = "";
         string stderr = "";
@@ -7,7 +7,7 @@ public class SyncedLyrics.Shim : Object {
         try {
 
             Process.spawn_command_line_sync (
-                @"python3 -m venv $(Lyrics.Application.DEFAULT_LYRICS_DIR)/.venv",
+                @"python3 -m venv $(Application.DEFAULT_LYRICS_DIR)/.venv",
                 out stdout,
                 out stderr,
                 out status
@@ -17,7 +17,7 @@ public class SyncedLyrics.Shim : Object {
             print (stderr);
 
             Process.spawn_command_line_sync (
-                Lyrics.Application.DEFAULT_LYRICS_DIR + ".venv/bin/pip install syncedlyrics",
+                Application.DEFAULT_LYRICS_DIR + ".venv/bin/pip install syncedlyrics",
                 out stdout,
                 out stderr,
                 out status
@@ -35,12 +35,12 @@ public class SyncedLyrics.Shim : Object {
         string stderr = "";
         int status = 0;
 
-        var app_local_storage = Lyrics.Application.DEFAULT_LYRICS_DIR;
+        var app_local_storage = Application.DEFAULT_LYRICS_DIR;
         var path = app_local_storage + filename;
 
         try {
             Process.spawn_command_line_sync (
-                @"$(Lyrics.Application.DEFAULT_LYRICS_DIR).venv/bin/syncedlyrics -o \"$(path)\" \"$(search_terms)\"",
+                @"$(Application.DEFAULT_LYRICS_DIR).venv/bin/syncedlyrics -o \"$(path)\" \"$(search_terms)\"",
                 out stdout,
                 out stderr,
                 out status

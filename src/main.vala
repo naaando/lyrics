@@ -1,5 +1,5 @@
 int main (string[] args) {
     //  Stacktrace.register_handlers ();
-    var app = new Lyrics.Application ();
+    var app = new Application ();
     return app.run (args);
 }

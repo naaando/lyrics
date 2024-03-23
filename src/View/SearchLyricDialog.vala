@@ -1,8 +1,8 @@
-public class Lyrics.SearchLyric : Gtk.Dialog {
+public class SearchLyric : Gtk.Dialog {
     public LyricsService? lyrics_service { get; set; }
 
     Repository repository = new Repository ();
-    Gee.HashMap<int, Lyrics.ILyricFile> result = new Gee.HashMap<int, Lyrics.ILyricFile> ();
+    Gee.HashMap<int, ILyricFile> result = new Gee.HashMap<int, ILyricFile> ();
     SongMetadata song_metadata;
 
     Gtk.Entry title_entry = new Gtk.Entry ();
@@ -118,7 +118,7 @@ public class Lyrics.SearchLyric : Gtk.Dialog {
         return list_store;
     }
 
-    void add_result_to_tree_view (Lyrics.ILyricFile remote_file) {
+    void add_result_to_tree_view (ILyricFile remote_file) {
         var id = result.size + 1;
         var title  = remote_file.get_metadata ("title");
         var artist = remote_file.get_metadata ("artist");

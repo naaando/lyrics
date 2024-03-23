@@ -1,14 +1,14 @@
 
-public class RepositoryMock : MockClass, Lyrics.IRepository  {
+public class RepositoryMock : MockClass, IRepository  {
     protected MockMethod find_first_mock { get; set; default = new MockMethod ();}
     protected MockMethod find_mock { get; set; default = new MockMethod ();}
 
-    public Lyrics.ILyricFile? find_first (Lyrics.SongMetadata song) {
+    public ILyricFile? find_first (SongMetadata song) {
         find_first_mock.call ();
         return null;
     }
 
-    public Gee.Collection<Lyrics.ILyricFile>? find (Lyrics.SongMetadata song) {
+    public Gee.Collection<ILyricFile>? find (SongMetadata song) {
         find_mock.call ();
         return null;
     }

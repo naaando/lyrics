@@ -1,8 +1,8 @@
 
-public class PlayerMock : MockClass, Lyrics.Player  {
+public class PlayerMock : MockClass, Player  {
     public int64 position { get; }
-    public Lyrics.SongMetadata current_song { get; set; }
-    public Lyrics.Player.State state { get; protected set; }
+    public SongMetadata current_song { get; set; }
+    public Player.State state { get; protected set; }
     public string busname { get; protected set; }
     public string? identity { get; protected set; }
 

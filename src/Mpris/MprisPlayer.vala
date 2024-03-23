@@ -1,5 +1,5 @@
 
-public class Mpris.Player : Object, Lyrics.Player {
+public class Mpris.Player : Object, Player {
     PlayerIface player;
     DbusPropIface prop;
 
@@ -13,7 +13,7 @@ public class Mpris.Player : Object, Lyrics.Player {
         }
     }
 
-    public Lyrics.SongMetadata current_song { get;set; }
+    public SongMetadata current_song { get;set; }
 
     private HashTable<string,Variant> metadata  {
         owned get {
@@ -21,7 +21,7 @@ public class Mpris.Player : Object, Lyrics.Player {
         }
     }
 
-    public Lyrics.Player.State state { get; protected set; default = Lyrics.Player.State.STOPPED; }
+    public Player.State state { get; protected set; default = Player.State.STOPPED; }
     public string busname { get;protected set; }
     public string? identity { get;protected set; }
 
@@ -61,7 +61,7 @@ public class Mpris.Player : Object, Lyrics.Player {
             return;
         }
 
-        var new_song = new Lyrics.SongMetadata.from_metadata (metadata);
+        var new_song = new SongMetadata.from_metadata (metadata);
 
         if (current_song?.to_string () == new_song?.to_string ()) {
             return;
@@ -74,25 +74,25 @@ public class Mpris.Player : Object, Lyrics.Player {
     void update_state () {
         switch (player.playback_status) {
             case "Playing":
-                state = Lyrics.Player.State.PLAYING;
+                state = Player.State.PLAYING;
                 break;
             case "Paused":
-                state = Lyrics.Player.State.PAUSED;
+                state = Player.State.PAUSED;
                 break;
             case "Stopped":
-                state = Lyrics.Player.State.STOPPED;
+                state = Player.State.STOPPED;
                 break;
             default:
-                state = Lyrics.Player.State.UNKNOWN;
+                state = Player.State.UNKNOWN;
                 break;
         }
     }
 
     public void toggle_play_pause () {
         try {
-            if(state != Lyrics.Player.State.PLAYING) {
+            if(state != Player.State.PLAYING) {
                 player.play ();
-            } else if (state != Lyrics.Player.State.STOPPED) {
+            } else if (state != Player.State.STOPPED) {
                 player.pause ();
             }
         } catch (Error e) {

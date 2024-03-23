@@ -1,11 +1,11 @@
 
-public class Lyrics.Repository : IRepository, Object {
-    Gee.HashMap<string, Lyrics.IRepository> remote_repositories = new Gee.HashMap<string, Lyrics.IRepository> ();
+public class Repository : IRepository, Object {
+    Gee.HashMap<string, IRepository> remote_repositories = new Gee.HashMap<string, IRepository> ();
     LocalRepository local_repository = new LocalRepository ();
 
     public Repository () {
-        remote_repositories["syncedlyrics"] = new Lyrics.SyncedLyricsRepository ();
-        remote_repositories["lrclib"] = new Lyrics.LrclibRepository ();
+        remote_repositories["syncedlyrics"] = new SyncedLyricsRepository ();
+        remote_repositories["lrclib"] = new LrclibRepository ();
 
         Application.settings.changed["download-location"].connect (configure_download_local);
         configure_download_local ();
@@ -27,7 +27,7 @@ public class Lyrics.Repository : IRepository, Object {
         return null;
     }
 
-    public bool save (SongMetadata song_metadata, Lyrics.ILyricFile lyric) {
+    public bool save (SongMetadata song_metadata, ILyricFile lyric) {
         return local_repository.save (song_metadata, lyric);
     }
 

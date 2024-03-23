@@ -1,5 +1,5 @@
 
-public class Lyrics.Lyric : Object {
+public class Lyric : Object {
     public static int offset = 0;
 
     private Gee.HashMap<string, string> metadata = new Gee.HashMap<string, string> ();

@@ -1,5 +1,5 @@
 
-public class Lyrics.Application : Gtk.Application {
+public class Application : Gtk.Application {
     public static string DEFAULT_LYRICS_DIR = Environment.get_home_dir ()+"/.lyrics/";
     public static GLib.Settings settings = new Settings ("com.github.naaando.lyrics");
     public LyricsService lyrics_service { get; set; }
@@ -45,7 +45,7 @@ public class Lyrics.Application : Gtk.Application {
         lyrics_service.notify["lyric"].connect (() => display_view.set_lyric (lyrics_service.lyric));
 
         var main_window = new MainWindow (this, players, main_stack);
-        var header_bar = new Lyrics.HeaderBar (players, lyrics_service);
+        var header_bar = new HeaderBar (players, lyrics_service);
         main_window.state_flags_changed.connect (() => {
             header_bar.parent_window_is_active = !(Gtk.StateFlags.BACKDROP in main_window.get_state_flags ());
         });
@@ -65,7 +65,7 @@ public class Lyrics.Application : Gtk.Application {
     }
 
     private void setup_services () {
-        var syncedLyrics = new SyncedLyrics.Shim();
+        var syncedLyrics = new SyncedLyricsShim();
         syncedLyrics.install();
 
         var repository = new Repository ();

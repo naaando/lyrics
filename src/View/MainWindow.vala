@@ -1,5 +1,5 @@
 
-public class Lyrics.MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
+public class MainWindow : Gtk.ApplicationWindow, SaveWindowStateMixin {
     Gtk.Stack main_stack;
     Players players;
     bool keep_above_when_playing;

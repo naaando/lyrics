@@ -1,4 +1,4 @@
-public class Lyrics.SettingsPopover : Gtk.Popover {
+public class SettingsPopover : Gtk.Popover {
     FileChooserButton folder_chooser_button;
     Gtk.ComboBox combobox;
     Gtk.Switch opacity_switch;

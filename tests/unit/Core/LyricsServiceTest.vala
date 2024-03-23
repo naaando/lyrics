@@ -22,7 +22,7 @@ public class Unit.Core.LyricsServiceTest : Unit.TestCase {
         assert_cmpstr (
             lyrics_service.state.to_string (),
             GLib.CompareOperator.EQ,
-            LyricsService.State.UNKNOWN.to_string ()
+            LyricsServiceState.UNKNOWN.to_string ()
         );
     }
 
@@ -36,7 +36,7 @@ public class Unit.Core.LyricsServiceTest : Unit.TestCase {
         assert_cmpstr (
             lyrics_service.state.to_string (),
             GLib.CompareOperator.EQ,
-            LyricsService.State.UNKNOWN.to_string ()
+            LyricsServiceState.UNKNOWN.to_string ()
         );
     }
 
@@ -52,9 +52,9 @@ public class Unit.Core.LyricsServiceTest : Unit.TestCase {
 
         player.current_song = song;
 
-        LyricsService.State[] state_change = {
-            LyricsService.State.DOWNLOADING,
-            LyricsService.State.LYRICS_NOT_FOUND,
+        LyricsServiceState[] state_change = {
+            LyricsServiceState.DOWNLOADING,
+            LyricsServiceState.LYRICS_NOT_FOUND,
         };
 
         uint state_changed_count = 0;
@@ -71,7 +71,7 @@ public class Unit.Core.LyricsServiceTest : Unit.TestCase {
 
         lyrics_service.set_player (player);
 
-        while (lyrics_service.state != LyricsService.State.LYRICS_NOT_FOUND) {
+        while (lyrics_service.state != LyricsServiceState.LYRICS_NOT_FOUND) {
             //  wait for the state to change
         }
 

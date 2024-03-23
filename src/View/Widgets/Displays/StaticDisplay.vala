@@ -51,20 +51,22 @@ public class ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         var start_time = (int64) position;
         remove_source ();
 
+        transition_to (labels[lyric.get_next_lyric_timestamp (start_time).to_string ()]);
+
         //  Start transition
-        if (lyric != null && lyric.size > 0) {
-            transition_to (labels[lyric.get_next_lyric_timestamp (start_time).to_string ()]);
-        }
+        //  if (lyric != null && lyric.size > 0) {
+        //      transition_to (labels[lyric.get_next_lyric_timestamp (start_time).to_string ()]);
+        //  }
 
-        current_source_id = Timeout.add (250, () => {
-            var elapsed = get_monotonic_time () - time;
-            if (lyric != null) {
-                var label = labels[lyric.get_next_lyric_timestamp (start_time + elapsed).to_string ()];
-                transition_to (label);
-            }
+        //  current_source_id = Timeout.add (250, () => {
+        //      var elapsed = get_monotonic_time () - time;
+        //      if (lyric != null) {
+        //          var label = labels[lyric.get_next_lyric_timestamp (start_time + elapsed).to_string ()];
+        //          transition_to (label);
+        //      }
 
-            return Source.CONTINUE;
-        });
+        //      return Source.CONTINUE;
+        //  });
     }
 
     protected void transition_to (Gtk.Label? next) {

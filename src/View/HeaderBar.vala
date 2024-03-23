@@ -1,4 +1,4 @@
-public class Lyrics.HeaderBar : Gtk.HeaderBar {
+public class HeaderBar : Gtk.HeaderBar {
     public bool parent_window_is_active { get; set; }
 
     Gtk.Settings settings = Gtk.Settings.get_default ();
@@ -108,7 +108,7 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
     }
 
     void update_play_n_pause_icon () {
-        bool is_player_paused = players.active_player != null && players.active_player.state == Lyrics.Player.State.PAUSED;
+        bool is_player_paused = players.active_player != null && players.active_player.state == Player.State.PAUSED;
         var icon_name = is_player_paused ? "media-playback-start-symbolic" : "media-playback-pause-symbolic";
         if (play_n_pause_btn != null) {
             play_n_pause_btn.image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.SMALL_TOOLBAR);
@@ -158,7 +158,7 @@ public class Lyrics.HeaderBar : Gtk.HeaderBar {
             return_if_fail (parent_window != null);
 
             var song = (players.active_player != null) ? players.active_player.current_song : null;
-            var search_dialog = new Lyrics.SearchLyric ((Gtk.Window) parent_window, song);
+            var search_dialog = new SearchLyric ((Gtk.Window) parent_window, song);
             search_dialog.lyrics_service = lyrics_service;
             search_dialog.show_all ();
         });

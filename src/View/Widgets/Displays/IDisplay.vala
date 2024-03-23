@@ -1,4 +1,4 @@
-public interface Lyrics.IDisplay : Gtk.Widget {
+public interface IDisplay : Gtk.Widget {
     public abstract LyricsService lyrics_service { get; set; }
 
     public abstract void set_player (Player player);

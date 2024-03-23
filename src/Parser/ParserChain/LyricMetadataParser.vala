@@ -3,7 +3,7 @@ public class Parser.LyricMetadataParser : ChainOfResponsability {
         return Regex.match_simple ("\\[\\D", item);
     }
 
-    public override void process (Lyrics.Lyric lyric, string ln) {
+    public override void process (Lyric lyric, string ln) {
         if (ln.has_prefix ("[") && ln.has_suffix ("]")) {
             var md = ln[1:-1];
             var tag = md.split (":", 2);

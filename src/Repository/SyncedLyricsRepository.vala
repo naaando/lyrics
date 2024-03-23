@@ -1,11 +1,11 @@
-public class Lyrics.SyncedLyricsRepository : Lyrics.IRepository, Object {
+public class SyncedLyricsRepository : IRepository, Object {
 
     public SyncedLyricsRepository () {
         //
     }
 
     public ILyricFile? find_first (SongMetadata song) {
-        var shim = new SyncedLyrics.Shim ();
+        var shim = new SyncedLyricsShim ();
 
         var search_terms = new StringBuilder ();
         search_terms
@@ -17,7 +17,7 @@ public class Lyrics.SyncedLyricsRepository : Lyrics.IRepository, Object {
         debug (@"Searching for $(search_terms.str)");
 
         var file = shim.search (search_terms.str, song.filename);
-        return file != null ? new Lyrics.LocalFile(file) : null;
+        return file != null ? new LocalFile(file) : null;
     }
 
     public Gee.Collection<ILyricFile>? find (SongMetadata song) {

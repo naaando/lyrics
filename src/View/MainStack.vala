@@ -1,4 +1,4 @@
-public class Lyrics.MainStack : Gtk.Stack {
+public class MainStack : Gtk.Stack {
     Gtk.Widget no_player_view;
     Gtk.Widget not_playing_view;
     Gtk.Widget no_lyrics_view;
@@ -45,8 +45,8 @@ public class Lyrics.MainStack : Gtk.Stack {
     public void on_lyric_service_change () {
         var state = display_view.lyrics_service.state;
 
-        if (state == Lyrics.LyricsService.State.DOWNLOADING) { visible_child_name = "DOWNLOADING"; }
-        if (state == Lyrics.LyricsService.State.LYRICS_NOT_FOUND) { visible_child_name = "NO_LYRICS"; }
-        if (state == Lyrics.LyricsService.State.DOWNLOADED) { visible_child_name = "DISPLAYING"; }
+        if (state == LyricsServiceState.DOWNLOADING) { visible_child_name = "DOWNLOADING"; }
+        if (state == LyricsServiceState.LYRICS_NOT_FOUND) { visible_child_name = "NO_LYRICS"; }
+        if (state == LyricsServiceState.DOWNLOADED) { visible_child_name = "DISPLAYING"; }
     }
 }

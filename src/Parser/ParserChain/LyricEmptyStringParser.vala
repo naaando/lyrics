@@ -3,7 +3,7 @@ public class Parser.LyricEmptyStringParser : ChainOfResponsability {
         return item == "";
     }
 
-    public override void process (Lyrics.Lyric lyric, string ln) {
+    public override void process (Lyric lyric, string ln) {
         return;
     }
 }

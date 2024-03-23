@@ -1,5 +1,27 @@
-public class Lyrics.LyricsService : Object {
-    public State state { get; set; }
+public enum LyricServiceState {
+    UNKNOWN,
+    DOWNLOADING,
+    LYRICS_NOT_FOUND,
+    DOWNLOADED;
+
+    public string to_string () {
+        switch (this) {
+            case UNKNOWN:
+                return "UNKNOWN";
+            case DOWNLOADING:
+                return "DOWNLOADING";
+            case LYRICS_NOT_FOUND:
+                return "LYRICS NOT FOUND";
+            case DOWNLOADED:
+                return "DOWNLOADED";
+            default:
+                assert_not_reached();
+        }
+    }
+}
+
+public class LyricsService : Object {
+    public LyricServiceState state { get; set; }
     IRepository lyric_repository;
     public Lyric? lyric  { get; set; }
     GLib.MainLoop? request_event_loop;
@@ -7,12 +29,17 @@ public class Lyrics.LyricsService : Object {
 
     public LyricsService (IRepository repository) {
         lyric_repository = repository;
-        state = State.UNKNOWN;
+        state = LyricServiceState.UNKNOWN;
     }
 
     public void set_player (Player player) {
         debug (player.busname);
         debug (player.current_song?.to_string ());
+
+        if (player.current_song.equals(song)) {
+            return;
+        }
+
         if (request_event_loop != null && request_event_loop.is_running ()) {
             request_event_loop.quit ();
         }
@@ -20,7 +47,7 @@ public class Lyrics.LyricsService : Object {
         request_event_loop = new GLib.MainLoop ();
 
         if (player.current_song == null) {
-            state = State.UNKNOWN;
+            state = LyricServiceState.UNKNOWN;
             return;
         }
 
@@ -33,43 +60,21 @@ public class Lyrics.LyricsService : Object {
 
     public signal void set_lyric (Lyric lyric) {
         this.lyric = lyric;
-        state = State.DOWNLOADED;
-    }
-
-    public enum State {
-        UNKNOWN,
-        DOWNLOADING,
-        LYRICS_NOT_FOUND,
-        DOWNLOADED;
-
-        public string to_string () {
-            switch (this) {
-                case UNKNOWN:
-                    return "UNKNOWN";
-                case DOWNLOADING:
-                    return "DOWNLOADING";
-                case LYRICS_NOT_FOUND:
-                    return "LYRICS NOT FOUND";
-                case DOWNLOADED:
-                    return "DOWNLOADED";
-                default:
-                    assert_not_reached();
-            }
-        }
+        state = LyricServiceState.DOWNLOADED;
     }
 
     private async void request_lyric (SongMetadata song) {
-        state = State.DOWNLOADING;
+        state = LyricServiceState.DOWNLOADING;
 
         var lyricfile = lyric_repository.find_first (song);
 
         if (lyricfile != null) {
             lyric = lyricfile.to_lyric ();
-            state = State.DOWNLOADED;
+            state = LyricServiceState.DOWNLOADED;
             return;
         }
 
-        state = State.LYRICS_NOT_FOUND;
+        state = LyricServiceState.LYRICS_NOT_FOUND;
 
         lyric = null;
     }

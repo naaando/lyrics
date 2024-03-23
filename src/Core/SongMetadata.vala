@@ -1,5 +1,5 @@
 
-public class Lyrics.SongMetadata : Object {
+public class SongMetadata : Object {
     public string artist { get; set; }
     public string title { get; set; }
     public string genre { get; set; }
@@ -45,5 +45,13 @@ public class Lyrics.SongMetadata : Object {
         if (path != null) builder.append (@"Path: $path\n");
         if (filename != null) builder.append (@"Filename: $filename\n");
         return builder.str;
+    }
+
+    public bool equals (Object? obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (obj.get_type () != get_type ()) return false;
+        var other = obj as SongMetadata;
+        return artist == other.artist && title == other.title && album == other.album && duration == other.duration && uri == other.uri;
     }
 }

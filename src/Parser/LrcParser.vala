@@ -1,6 +1,6 @@
 
 public class Parser.LrcParser : Object {
-    private Lyrics.Lyric lyric;
+    private Lyric lyric;
     ChainOfResponsability parse_chain;
 
     public LrcParser () {
@@ -10,8 +10,8 @@ public class Parser.LrcParser : Object {
         parse_chain.add_parser_to_chain (new LyricContentParser ());
     }
 
-    public Lyrics.Lyric? parse_file (File file) {
-        lyric = new Lyrics.Lyric ();
+    public Lyric? parse_file (File file) {
+        lyric = new Lyric ();
 
         try {
             DataInputStream dis = new DataInputStream (file.read ());

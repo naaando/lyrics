@@ -1,5 +1,5 @@
 
-public class Lyrics.Players : Object {
+public class Players : Object {
     private Mpris.Service scanner;
 
     public signal void added (Player player);

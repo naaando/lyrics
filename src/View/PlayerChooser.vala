@@ -1,4 +1,4 @@
-public class Lyrics.PlayerChooser : Gtk.ComboBoxText {
+public class PlayerChooser : Gtk.ComboBoxText {
     Players players;
 
     public PlayerChooser (Players _players) {
