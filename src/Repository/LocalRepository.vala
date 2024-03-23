@@ -2,7 +2,7 @@
 public class Lyrics.LocalRepository : IRepository, Object {
     public string local_storage { get; set; default = Lyrics.Application.DEFAULT_LYRICS_DIR; }
 
-    public bool save (Metasong song, ILyricFile lyric_file) {
+    public bool save (SongMetadata song, ILyricFile lyric_file) {
         if (!validate_or_create_local_storage ()) {
             warning (@"Unable to save to $local_storage, verify your directory or choose another");
             return false;
@@ -21,11 +21,11 @@ public class Lyrics.LocalRepository : IRepository, Object {
         }
     }
 
-    public ILyricFile? find_first (Metasong song) {
+    public ILyricFile? find_first (SongMetadata song) {
         return find_by_filename (get_filename_for_song(song));
     }
 
-    public Gee.Collection<ILyricFile>? find (Metasong song) {
+    public Gee.Collection<ILyricFile>? find (SongMetadata song) {
         return null;
     }
 
@@ -51,7 +51,7 @@ public class Lyrics.LocalRepository : IRepository, Object {
         }
     }
 
-    string get_filename_for_song (Metasong song) {
+    string get_filename_for_song (SongMetadata song) {
         var song_filename = song.filename;
         var position_of_last_dot = song_filename.last_index_of (".");
         if(position_of_last_dot != 0 && position_of_last_dot != -1) {

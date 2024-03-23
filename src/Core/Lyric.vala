@@ -1,10 +1,10 @@
 
 public class Lyrics.Lyric : Object {
+    public static int offset = 0;
+
     private Gee.HashMap<string, string> metadata = new Gee.HashMap<string, string> ();
     private Gee.BidirMapIterator<int64?, string> lrc_iterator;
     private Gee.TreeMap<int64?, string> treemap;
-
-    int offset = 0;
 
     public int size {
         get {
@@ -53,6 +53,7 @@ public class Lyrics.Lyric : Object {
     }
 
     public string? get_current_line (int64 time_in_us) {
+        debug (offset.to_string ());
         var time_with_offset = time_in_us + offset;
 
         try {
@@ -105,10 +106,21 @@ public class Lyrics.Lyric : Object {
 
         builder.append (@"Lyric:\n");
         treemap.foreach ((item) => {
-            builder.append (@"$(item.key) : $(item.value)\n");
+            var timestamp = format_timestamp (item.key);
+            builder.append (@"$timestamp : $(item.value)\n");
             return true;
         });
 
         return builder.str;
+    }
+
+    protected string format_timestamp (int64 time_in_us) {
+        var time_in_ms = time_in_us / 1000;
+        var ms = time_in_ms % 1000;
+        var s = time_in_ms / 1000 % 60;
+        var m = time_in_ms / 1000 / 60 % 60;
+        var h = time_in_ms / 1000 / 60 / 60;
+
+        return @"$(h.to_string ("%02d")):$(m.to_string ("%02d")):$(s.to_string ("%02d")).$(ms.to_string ("%03d"))";
     }
 }

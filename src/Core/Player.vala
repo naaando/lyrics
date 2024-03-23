@@ -1,7 +1,7 @@
 
 public interface Lyrics.Player : Object {
     public abstract int64 position { get; }
-    public abstract Metasong current_song { get;set; }
+    public abstract SongMetadata current_song { get;set; }
     public abstract State state { get; protected set; }
     public abstract string busname { get; protected set; }
     public abstract string? identity { get;protected set; }

@@ -2,7 +2,8 @@ public class Lyrics.LyricsService : Object {
     public State state { get; set; }
     IRepository lyric_repository;
     public Lyric? lyric  { get; set; }
-    GLib.MainLoop request_event_loop;
+    GLib.MainLoop? request_event_loop;
+    SongMetadata song;
 
     public LyricsService (IRepository repository) {
         lyric_repository = repository;
@@ -10,7 +11,9 @@ public class Lyrics.LyricsService : Object {
     }
 
     public void set_player (Player player) {
-        if (request_event_loop != null) {
+        debug (player.busname);
+        debug (player.current_song?.to_string ());
+        if (request_event_loop != null && request_event_loop.is_running ()) {
             request_event_loop.quit ();
         }
 
@@ -55,7 +58,7 @@ public class Lyrics.LyricsService : Object {
         }
     }
 
-    private async void request_lyric (Metasong song) {
+    private async void request_lyric (SongMetadata song) {
         state = State.DOWNLOADING;
 
         var lyricfile = lyric_repository.find_first (song);

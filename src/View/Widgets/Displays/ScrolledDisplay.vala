@@ -1,7 +1,7 @@
 
 public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
-    public string current_line { get; set; }
-    public LyricsService lyrics_service { get; set; }
+    protected string current_line { get; set; }
+    protected LyricsService lyrics_service { get; set; }
 
     int64 time;
     Gtk.Box box;
@@ -31,7 +31,7 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
 
     public void set_lyric (Lyric? lyric) {
         this.lyric = lyric;
-        return_if_fail (lyric != null);
+        return_if_fail (lyric != null && lyric.size > 0);
 
         debug (@"Lyric changed - Displaying $lyric");
 
@@ -45,7 +45,7 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         });
     }
 
-    public void start (uint64 position) {
+    protected void start (uint64 position) {
         debug (@"Starting display on position $position");
         time = get_monotonic_time ();
         var start_time = (int64) position;
@@ -67,7 +67,7 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         });
     }
 
-    void transition_to (Gtk.Label? next) {
+    protected void transition_to (Gtk.Label? next) {
         if (next == current_label) {
             return;
         }
@@ -86,17 +86,17 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         current_label.get_style_context ().add_class ("selected");
     }
 
-    public void stop () {
+    protected void stop () {
         debug ("Stopping display");
         remove_source ();
         clear ();
     }
 
-    public void clear () {
+    protected void clear () {
         box.forall ((widget) => box.remove (widget));
     }
 
-    Gtk.Label build_lyric_label (string label) {
+    protected Gtk.Label build_lyric_label (string label) {
         var lyric_label = new Gtk.Label (label);
         lyric_label.wrap = true;
         lyric_label.justify = Gtk.Justification.CENTER;
@@ -107,7 +107,7 @@ public class Lyrics.ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
         return lyric_label;
     }
 
-    void remove_source () {
+    protected void remove_source () {
         if (current_source_id > 0) {
             debug (@"Removing source $(current_source_id)");
             Source.remove (current_source_id);

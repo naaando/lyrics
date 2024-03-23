@@ -41,7 +41,7 @@ public class Unit.Core.LyricsServiceTest : Unit.TestCase {
     }
 
     void test_set_player_with_song() {
-        var song = new Metasong ();
+        var song = new SongMetadata ();
         var player = new PlayerMock ();
         var mock_repository = new RepositoryMock ();
         var lyrics_service = new LyricsService(mock_repository);

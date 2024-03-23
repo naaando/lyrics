@@ -1,5 +1,5 @@
 
-public class Lyrics.Metasong : Object {
+public class Lyrics.SongMetadata : Object {
     public string artist { get; set; }
     public string title { get; set; }
     public string genre { get; set; }
@@ -10,7 +10,7 @@ public class Lyrics.Metasong : Object {
     public string filename  { get; set; }
     public string thumb  { get; set; }
 
-    public Metasong.from_metadata (HashTable<string,Variant> metadata) {
+    public SongMetadata.from_metadata (HashTable<string,Variant> metadata) {
         artist = string.joinv (", ", metadata["xesam:artist"].get_strv ());
         if (metadata["xesam:title"] != null) {
             title = metadata["xesam:title"].get_string ();

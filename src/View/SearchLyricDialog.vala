@@ -3,7 +3,7 @@ public class Lyrics.SearchLyric : Gtk.Dialog {
 
     Repository repository = new Repository ();
     Gee.HashMap<int, Lyrics.ILyricFile> result = new Gee.HashMap<int, Lyrics.ILyricFile> ();
-    Metasong song_metadata;
+    SongMetadata song_metadata;
 
     Gtk.Entry title_entry = new Gtk.Entry ();
     Gtk.Entry artist_entry = new Gtk.Entry ();
@@ -11,7 +11,7 @@ public class Lyrics.SearchLyric : Gtk.Dialog {
     Gtk.TreeView lyrics_list;
     Gtk.ListStore lyrics_list_store;
 
-    public SearchLyric (Gtk.Window window, Metasong? metasong = null) {
+    public SearchLyric (Gtk.Window window, SongMetadata? song_metadata = null) {
         Object (
             deletable: false,
             destroy_with_parent: true,
@@ -22,7 +22,7 @@ public class Lyrics.SearchLyric : Gtk.Dialog {
             window_position: Gtk.WindowPosition.CENTER_ON_PARENT
         );
 
-        song_metadata = metasong ?? new Metasong ();
+        song_metadata = song_metadata ?? new SongMetadata ();
         lyrics_list = create_treeview (lyrics_list_store = create_metadata_song_list_store ());
         lyrics_list.expand = true;
         lyrics_list.row_activated.connect (on_row_activated);

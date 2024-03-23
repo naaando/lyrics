@@ -5,7 +5,7 @@ public class SimplePlayer : Object, Lyrics.Player {
             return 0;
         }
     }
-    public Lyrics.Metasong current_song { get;set; }
+    public Lyrics.SongMetadata current_song { get;set; }
     public HashTable<string,Variant> metadata  { owned get; }
     public Lyrics.Player.State state { get; set; }
     public string busname { get; protected set; }
@@ -13,7 +13,7 @@ public class SimplePlayer : Object, Lyrics.Player {
 
     //  private timer;
 
-    public SimplePlayer (string bn, Lyrics.Metasong music) {
+    public SimplePlayer (string bn, Lyrics.SongMetadata music) {
         busname = bn;
         current_song = music;
     }

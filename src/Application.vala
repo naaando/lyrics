@@ -28,11 +28,20 @@ public class Lyrics.Application : Gtk.Application {
             return;
         }
 
+        Lyric.offset = 0;
+        Lyric.offset = Application.settings.get_int ("offset");
+        debug (@"Updated offset $(Lyric.offset)");
+
+        Application.settings.changed["offset"].connect (() => {
+            Lyric.offset = Application.settings.get_int ("offset");
+            debug (@"Updated offset $(Lyric.offset)");
+        });
+
         display_view = ViewFactory.create_display_view (lyrics_service);
         main_stack = new MainStack (display_view);
         players.on_active_player_changed.connect (() => main_stack.set_player (players.active_player));
-        players.on_active_player_changed.connect (() => display_view.set_player (players.active_player));
         players.on_active_player_changed.connect (() => lyrics_service.set_player (players.active_player));
+        players.on_active_player_changed.connect (() => display_view.set_player (players.active_player));
         lyrics_service.notify["lyric"].connect (() => display_view.set_lyric (lyrics_service.lyric));
 
         var main_window = new MainWindow (this, players, main_stack);

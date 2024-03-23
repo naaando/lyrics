@@ -13,7 +13,7 @@ public class Mpris.Player : Object, Lyrics.Player {
         }
     }
 
-    public Lyrics.Metasong current_song { get;set; }
+    public Lyrics.SongMetadata current_song { get;set; }
 
     private HashTable<string,Variant> metadata  {
         owned get {
@@ -61,7 +61,7 @@ public class Mpris.Player : Object, Lyrics.Player {
             return;
         }
 
-        var new_song = new Lyrics.Metasong.from_metadata (metadata);
+        var new_song = new Lyrics.SongMetadata.from_metadata (metadata);
 
         if (current_song?.to_string () == new_song?.to_string ()) {
             return;

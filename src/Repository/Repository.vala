@@ -4,19 +4,20 @@ public class Lyrics.Repository : IRepository, Object {
     LocalRepository local_repository = new LocalRepository ();
 
     public Repository () {
-        remote_repositories["first"] = new Lyrics.SyncedLyricsRepository ();
+        remote_repositories["syncedlyrics"] = new Lyrics.SyncedLyricsRepository ();
+        remote_repositories["lrclib"] = new Lyrics.LrclibRepository ();
 
         Application.settings.changed["download-location"].connect (configure_download_local);
         configure_download_local ();
     }
 
-    public ILyricFile? find_first (Metasong song_metadata) {
+    public ILyricFile? find_first (SongMetadata song_metadata) {
         var local_file = local_repository.find_first (song_metadata);
         if (local_file != null) {
             return local_file;
         }
 
-        var remote_file = remote_repositories["first"].find_first (song_metadata);
+        var remote_file = remote_repositories["syncedlyrics"].find_first (song_metadata);
 
         if (remote_file != null) {
             save (song_metadata, remote_file);
@@ -26,16 +27,16 @@ public class Lyrics.Repository : IRepository, Object {
         return null;
     }
 
-    public bool save (Metasong song_metadata, Lyrics.ILyricFile lyric) {
+    public bool save (SongMetadata song_metadata, Lyrics.ILyricFile lyric) {
         return local_repository.save (song_metadata, lyric);
     }
 
-    public Gee.Collection<ILyricFile>? find (Metasong song) {
+    public Gee.Collection<ILyricFile>? find (SongMetadata song) {
         var collection = new Gee.ArrayList<ILyricFile> ();
         var local_result = local_repository.find_first (song);
         if (local_result != null) collection.add (local_result);
 
-        var viewlyrics_results = remote_repositories["first"].find (song);
+        var viewlyrics_results = remote_repositories["lrclib"].find (song);
         if (viewlyrics_results != null) collection.add_all (viewlyrics_results);
 
         return collection.size != 0 ? collection : null;

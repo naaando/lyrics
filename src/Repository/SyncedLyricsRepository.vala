@@ -4,7 +4,7 @@ public class Lyrics.SyncedLyricsRepository : Lyrics.IRepository, Object {
         //
     }
 
-    public ILyricFile? find_first (Metasong song) {
+    public ILyricFile? find_first (SongMetadata song) {
         var shim = new SyncedLyrics.Shim ();
 
         var search_terms = new StringBuilder ();
@@ -20,7 +20,7 @@ public class Lyrics.SyncedLyricsRepository : Lyrics.IRepository, Object {
         return file != null ? new Lyrics.LocalFile(file) : null;
     }
 
-    public Gee.Collection<ILyricFile>? find (Metasong song) {
+    public Gee.Collection<ILyricFile>? find (SongMetadata song) {
         return null;
     }
 }

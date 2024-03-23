@@ -53,7 +53,8 @@ public class SyncedLyrics.Shim : Object {
             return null;
         }
 
-        if (status != 0) {
+        if (status != 0 || stderr.contains("No synced-lyrics found")) {
+            debug("Lyric search failed");
             return null;
         }
 
