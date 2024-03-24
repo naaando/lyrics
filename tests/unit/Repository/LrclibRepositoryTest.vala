@@ -1,5 +1,3 @@
-using Lyrics;
-
 public class Unit.Repository.LrclibRepositoryTest : Unit.TestCase {
     protected override void setup () {
         //

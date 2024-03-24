@@ -7,7 +7,7 @@ public class SimplePlayer : Object, Player {
     }
     public SongMetadata current_song { get;set; }
     public HashTable<string,Variant> metadata  { owned get; }
-    public Player.State state { get; set; }
+    public PlayerState state { get; set; }
     public string busname { get; protected set; }
     public string? identity { get; protected set; default = "Simple player"; }
 
@@ -19,8 +19,8 @@ public class SimplePlayer : Object, Player {
     }
 
     public void toggle_play_pause () {
-        if (state != Player.State.STOPPED) {
-            state = (state == Player.State.PLAYING) ? Player.State.PAUSED : Player.State.PLAYING;
+        if (state != PlayerState.STOPPED) {
+            state = (state == PlayerState.PLAYING) ? PlayerState.PAUSED : PlayerState.PLAYING;
         }
     }
 

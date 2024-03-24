@@ -1,4 +1,4 @@
-public enum LyricServiceState {
+public enum LyricsServiceState {
     UNKNOWN,
     DOWNLOADING,
     LYRICS_NOT_FOUND,
@@ -21,7 +21,7 @@ public enum LyricServiceState {
 }
 
 public class LyricsService : Object {
-    public LyricServiceState state { get; set; }
+    public LyricsServiceState state { get; set; }
     IRepository lyric_repository;
     public Lyric? lyric  { get; set; }
     GLib.MainLoop? request_event_loop;
@@ -29,7 +29,7 @@ public class LyricsService : Object {
 
     public LyricsService (IRepository repository) {
         lyric_repository = repository;
-        state = LyricServiceState.UNKNOWN;
+        state = LyricsServiceState.UNKNOWN;
     }
 
     public void set_player (Player player) {
@@ -47,7 +47,7 @@ public class LyricsService : Object {
         request_event_loop = new GLib.MainLoop ();
 
         if (player.current_song == null) {
-            state = LyricServiceState.UNKNOWN;
+            state = LyricsServiceState.UNKNOWN;
             return;
         }
 
@@ -60,21 +60,21 @@ public class LyricsService : Object {
 
     public signal void set_lyric (Lyric lyric) {
         this.lyric = lyric;
-        state = LyricServiceState.DOWNLOADED;
+        state = LyricsServiceState.DOWNLOADED;
     }
 
     private async void request_lyric (SongMetadata song) {
-        state = LyricServiceState.DOWNLOADING;
+        state = LyricsServiceState.DOWNLOADING;
 
         var lyricfile = lyric_repository.find_first (song);
 
         if (lyricfile != null) {
             lyric = lyricfile.to_lyric ();
-            state = LyricServiceState.DOWNLOADED;
+            state = LyricsServiceState.DOWNLOADED;
             return;
         }
 
-        state = LyricServiceState.LYRICS_NOT_FOUND;
+        state = LyricsServiceState.LYRICS_NOT_FOUND;
 
         lyric = null;
     }

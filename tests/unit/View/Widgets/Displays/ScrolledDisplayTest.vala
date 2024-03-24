@@ -1,5 +1,3 @@
-using Lyrics;
-
 public class Unit.ScrolledDisplayTest : Unit.TestCase {
     protected override void setup () {
         //

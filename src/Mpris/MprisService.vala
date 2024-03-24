@@ -1,12 +1,12 @@
 
 public class Mpris.Service : Object {
-    public signal void found (Mpris.Player player);
+    public signal void found (MprisPlayer player);
     public signal void lost (string name);
 
     void add (string name) {
         // delay the sync because otherwise the dbus properties are not yet intialized!
         Timeout.add (200, () => {
-            var player = new Mpris.Player (name);
+            var player = new MprisPlayer (name);
             found (player);
             return false;
         });

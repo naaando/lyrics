@@ -1,5 +1,4 @@
 using Parser;
-using Lyrics;
 
 public class Unit.Parser.LrcParserTest : Unit.TestCase {
     protected override void setup () {

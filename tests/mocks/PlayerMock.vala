@@ -2,7 +2,7 @@
 public class PlayerMock : MockClass, Player  {
     public int64 position { get; }
     public SongMetadata current_song { get; set; }
-    public Player.State state { get; protected set; }
+    public PlayerState state { get; protected set; }
     public string busname { get; protected set; }
     public string? identity { get; protected set; }
 

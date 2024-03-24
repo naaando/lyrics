@@ -1,5 +1,3 @@
-using Lyrics;
-
 public class Unit.Core.LyricsServiceTest : Unit.TestCase {
     protected override void setup () {
         //

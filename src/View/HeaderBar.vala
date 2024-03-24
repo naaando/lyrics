@@ -108,7 +108,7 @@ public class HeaderBar : Gtk.HeaderBar {
     }
 
     void update_play_n_pause_icon () {
-        bool is_player_paused = players.active_player != null && players.active_player.state == Player.State.PAUSED;
+        bool is_player_paused = players.active_player != null && players.active_player.state == PlayerState.PAUSED;
         var icon_name = is_player_paused ? "media-playback-start-symbolic" : "media-playback-pause-symbolic";
         if (play_n_pause_btn != null) {
             play_n_pause_btn.image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.SMALL_TOOLBAR);

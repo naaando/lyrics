@@ -1,5 +1,5 @@
 
-public class ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
+public class StaticDisplay : Gtk.ScrolledWindow, IDisplay {
     protected string current_line { get; set; }
     protected LyricsService lyrics_service { get; set; }
 
@@ -11,7 +11,7 @@ public class ScrolledDisplay : Gtk.ScrolledWindow, IDisplay {
     Gtk.Label current_label;
     uint current_source_id = 0;
 
-    public ScrolledDisplay (LyricsService lrservice) {
+    public StaticDisplay (LyricsService lrservice) {
         adjustment = vadjustment;
         vscrollbar_policy = Gtk.PolicyType.EXTERNAL;
 

@@ -1,7 +1,7 @@
 
-public class Mpris.Player : Object, Player {
-    PlayerIface player;
-    DbusPropIface prop;
+public class MprisPlayer : Object, Player {
+    Mpris.PlayerIface player;
+    Mpris.DbusPropIface prop;
 
     public int64 position {
         get {
@@ -21,11 +21,11 @@ public class Mpris.Player : Object, Player {
         }
     }
 
-    public Player.State state { get; protected set; default = Player.State.STOPPED; }
+    public PlayerState state { get; protected set; default = PlayerState.STOPPED; }
     public string busname { get;protected set; }
     public string? identity { get;protected set; }
 
-    public Player (string busname) {
+    public MprisPlayer (string busname) {
         try {
             player = Bus.get_proxy_sync (BusType.SESSION, busname, "/org/mpris/MediaPlayer2");
             prop = Bus.get_proxy_sync (BusType.SESSION, busname, "/org/mpris/MediaPlayer2");
@@ -51,7 +51,7 @@ public class Mpris.Player : Object, Player {
         });
     }
 
-    ~Player () {
+    ~MprisPlayer () {
         message (@"removing player $busname");
     }
 
@@ -74,25 +74,25 @@ public class Mpris.Player : Object, Player {
     void update_state () {
         switch (player.playback_status) {
             case "Playing":
-                state = Player.State.PLAYING;
+                state = PlayerState.PLAYING;
                 break;
             case "Paused":
-                state = Player.State.PAUSED;
+                state = PlayerState.PAUSED;
                 break;
             case "Stopped":
-                state = Player.State.STOPPED;
+                state = PlayerState.STOPPED;
                 break;
             default:
-                state = Player.State.UNKNOWN;
+                state = PlayerState.UNKNOWN;
                 break;
         }
     }
 
     public void toggle_play_pause () {
         try {
-            if(state != Player.State.PLAYING) {
+            if(state != PlayerState.PLAYING) {
                 player.play ();
-            } else if (state != Player.State.STOPPED) {
+            } else if (state != PlayerState.STOPPED) {
                 player.pause ();
             }
         } catch (Error e) {
