@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop">
+<component type="desktop-application">
   <id>com.github.naaando.lyrics</id>
+  <launchable type="desktop-id">com.github.naaando.lyrics.desktop</launchable>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>Lyrics</name>
@@ -10,24 +11,38 @@
   </description>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/naaando/lyrics/master/data/screenshot.png</image>
+      <caption>Main window (light mode)</caption>
+      <image type="source">https://raw.githubusercontent.com/naaando/lyrics/557f0007e71338efa39140a406981ef8cdc417ae/data/screenshot.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/naaando/lyrics/master/data/screenshot-dark.png</image>
+      <caption>Main window (dark mode)</caption>
+      <image type="source">https://raw.githubusercontent.com/naaando/lyrics/557f0007e71338efa39140a406981ef8cdc417ae/data/screenshot-dark.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/naaando/lyrics/master/data/screenshot-inactive.png</image>
+      <caption>Inactive main window (light mode)</caption>
+      <image type="source">https://raw.githubusercontent.com/naaando/lyrics/557f0007e71338efa39140a406981ef8cdc417ae/data/screenshot-inactive.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/naaando/lyrics/master/data/screenshot-dark-inactive.png</image>
+      <caption>Inactive main window (dark mode)</caption>
+      <image type="source">https://raw.githubusercontent.com/naaando/lyrics/557f0007e71338efa39140a406981ef8cdc417ae/data/screenshot-dark-inactive.png</image>
     </screenshot>
   </screenshots>
   <provides>
     <binary>com.github.naaando.lyrics</binary>
-  </provides>​
+  </provides>
   <releases>
+    <release version="0.9.0" date="2023-11-26">
+      <description>
+        <ul>
+          <li>Switched to syncedlyrics as lyrics provider</li>
+          <li>Minor bugfixes</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.8.1" date="2019-03-16">
-      <p>Release flatpak</p>
+      <description>
+        <p>Release flatpak</p>
+      </description>
     </release>
     <release version="0.8.0" date="2019-03-16">
       <description>
@@ -155,35 +170,7 @@
       </description>
     </release>
   </releases>
-  <content_rating type="oars-1.1">
-    <content_attribute id="violence-cartoon">none</content_attribute>
-    <content_attribute id="violence-fantasy">none</content_attribute>
-    <content_attribute id="violence-realistic">none</content_attribute>
-    <content_attribute id="violence-bloodshed">none</content_attribute>
-    <content_attribute id="violence-sexual">none</content_attribute>
-    <content_attribute id="violence-desecration">none</content_attribute>
-    <content_attribute id="violence-slavery">none</content_attribute>
-    <content_attribute id="violence-worship">none</content_attribute>
-    <content_attribute id="drugs-alcohol">none</content_attribute>
-    <content_attribute id="drugs-narcotics">none</content_attribute>
-    <content_attribute id="drugs-tobacco">none</content_attribute>
-    <content_attribute id="sex-nudity">none</content_attribute>
-    <content_attribute id="sex-themes">none</content_attribute>
-    <content_attribute id="sex-homosexuality">none</content_attribute>
-    <content_attribute id="sex-prostitution">none</content_attribute>
-    <content_attribute id="sex-adultery">none</content_attribute>
-    <content_attribute id="sex-appearance">none</content_attribute>
-    <content_attribute id="language-profanity">none</content_attribute>
-    <content_attribute id="language-humor">none</content_attribute>
-    <content_attribute id="language-discrimination">none</content_attribute>
-    <content_attribute id="social-chat">none</content_attribute>
-    <content_attribute id="social-info">none</content_attribute>
-    <content_attribute id="social-audio">none</content_attribute>
-    <content_attribute id="social-location">none</content_attribute>
-    <content_attribute id="social-contacts">none</content_attribute>
-    <content_attribute id="money-purchasing">none</content_attribute>
-    <content_attribute id="money-gambling">none</content_attribute>
-  </content_rating>
+  <content_rating type="oars-1.1"/>
   <developer_name>Fernando da Silva Sousa</developer_name>
   <url type="homepage">https://github.com/naaando/lyrics</url>
   <url type="bugtracker">https://github.com/naaando/lyrics/issues</url>
