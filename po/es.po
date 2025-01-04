@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: lyrics\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-29 20:09+0100\n"
-"PO-Revision-Date: 2019-01-26 21:12-0200\n"
+"PO-Revision-Date: 2025-01-04 15:54-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -16,103 +16,104 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: src/View/Factory/ViewFactory.vala:3
 msgid "Couldn't find any player, check your player's MPRIS configuration"
-msgstr ""
+msgstr "No se ha podido encontrar ningún reproductor, compruebe la configuración MPRIS de su reproductor"
 
 #: src/View/Factory/ViewFactory.vala:7
 msgid "Currently not playing"
-msgstr ""
+msgstr "No se reproduce actualmente"
 
 #: src/View/Factory/ViewFactory.vala:11
 msgid "Couldn't find lyrics for song"
-msgstr ""
+msgstr "No pude encontrar la letra de la canción"
 
 #: src/View/Factory/ViewFactory.vala:19 src/View/Widgets/DownloadView.vala:33
 msgid "Downloading"
-msgstr ""
+msgstr "Descargando"
 
 #: src/View/HeaderBar.vala:134
 msgid "Light background"
-msgstr ""
+msgstr "Fondo claro"
 
 #: src/View/HeaderBar.vala:135
 msgid "Dark background"
-msgstr ""
+msgstr "Fondo oscuro"
 
 #: src/View/MainWindow.vala:14
 msgid "Lyrics"
-msgstr ""
+msgstr "Letras"
 
 #: src/View/SearchLyricDialog.vala:38
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 #: src/View/SearchLyricDialog.vala:39
 msgid "Search"
-msgstr ""
+msgstr "Buscar"
 
 #: src/View/SearchLyricDialog.vala:76
 msgid "Title:"
-msgstr ""
+msgstr "Título:"
 
 #: src/View/SearchLyricDialog.vala:78
 msgid "Artist:"
-msgstr ""
+msgstr "Artista:"
 
 #: src/View/SearchLyricDialog.vala:80
 msgid "Album:"
-msgstr ""
+msgstr "Álbum:"
 
 #: src/View/SettingsPopover.vala:11
 msgid "Select custom font:"
-msgstr ""
+msgstr "Seleccione una fuente personalizada:"
 
 #: src/View/SettingsPopover.vala:14
 msgid "Lyrics download folder:"
-msgstr ""
+msgstr "Carpeta de descarga de letras:"
 
 #: src/View/SettingsPopover.vala:15
 msgid "Select folder to download lyrics"
-msgstr ""
+msgstr "Seleccionar carpeta para descargar letras"
 
 #: src/View/SettingsPopover.vala:19
 msgid "Couldn't add default lyrics folder to FileChooserButton"
-msgstr ""
+msgstr "No se puede añadir la carpeta de letras por defecto a FileChooserButton"
 
 #: src/View/SettingsPopover.vala:22
 msgid "Keep window above:"
-msgstr ""
+msgstr "Mantener la ventana en primer plano:"
 
 #: src/View/SettingsPopover.vala:48
 msgid "Always"
-msgstr ""
+msgstr "Siempre"
 
 #: src/View/SettingsPopover.vala:49
 msgid "When playing"
-msgstr ""
+msgstr "Durante la reproducción"
 
 #: src/View/SettingsPopover.vala:50
 msgid "Never keep above"
-msgstr ""
+msgstr "No mantener en primer plano"
 
 #: src/View/SettingsPopover.vala:58
 msgid "Make translucid on focus loss"
-msgstr ""
+msgstr "Hacer translúcido al perder el enfoque"
 
 #: src/View/SettingsPopover.vala:65
 msgid "Restore default settings"
-msgstr ""
+msgstr "Restablecer la configuración predeterminada"
 
 #: src/View/Widgets/DownloadView.vala:37
 msgid "by"
-msgstr ""
+msgstr "por"
 
 #: src/View/Widgets/DownloadView.vala:37
 msgid "Unknown artist"
-msgstr ""
+msgstr "Artista desconocido"
 
 #: src/View/Widgets/DownloadView.vala:38
 msgid "Unknown title"
-msgstr ""
+msgstr "Título desconocido"
