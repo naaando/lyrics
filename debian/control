@@ -1,0 +1,25 @@
+Source: com.github.naaando.lyrics
+Maintainer: Fernando da Silva Sousa <wild.nando@gmail.com>
+Section: sound
+Priority: optional
+Standards-Version: 3.9.2
+Homepage: https://github.com/naaando/lyrics
+Build-Depends: debhelper (>=9),
+               gettext,
+               libgee-0.8-dev,
+               libglib2.0-dev,
+               libgtk-3-dev,
+               meson,
+               valac,
+               python
+
+Package: com.github.naaando.lyrics
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         python,
+         python-dbus,
+         python-gobject-2,
+         python-pycurl,
+Pre-Depends: dpkg (>= 1.15)
+Description: Lyric display...

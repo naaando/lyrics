@@ -1,0 +1,143 @@
+com.github.naaando.lyrics (0.7.6) bionic; urgency=medium
+
+  * Fixes file saving when the directory to save don't exists
+
+  * Fix bug where selecting a lyric from the search dialog don't display it
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Fri, 08 Mar 2019 22:40:47 -0300
+
+com.github.naaando.lyrics (0.7.5) bionic; urgency=medium
+
+  * Fix bug where the lyrics start to overlap;
+
+  * Remove legacy code for old lyric displayers;
+
+  * Fix warnings related to custom font provider;
+
+  * Fix warnings related to ClickThroughHelper.
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Wed, 06 Mar 2019 21:00:30 -0300
+
+com.github.naaando.lyrics (0.7.4) bionic; urgency=medium
+
+  * It solves the problem of the window undoing the resize when going to backdrop if it was shortened horizontally.
+
+  * Update translation files
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Sat, 23 Feb 2019 23:52:49 -0300
+
+com.github.naaando.lyrics (0.7.3) bionic; urgency=medium
+
+  * Fix error where a searched lyric is not displayed if lyrics wasn't displaying already
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Mon, 18 Feb 2019 10:27:25 -0300
+
+com.github.naaando.lyrics (0.7.2) bionic; urgency=medium
+
+  * Fix search returning without results in some cases
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Thu, 14 Feb 2019 20:40:53 -0200
+
+com.github.naaando.lyrics (0.7.1) bionic; urgency=medium
+
+  * Fix settings popover menu closing on click
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Fri, 08 Feb 2019 20:11:38 -0200
+
+com.github.naaando.lyrics (0.7.0) bionic; urgency=medium
+
+  * Add ghost mode
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Fri, 08 Feb 2019 19:32:09 -0200
+
+com.github.naaando.lyrics (0.6.0) bionic; urgency=medium
+
+  * 0.6.0
+  * Removes granite from dependencies
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Fri, 01 Feb 2019 10:31:01 -0200
+
+com.github.naaando.lyrics (0.5.2) bionic; urgency=medium
+
+  * 0.5.2
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Wed, 30 Jan 2019 07:21:12 -0200
+
+com.github.naaando.lyrics (0.5.1) bionic; urgency=medium
+
+  * 0.5.1
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Wed, 30 Jan 2019 00:00:00 -0200
+
+com.github.naaando.lyrics (0.5.0) bionic; urgency=medium
+
+  * Changelog will be shipped inside appdata.xml from now
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Wed, 30 Jan 2019 00:00:00 -0200
+
+com.github.naaando.lyrics (0.4.5) bionic; urgency=medium
+
+  * Fix play and pause icons on player control button
+  * Fix error where closing the player may lead to lyrics displaying still
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Sun, 20 Jan 2019 05:16:46 -0200
+
+com.github.naaando.lyrics (0.4.4) bionic; urgency=medium
+
+  * Fix window keep above setting again (damn ...)
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Wed, 16 Jan 2019 20:32:22 -0200
+
+com.github.naaando.lyrics (0.4.3) bionic; urgency=medium
+
+  * Fix 'window keep above' setting ignoring 'When playing' setting
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Wed, 16 Jan 2019 19:48:37 -0200
+
+com.github.naaando.lyrics (0.4.2) bionic; urgency=medium
+
+  * Fix compacted lyric issue
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Sun, 13 Jan 2019 12:44:50 -0200
+
+com.github.naaando.lyrics (0.4.1) bionic; urgency=medium
+
+  * Big rewrite of Parser
+  * Rewrite DisplayView
+  * Improvements over Lyric component
+  * Fix lyrics sorting
+  * Fix crash while opening LRCs with simplified timestamps [mm:ss]
+  * Display now shows entire lyric and scroll over them
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Sun, 13 Jan 2019 11:45:46 -0200
+
+com.github.naaando.lyrics (0.2.3) bionic; urgency=medium
+
+  * Launch to appcenter review after fully tested on clean enviroment
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Fri, 11 Jan 2019 04:28:10 -0200
+
+com.github.naaando.lyrics (0.2.2build1) bionic; urgency=medium
+
+  * Add missing python dependencies
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Thu, 10 Jan 2019 23:52:25 -0200
+
+com.github.naaando.lyrics (0.2.1) bionic; urgency=medium
+
+  * Fix lyricsources library path
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Thu, 10 Jan 2019 21:11:01 -0200
+
+com.github.naaando.lyrics (0.2) bionic; urgency=medium
+
+  * Add user settings
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Tue, 08 Jan 2019 11:24:19 -0200
+
+com.github.naaando.lyrics (0.1) bionic; urgency=medium
+
+  * Initial release.
+  * Fix issue where lyrics are saved on current folder of running application
+
+ -- Fernando da Silva Sousa <wild.nando@gmail.com>  Fri, 26 Oct 2018 18:52:47 -0300
